@@ -1,0 +1,32 @@
+---
+title: "在 Flutter 中，Isolate 之间可以通信吗？请描述什么是 Isolate？"
+---
+
+是的，在 Dart 中你可以通过 `SendPort` 和 `ReceivePort` 进行消息传递，来实现 Isolate 之间的通信。Isolate 之间**不共享内存**，每个 Isolate 都有自己独立的内存堆空间（Memory Space）和独立的事件循环（Event Loop）。要进行通信，一个 Isolate 需要通过 `SendPort` 将消息发送出去，而接收方的 Isolate 则通过监听 `ReceivePort` 来接收消息。
+
+**什么是 Isolate：**
+Isolate 是 Dart 中的并发执行单元，相当于一个相互隔离的“线程”。它独立运行，不与其他 Isolate 共享内存和状态。使用 Isolate 处理耗时的并发计算任务非常有用，因为这样不会阻塞主 Isolate（即 UI 线程），这是确保 Flutter 应用程序能够保持高帧率和 UI 流畅响应的关键。
+
+```dart
+import 'dart:isolate';
+
+void main() async {
+  // 创建一个 ReceivePort，用于监听来自后台 Isolate 的消息
+  final receivePort = ReceivePort();
+
+  // 派生（Spawn）一个新的 Isolate，并将主 Isolate 的 sendPort 传递给它
+  await Isolate.spawn(isolateFunction, receivePort.sendPort);
+
+  // 监听来自后台 Isolate 的消息
+  receivePort.listen((message) {
+    print('收到消息: $message');
+    receivePort.close(); // 处理完毕后关闭端口
+  });
+}
+
+// 在新 Isolate 中执行的函数
+// 注意：该函数必须是顶层函数或静态方法
+void isolateFunction(SendPort sendPort) {
+  sendPort.send('你好！我是来自后台 Isolate 的消息！');
+}
+```

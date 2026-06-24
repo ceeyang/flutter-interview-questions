@@ -2,12 +2,14 @@
 title: What is `AppLifecycleState`?
 ---
 
-The `AppLifecycleState` defines the state that an application can be.
+The `AppLifecycleState` enum defines the current lifecycle state of the application within the host operating system.
 
-- **detached (AppLifecycleState.detached):** This means the application is still hosted on flutter engine but is detached from any host views. It can either be in the progress of attaching a view when engine was first initializes, or after the view being destroyed due to a Navigator pop.
+- **detached (`AppLifecycleState.detached`):** This means the application is still hosted on the Flutter engine but is detached from any host views. It can either be in the process of attaching a view when the engine was first initialized, or after the view has been destroyed (e.g., due to a Navigator pop).
 
-- **inactive (AppLifecycleState.inactive):** This means the application is in an inactive state and is not receiving user input. Simply we can say the app is in the foreground and not running in the background on your mobile phone.
+- **inactive (`AppLifecycleState.inactive`):** This means the application is in the foreground but is in an inactive state and is not receiving user input. For example, when a phone call comes in, or when the system notification center is pulled down.
 
-- **paused (AppLifecycleState.paused):** This means the application is not currently visible to the user, not responding to user input, and running in the background.
+- **hidden (`AppLifecycleState.hidden` - New in Flutter 3.13+):** This means all views of an application are hidden (not visible to the user), usually a transitional state right before the app is fully paused in the background.
 
-- **resumed (AppLifecycleState.resumed):** This means the application is visible and responding to user input.
+- **paused (`AppLifecycleState.paused`):** This means the application is not currently visible to the user, not responding to user input, and is running in the background. It may be killed by the OS at any time.
+
+- **resumed (`AppLifecycleState.resumed`):** This means the application is in the foreground, fully visible, and responding to user input normally.

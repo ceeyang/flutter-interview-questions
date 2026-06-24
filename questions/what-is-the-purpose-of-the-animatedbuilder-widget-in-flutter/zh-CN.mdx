@@ -1,0 +1,24 @@
+---
+title: "在 Flutter 中 `AnimatedBuilder` 组件的作用是什么？"
+---
+
+在 Flutter 中，`AnimatedBuilder` 的主要作用是：**通过将动画逻辑与组件树彻底解耦，来构建高性能且结构清晰的复杂动画**。
+
+在没有 `AnimatedBuilder` 时，我们通常会在 `AnimationController` 添加监听器（`addListener`），然后在每次动画值改变时调用 `setState()`。这会引发一个极其严重的问题：**整个包含该动画的 Stateful 页面都会被重复构建（Rebuild）**，造成极大的性能浪费。
+
+而使用 `AnimatedBuilder`，你可以将必须跟随动画重绘的部分包裹在它里面。它接收一个 `animation` 对象，并在动画值改变时**仅仅局部刷新传入的 `builder` 函数返回的子组件**，而不影响外部页面。同时，对于内部那些**不需要**跟着动画刷新、体积又很大（如一个固定的复杂图片或背景容器）的静态子组件，可以通过 `child` 参数传给它进行缓存复用。
+
+**简单示例：**
+```dart
+AnimatedBuilder(
+  animation: _animationController,
+  // 这里的 child 就是被复用的静态组件容器
+  child: Container(width: 200, height: 200, color: Colors.blue), 
+  builder: (context, child) {
+    return Transform.rotate(
+      angle: _animationController.value * 2.0 * math.pi,
+      child: child, // 每次仅重绘旋转矩阵，容器本身不重建
+    );
+  },
+);
+```

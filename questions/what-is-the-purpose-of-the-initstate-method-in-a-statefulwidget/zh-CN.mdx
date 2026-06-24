@@ -1,0 +1,15 @@
+---
+title: "在 StatefulWidget 中 `initState()` 方法的作用是什么？"
+---
+
+`initState()` 是 `StatefulWidget` 的 `State` 生命周期中被调用的**第一个真正意义上的业务方法**。
+
+它的核心特性是：**在组件整个漫长的生命周期中，它仅仅会被调用一次。** 它是随着组件实例刚刚被插入到组件树（Widget Tree）时触发的。
+
+**它的主要作用与使用场景：**
+1. **初始化依赖状态的数据**：为那些不能在构造函数中直接确定，而必须依赖特定上下文环境的对象赋初始值。
+2. **初始化控制器**：在此处实例化 `AnimationController`、`TextEditingController`、`TabController` 等需要手动管理的系统级控制器。
+3. **发起首屏网络请求**：在页面刚刚加载时触发从服务器拉取核心业务数据的接口调用。
+4. **订阅与监听**：在此处订阅 Stream 流（如 WebSocket）、绑定系统的事件监听器、或者绑定滚动的滑动监听（`ScrollController.addListener`）。
+
+> **注意**：在 `initState` 中是无法直接使用 `BuildContext` 去进行弹窗或获取被树型结构高层提供的某些数据的（例如 `Provider.of(context)` 会报错，除非将其放入异步微任务中），因为此时组件还没有真正在屏幕上完成构建。

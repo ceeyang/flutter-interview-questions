@@ -1,0 +1,32 @@
+---
+title: "在 Flutter 中，你是如何使用 `Positioned` 组件的？"
+---
+
+在 Flutter 中，`Positioned` 组件专门用于控制子组件在 `Stack`（层叠绝对布局）中的绝对位置。
+
+**需要特别注意的硬性规定：`Positioned` 必须作为 `Stack` 的直接子组件（或者包裹在不会改变布局特性的组件中作为 `Stack` 的后代）使用，否则会导致渲染错误。**
+
+`Positioned` 组件提供了几个可选的边缘距离属性：`left`、`top`、`right`、`bottom`，以及尺寸属性 `width` 和 `height`。通过指定这些属性，你可以让子组件相对于其父级 `Stack` 的四条边缘进行精确的绝对定位。
+
+示例代码：
+
+```dart
+Stack(
+  children: [
+    // 将文本固定在 Stack 左上角，向内偏移 10 像素的位置
+    Positioned(
+      left: 10,
+      top: 10,
+      child: Text('你好！'),
+    ),
+    // 将文本固定在 Stack 右下角，向内偏移 10 像素的位置
+    Positioned(
+      right: 10,
+      bottom: 10,
+      child: Text('再见！'),
+    ),
+  ],
+)
+```
+
+在这个例子中，我们创建了一个 `Stack` 组件，其中包含两个子组件。第一个子组件位于距左边缘和上边缘各 10 像素的位置，而第二个子组件则位于距右边缘和下边缘各 10 像素的对角位置。

@@ -1,0 +1,25 @@
+---
+title: "请区分 `mainAxisAlignment` 和 `crossAxisAlignment` 的概念。"
+---
+
+在弹性布局（Flex layout）中，`mainAxisAlignment` 用于决定子组件在**主轴（Main axis）**上的排列方式；而 `crossAxisAlignment` 则用于决定子组件在**交叉轴（Cross axis）**上的排列方式。
+
+它们的具体方向取决于你使用的是哪种弹性布局组件：
+
+对于 `Row` (行) 组件：
+- **`mainAxisAlignment`** --> 代表水平方向（Horizontal axis）
+- **`crossAxisAlignment`** --> 代表垂直方向（Vertical axis）
+
+<p align="center">
+  <img src="assets/row_diagram.png" alt="MainAxisAlignment vs CrossAxisAlignment - Row" />
+</p>
+
+对于 `Column` (列) 组件：
+- **`mainAxisAlignment`** --> 代表垂直方向（Vertical axis）
+- **`crossAxisAlignment`** --> 代表水平方向（Horizontal axis）
+
+<p align="center">
+  <img src="assets/column_diagram.png" alt="MainAxisAlignment vs CrossAxisAlignment - Column" />
+</p>
+
+_图片来源：[Flutter 官方文档](https://docs.flutter.dev/development/ui/layout#aligning-widgets)_

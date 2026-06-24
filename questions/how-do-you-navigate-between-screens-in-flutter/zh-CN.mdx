@@ -1,0 +1,33 @@
+---
+title: "在 Flutter 中，你是如何在不同页面（Screens）之间进行路由跳转的？"
+---
+
+在 Flutter 中，最基础的页面跳转是通过原生的 `Navigator` 类来实现的。`Navigator` 内部维护了一个路由栈（Stack）。
+
+1. **基本路由跳转（匿名路由）**：
+我们可以使用 `Navigator.push()` 方法将一个新页面压入栈顶，使用 `Navigator.pop()` 方法将当前页面出栈并返回到上一页。
+```dart
+// 跳转到新页面
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => const SecondScreen()),
+);
+
+// 返回上一页
+Navigator.pop(context);
+```
+
+2. **命名路由（Named Routes）**：
+为了更好地管理大型应用，我们可以在 `MaterialApp` 中定义一个全局的路由表（Map），然后使用 `Navigator.pushNamed()` 方法通过字符串别名来跳转。
+```dart
+Navigator.pushNamed(context, '/second');
+```
+
+**现代 Flutter 的最佳实践：**
+随着 Flutter 官方对声明式路由（Navigator 2.0 / Router API）的推广，在现代的中大型项目中，强烈推荐使用官方维护的 **`go_router`** 库。它提供了基于 URL 的路由配置、深层链接（Deep Linking）支持以及更简便的路由守卫功能：
+```dart
+// 使用 go_router 直接跳转并替换当前层级
+context.go('/second');
+// 或者向栈中压入新页面
+context.push('/second');
+```

@@ -10,114 +10,128 @@
   </div>
 </div>
 
+[English](README.md) | [中文](README-zh.md)
+
 ## Table of Contents
 
 This list contains common Flutter interview questions and their answers. From basic to advanced, test your understanding of Flutter and Dart, brush up on your knowledge, or get ready for your next coding interview! Each question is linked directly to its detailed explanation, making it easy to navigate and review specific topics efficiently.
 
 <!-- QUESTIONS:TOC:START -->
 
-| No. | Questions | Level |
-| --- | :-- | :-- |
-| 1 | [What is Flutter?](#what-is-flutter) | Easy |
-| 2 | [What is Dart and Why does Flutter use it?](#what-is-dart-and-why-does-flutter-use-it) | Easy |
-| 3 | [What is `pubspec.yaml` file and what does it do?](#what-is-pubspecyaml-file-and-what-does-it-do) | Easy |
-| 4 | [What is the difference between `main()` and `runApp()` functions in Flutter?](#what-is-the-difference-between-main-and-runapp-functions-in-flutter) | Easy |
-| 5 | [Differentiate between named parameters and positional parameters in Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter) | Easy |
-| 6 | [What are widgets in Flutter?](#what-are-widgets-in-flutter) | Easy |
-| 7 | [What is `Hot Reload` and `Hot Restart` in Flutter?](#what-is-hot-reload-and-hot-restart-in-flutter) | Easy |
-| 8 | [What do you mean by open-source software? Is Flutter open-source?](#what-do-you-mean-by-open-source-software-is-flutter-open-source) | Easy |
-| 9 | [Differentiate between `StatelessWidget` and `StatefulWidget` in Flutter.](#differentiate-between-statelesswidget-and-statefulwidget-in-flutter) | Easy |
-| 10 | [What is `BuildContext` in Flutter? And why is it needed?](#what-is-buildcontext-in-flutter-and-why-is-it-needed) | Intermediate |
-| 11 | [What are packages and plugins in Flutter?](#what-are-packages-and-plugins-in-flutter) | Easy |
-| 12 | [Name some popular apps made with Flutter.](#name-some-popular-apps-made-with-flutter) | Easy |
-| 13 | [What are different build modes in Flutter?](#what-are-different-build-modes-in-flutter) | Intermediate |
-| 14 | [What is the difference between `WidgetsApp` and `MaterialApp` in Flutter?](#what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter) | Intermediate |
-| 15 | [Differentiate between final, const and static keyword.](#differentiate-between-final-const-and-static-keyword) | Easy |
-| 16 | [What are `StatefulWidget` Lifecycle methods. Explain briefly.](#what-are-statefulwidget-lifecycle-methods-explain-briefly) | Intermediate |
-| 17 | [What are keys and why do we need them?](#what-are-keys-and-why-do-we-need-them) | Intermediate |
-| 18 | [What is the difference between `Expanded` and `Flexible` widget?](#what-is-the-difference-between-expanded-and-flexible-widget) | Intermediate |
-| 19 | [What is Fat Arrow Notation in Dart?](#what-is-fat-arrow-notation-in-dart) | Easy |
-| 20 | [What is the purpose of `SafeArea` widget in Flutter?](#what-is-the-purpose-of-safearea-widget-in-flutter) | Easy |
-| 21 | [What are `Slivers`?](#what-are-slivers) | Advanced |
-| 22 | [What is the extension method in Dart?](#what-is-the-extension-method-in-dart) | Intermediate |
-| 23 | [Explain the `mounted` property. How is it important and when to use it?](#explain-the-mounted-property-how-is-it-important-and-when-to-use-it) | Intermediate |
-| 24 | [What is sound null safety?](#what-is-sound-null-safety) | Intermediate |
-| 25 | [Differentiate between `mainAxisAlignment` and `crossAxisAlignment`.](#differentiate-between-mainaxisalignment-and-crossaxisalignment) | Easy |
-| 26 | [What are mixins? How to use them?](#what-are-mixins-how-to-use-them) | Intermediate |
-| 27 | [What is the difference between `Container` and `SizedBox` widget?](#what-is-the-difference-between-container-and-sizedbox-widget) | Easy |
-| 28 | [What do you mean by Null-aware operators?](#what-do-you-mean-by-null-aware-operators) | Easy |
-| 29 | [What is `AppLifecycleState`?](#what-is-applifecyclestate) | Intermediate |
-| 30 | [What is the difference between `NetworkImage` and `Image.network` in flutter?](#what-is-the-difference-between-networkimage-and-imagenetwork-in-flutter) | Intermediate |
-| 31 | [Explain async, await and Future.](#explain-async-await-and-future) | Intermediate |
-| 32 | [What is `resizeToAvoidBottomInset`? When should we use it?](#what-is-resizetoavoidbottominset-when-should-we-use-it) | Intermediate |
-| 33 | [What is `TextEditingController`?](#what-is-texteditingcontroller) | Easy |
-| 34 | [What is `Animation` and `AnimationController`?](#what-is-animation-and-animationcontroller) | Intermediate |
-| 35 | [What is `InheritedWidget` in Flutter?](#what-is-inheritedwidget-in-flutter) | Advanced |
-| 36 | [What is Flutter Tree Shaking?](#what-is-flutter-tree-shaking) | Advanced |
-| 37 | [What is an `AspectRatio` widget used for?](#what-is-an-aspectratio-widget-used-for) | Easy |
-| 38 | [What is `vsync`? Explain.](#what-is-vsync-explain) | Advanced |
-| 39 | [Differentiate between `Stream` and `Future` in Flutter.](#differentiate-between-stream-and-future-in-flutter) | Intermediate |
-| 40 | [What is `assert` used for in Dart and Flutter?](#what-is-assert-used-for-in-dart-and-flutter) | Easy |
-| 41 | [Can you explain the process of creating custom widgets in Flutter?](#can-you-explain-the-process-of-creating-custom-widgets-in-flutter) | Intermediate |
-| 42 | [What is Typedef in Dart?](#what-is-typedef-in-dart) | Intermediate |
-| 43 | [What is `FutureBuilder` in Flutter and how is it used to build dynamic UI?](#what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui) | Intermediate |
-| 44 | [How do you handle exceptions in Flutter, and what strategies have you used?](#how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used) | Intermediate |
-| 45 | [What is isolate in Flutter?](#what-is-isolate-in-flutter) | Advanced |
-| 46 | [What are DevTools in Flutter?](#what-are-devtools-in-flutter) | Intermediate |
-| 47 | [How would you make HTTP requests in the Flutter framework?](#how-would-you-make-http-requests-in-the-flutter-framework) | Easy |
-| 48 | [What is Factory constructor?](#what-is-factory-constructor) | Intermediate |
-| 49 | [Can you explain the process of testing a Flutter app?](#can-you-explain-the-process-of-testing-a-flutter-app) | Advanced |
-| 50 | [Explain singleton class in flutter.](#explain-singleton-class-in-flutter) | Intermediate |
-| 51 | [What technology is Flutter built with?](#what-technology-is-flutter-built-with) | Easy |
-| 52 | [What is the event loop?](#what-is-the-event-loop) | Intermediate |
-| 53 | [What is the difference between Provider vs. InheritedWidget?](#what-is-the-difference-between-provider-vs-inheritedwidget) | Intermediate |
-| 54 | [What is the purpose of the `initState()` method in a StatefulWidget?](#what-is-the-purpose-of-the-initstate-method-in-a-statefulwidget) | Easy |
-| 55 | [What is the purpose of the `dispose()` method in a StatefulWidget?](#what-is-the-purpose-of-the-dispose-method-in-a-statefulwidget) | Easy |
-| 56 | [What is a GlobalKey in Flutter?](#what-is-a-globalkey-in-flutter) | Intermediate |
-| 57 | [What is the difference between padding and margin in Flutter?](#what-is-the-difference-between-padding-and-margin-in-flutter) | Easy |
-| 58 | [What is the purpose of the scaffold widget in Flutter?](#what-is-the-purpose-of-the-scaffold-widget-in-flutter) | Easy |
-| 59 | [What is the purpose of the Expanded widget in Flutter?](#what-is-the-purpose-of-the-expanded-widget-in-flutter) | Easy |
-| 60 | [How do you handle user input in Flutter?](#how-do-you-handle-user-input-in-flutter) | Intermediate |
-| 61 | [What is the purpose of the `LayoutBuilder` widget in Flutter?](#what-is-the-purpose-of-the-layoutbuilder-widget-in-flutter) | Intermediate |
-| 62 | [What is the purpose of the `SingleChildScrollView` widget in Flutter?](#what-is-the-purpose-of-the-singlechildscrollview-widget-in-flutter) | Easy |
-| 63 | [What is the purpose of the `Stack` widget in Flutter?](#what-is-the-purpose-of-the-stack-widget-in-flutter) | Easy |
-| 64 | [What is a `Theme` in Flutter?](#what-is-a-theme-in-flutter) | Easy |
-| 65 | [What is the purpose of the `Visibility` widget in Flutter?](#what-is-the-purpose-of-the-visibility-widget-in-flutter) | Easy |
-| 66 | [How do you navigate between screens in Flutter?](#how-do-you-navigate-between-screens-in-flutter) | Easy |
-| 67 | [What is a modal bottom sheet in Flutter?](#what-is-a-modal-bottom-sheet-in-flutter) | Easy |
-| 68 | [How do you use the `ValueNotifier` class in Flutter?](#how-do-you-use-the-valuenotifier-class-in-flutter) | Intermediate |
-| 69 | [How do you use the `Positioned` widget in Flutter?](#how-do-you-use-the-positioned-widget-in-flutter) | Easy |
-| 70 | [How do you pass data between screens in Flutter?](#how-do-you-pass-data-between-screens-in-flutter) | Easy |
-| 71 | [What is a `MediaQuery` in Flutter?](#what-is-a-mediaquery-in-flutter) | Intermediate |
-| 72 | [What is the purpose of the `didUpdateWidget` method in a StatefulWidget?](#what-is-the-purpose-of-the-didupdatewidget-method-in-a-statefulwidget) | Intermediate |
-| 73 | [What is a `CustomPainter` in Flutter?](#what-is-a-custompainter-in-flutter) | Advanced |
-| 74 | [What is the purpose of the `AnimatedBuilder` widget in Flutter?](#what-is-the-purpose-of-the-animatedbuilder-widget-in-flutter) | Intermediate |
-| 75 | [What is the purpose of the `Navigator` class in Flutter?](#what-is-the-purpose-of-the-navigator-class-in-flutter) | Easy |
-| 76 | [What is the purpose of the `AnimatedSwitcher` widget in Flutter?](#what-is-the-purpose-of-the-animatedswitcher-widget-in-flutter) | Intermediate |
-| 77 | [What is the purpose of the `FittedBox` widget in Flutter?](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter) | Easy |
-| 78 | [What is State Management in Flutter?](#what-is-state-management-in-flutter) | Intermediate |
-| 79 | [What is the difference between Cupertino and Material Design in Flutter?](#what-is-the-difference-between-cupertino-and-material-design-in-flutter) | Easy |
-| 80 | [What is the purpose of the Material Design Icons package in Flutter?](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter) | Easy |
-| 81 | [Explain how you will deploy a Flutter app to the Google Play/App Store?](#explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store) | Advanced |
-| 82 | [What are the advantages of a Flutter Inspector?](#what-are-the-advantages-of-a-flutter-inspector) | Advanced |
-| 83 | [List the responsibilities of `FlutterActivity`.](#list-the-responsibilities-of-flutteractivity) | Advanced |
-| 84 | [Can you describe how to implement internationalization in a flutter app?](#can-you-describe-how-to-implement-internationalization-in-a-flutter-app) | Advanced |
-| 85 | [How do you implement a custom transition between screens in flutter?](#how-do-you-implement-a-custom-transition-between-screens-in-flutter) | Advanced |
-| 86 | [How do you implement a custom animation curve in flutter?](#how-do-you-implement-a-custom-animation-curve-in-flutter) | Advanced |
-| 87 | [How do you implement a draggable widget in flutter?](#how-do-you-implement-a-draggable-widget-in-flutter) | Intermediate |
-| 88 | [How do you provide accessibility when developing flutter apps, do you at all?](#how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all) | Intermediate |
-| 89 | [How to create a list with persistent headers?](#how-to-create-a-list-with-persistent-headers) | Intermediate |
-| 90 | [Can you communicate between isolates? Describe an Isolate?](#can-you-communicate-between-isolates-describe-an-isolate) | Advanced |
-| 91 | [Explain what a ticker is in flutter.](#explain-what-a-ticker-is-in-flutter) | Intermediate |
-| 92 | [What are the various kinds of Streams present in flutter?](#what-are-the-various-kinds-of-streams-present-in-flutter) | Intermediate |
-| 93 | [What is the Flutter rendering pipeline and how does it work?](#what-is-the-flutter-rendering-pipeline-and-how-does-it-work) | Advanced |
-| 94 | [What is the role of the `FlutterEngine` in the Flutter framework?](#what-is-the-role-of-the-flutterengine-in-the-flutter-framework) | Advanced |
-| 95 | [What are platform channels in Flutter and when would you use them?](#what-are-platform-channels-in-flutter-and-when-would-you-use-them) | Advanced |
-| 96 | [How do you work with multiple Flutter flavors?](#how-do-you-work-with-multiple-flutter-flavors) | Advanced |
-| 97 | [What is code-splitting in Flutter, and how does it help?](#what-is-code-splitting-in-flutter-and-how-does-it-help) | Advanced |
-| 98 | [What are the differences between JIT and AOT?](#what-are-the-differences-between-jit-and-aot) | Intermediate |
-| 99 | [How do Object, dynamic, and var differ in Dart?](#how-doobjectdynamic-andvardiffer-in-dart) | Easy |
-| 100 | [How do mixins differ from interfaces in Dart?](#how-do-mixins-differ-from-interfaces-in-dart) | Intermediate |
+### Easy
+
+| No. | Questions |
+| --- | :-- |
+| 1 | [What is Flutter?](#what-is-flutter) |
+| 2 | [What is Dart and Why does Flutter use it?](#what-is-dart-and-why-does-flutter-use-it) |
+| 3 | [What is `pubspec.yaml` file and what does it do?](#what-is-pubspecyaml-file-and-what-does-it-do) |
+| 4 | [What is the difference between `main()` and `runApp()` functions in Flutter?](#what-is-the-difference-between-main-and-runapp-functions-in-flutter) |
+| 5 | [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter) |
+| 6 | [What are widgets in Flutter?](#what-are-widgets-in-flutter) |
+| 7 | [What is `Hot Reload` and `Hot Restart` in Flutter?](#what-is-hot-reload-and-hot-restart-in-flutter) |
+| 8 | [What do you mean by open-source software? Is Flutter open-source?](#what-do-you-mean-by-open-source-software-is-flutter-open-source) |
+| 9 | [Differentiate between `StatelessWidget` and `StatefulWidget` in Flutter.](#differentiate-between-statelesswidget-and-statefulwidget-in-flutter) |
+| 11 | [What are packages and plugins in Flutter?](#what-are-packages-and-plugins-in-flutter) |
+| 12 | [Name some popular apps made with Flutter.](#name-some-popular-apps-made-with-flutter) |
+| 15 | [Differentiate between final, const and static keyword.](#differentiate-between-final-const-and-static-keyword) |
+| 19 | [What is Fat Arrow Notation in Dart?](#what-is-fat-arrow-notation-in-dart) |
+| 20 | [What is the purpose of `SafeArea` widget in Flutter?](#what-is-the-purpose-of-safearea-widget-in-flutter) |
+| 25 | [Differentiate between `mainAxisAlignment` and `crossAxisAlignment`.](#differentiate-between-mainaxisalignment-and-crossaxisalignment) |
+| 27 | [What is the difference between `Container` and `SizedBox` widget?](#what-is-the-difference-between-container-and-sizedbox-widget) |
+| 28 | [What do you mean by Null-aware operators?](#what-do-you-mean-by-null-aware-operators) |
+| 33 | [What is `TextEditingController`?](#what-is-texteditingcontroller) |
+| 37 | [What is an `AspectRatio` widget used for?](#what-is-an-aspectratio-widget-used-for) |
+| 40 | [What is `assert` used for in Dart and Flutter?](#what-is-assert-used-for-in-dart-and-flutter) |
+| 47 | [How would you make HTTP requests in the Flutter framework?](#how-would-you-make-http-requests-in-the-flutter-framework) |
+| 51 | [What technology is Flutter built with?](#what-technology-is-flutter-built-with) |
+| 54 | [What is the purpose of the `initState()` method in a StatefulWidget?](#what-is-the-purpose-of-the-initstate-method-in-a-statefulwidget) |
+| 55 | [What is the purpose of the `dispose()` method in a StatefulWidget?](#what-is-the-purpose-of-the-dispose-method-in-a-statefulwidget) |
+| 57 | [What is the difference between padding and margin in Flutter?](#what-is-the-difference-between-padding-and-margin-in-flutter) |
+| 58 | [What is the purpose of the scaffold widget in Flutter?](#what-is-the-purpose-of-the-scaffold-widget-in-flutter) |
+| 59 | [What is the purpose of the Expanded widget in Flutter?](#what-is-the-purpose-of-the-expanded-widget-in-flutter) |
+| 62 | [What is the purpose of the `SingleChildScrollView` widget in Flutter?](#what-is-the-purpose-of-the-singlechildscrollview-widget-in-flutter) |
+| 63 | [What is the purpose of the `Stack` widget in Flutter?](#what-is-the-purpose-of-the-stack-widget-in-flutter) |
+| 64 | [What is a `Theme` in Flutter?](#what-is-a-theme-in-flutter) |
+| 65 | [What is the purpose of the `Visibility` widget in Flutter?](#what-is-the-purpose-of-the-visibility-widget-in-flutter) |
+| 66 | [How do you navigate between screens in Flutter?](#how-do-you-navigate-between-screens-in-flutter) |
+| 67 | [What is a modal bottom sheet in Flutter?](#what-is-a-modal-bottom-sheet-in-flutter) |
+| 69 | [How do you use the `Positioned` widget in Flutter?](#how-do-you-use-the-positioned-widget-in-flutter) |
+| 70 | [How do you pass data between screens in Flutter?](#how-do-you-pass-data-between-screens-in-flutter) |
+| 75 | [What is the purpose of the `Navigator` class in Flutter?](#what-is-the-purpose-of-the-navigator-class-in-flutter) |
+| 77 | [What is the purpose of the `FittedBox` widget in Flutter?](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter) |
+| 79 | [What is the difference between Cupertino and Material Design in Flutter?](#what-is-the-difference-between-cupertino-and-material-design-in-flutter) |
+| 80 | [What is the purpose of the Material Design Icons package in Flutter?](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter) |
+| 99 | [How do Object, dynamic, and var differ in Dart?](#how-doobjectdynamic-andvardiffer-in-dart) |
+
+### Intermediate
+
+| No. | Questions |
+| --- | :-- |
+| 10 | [What is `BuildContext` in Flutter? And why is it needed?](#what-is-buildcontext-in-flutter-and-why-is-it-needed) |
+| 13 | [What are different build modes in Flutter?](#what-are-different-build-modes-in-flutter) |
+| 14 | [What is the difference between `WidgetsApp` and `MaterialApp` in Flutter?](#what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter) |
+| 16 | [What are `StatefulWidget` Lifecycle methods. Explain briefly.](#what-are-statefulwidget-lifecycle-methods-explain-briefly) |
+| 17 | [What are keys and why do we need them?](#what-are-keys-and-why-do-we-need-them) |
+| 18 | [What is the difference between `Expanded` and `Flexible` widget?](#what-is-the-difference-between-expanded-and-flexible-widget) |
+| 22 | [What is the extension method in Dart?](#what-is-the-extension-method-in-dart) |
+| 23 | [Explain the `mounted` property. How is it important and when to use it?](#explain-the-mounted-property-how-is-it-important-and-when-to-use-it) |
+| 24 | [What is sound null safety?](#what-is-sound-null-safety) |
+| 26 | [What are mixins? How to use them?](#what-are-mixins-how-to-use-them) |
+| 29 | [What is `AppLifecycleState`?](#what-is-applifecyclestate) |
+| 30 | [What is the difference between `NetworkImage` and `Image.network` in flutter?](#what-is-the-difference-between-networkimage-and-imagenetwork-in-flutter) |
+| 31 | [Explain async, await and Future.](#explain-async-await-and-future) |
+| 32 | [What is `resizeToAvoidBottomInset`? When should we use it?](#what-is-resizetoavoidbottominset-when-should-we-use-it) |
+| 34 | [What is `Animation` and `AnimationController`?](#what-is-animation-and-animationcontroller) |
+| 39 | [Differentiate between `Stream` and `Future` in Flutter.](#differentiate-between-stream-and-future-in-flutter) |
+| 41 | [Can you explain the process of creating custom widgets in Flutter?](#can-you-explain-the-process-of-creating-custom-widgets-in-flutter) |
+| 42 | [What is Typedef in Dart?](#what-is-typedef-in-dart) |
+| 43 | [What is `FutureBuilder` in Flutter and how is it used to build dynamic UI?](#what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui) |
+| 44 | [How do you handle exceptions in Flutter, and what strategies have you used?](#how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used) |
+| 46 | [What are DevTools in Flutter?](#what-are-devtools-in-flutter) |
+| 48 | [What is Factory constructor?](#what-is-factory-constructor) |
+| 50 | [Explain singleton class in flutter.](#explain-singleton-class-in-flutter) |
+| 52 | [What is the event loop?](#what-is-the-event-loop) |
+| 53 | [What is the difference between Provider vs. InheritedWidget?](#what-is-the-difference-between-provider-vs-inheritedwidget) |
+| 56 | [What is a GlobalKey in Flutter?](#what-is-a-globalkey-in-flutter) |
+| 60 | [How do you handle user input in Flutter?](#how-do-you-handle-user-input-in-flutter) |
+| 61 | [What is the purpose of the `LayoutBuilder` widget in Flutter?](#what-is-the-purpose-of-the-layoutbuilder-widget-in-flutter) |
+| 68 | [How do you use the `ValueNotifier` class in Flutter?](#how-do-you-use-the-valuenotifier-class-in-flutter) |
+| 71 | [What is a `MediaQuery` in Flutter?](#what-is-a-mediaquery-in-flutter) |
+| 72 | [What is the purpose of the `didUpdateWidget` method in a StatefulWidget?](#what-is-the-purpose-of-the-didupdatewidget-method-in-a-statefulwidget) |
+| 74 | [What is the purpose of the `AnimatedBuilder` widget in Flutter?](#what-is-the-purpose-of-the-animatedbuilder-widget-in-flutter) |
+| 76 | [What is the purpose of the `AnimatedSwitcher` widget in Flutter?](#what-is-the-purpose-of-the-animatedswitcher-widget-in-flutter) |
+| 78 | [What is State Management in Flutter?](#what-is-state-management-in-flutter) |
+| 87 | [How do you implement a draggable widget in Flutter?](#how-do-you-implement-a-draggable-widget-in-flutter) |
+| 88 | [How do you provide accessibility when developing flutter apps, do you at all?](#how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all) |
+| 89 | [How to create a list with persistent headers?](#how-to-create-a-list-with-persistent-headers) |
+| 91 | [Explain what a ticker is in flutter.](#explain-what-a-ticker-is-in-flutter) |
+| 92 | [What are the various kinds of Streams present in flutter?](#what-are-the-various-kinds-of-streams-present-in-flutter) |
+| 98 | [What are the differences between JIT and AOT?](#what-are-the-differences-between-jit-and-aot) |
+| 100 | [How do mixins differ from interfaces in Dart?](#how-do-mixins-differ-from-interfaces-in-dart) |
+
+### Advanced
+
+| No. | Questions |
+| --- | :-- |
+| 21 | [What are `Slivers`?](#what-are-slivers) |
+| 35 | [What is `InheritedWidget` in Flutter?](#what-is-inheritedwidget-in-flutter) |
+| 36 | [What is Flutter Tree Shaking?](#what-is-flutter-tree-shaking) |
+| 38 | [What is `vsync`? Explain.](#what-is-vsync-explain) |
+| 45 | [What is isolate in Flutter?](#what-is-isolate-in-flutter) |
+| 49 | [Can you explain the process of testing a Flutter app?](#can-you-explain-the-process-of-testing-a-flutter-app) |
+| 73 | [What is a `CustomPainter` in Flutter?](#what-is-a-custompainter-in-flutter) |
+| 81 | [Explain how you will deploy a Flutter app to the Google Play/App Store?](#explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store) |
+| 82 | [What are the advantages of a Flutter Inspector?](#what-are-the-advantages-of-a-flutter-inspector) |
+| 83 | [List the responsibilities of `FlutterActivity`.](#list-the-responsibilities-of-flutteractivity) |
+| 84 | [Can you describe how to implement internationalization in a flutter app?](#can-you-describe-how-to-implement-internationalization-in-a-flutter-app) |
+| 85 | [How do you implement a custom transition between screens in Flutter?](#how-do-you-implement-a-custom-transition-between-screens-in-flutter) |
+| 86 | [How do you implement a custom animation curve in flutter?](#how-do-you-implement-a-custom-animation-curve-in-flutter) |
+| 90 | [Can you communicate between isolates? Describe an Isolate?](#can-you-communicate-between-isolates-describe-an-isolate) |
+| 93 | [What is the Flutter rendering pipeline and how does it work?](#what-is-the-flutter-rendering-pipeline-and-how-does-it-work) |
+| 94 | [What is the role of the `FlutterEngine` in the Flutter framework?](#what-is-the-role-of-the-flutterengine-in-the-flutter-framework) |
+| 95 | [What are platform channels in Flutter and when would you use them?](#what-are-platform-channels-in-flutter-and-when-would-you-use-them) |
+| 96 | [How do you work with multiple Flutter flavors?](#how-do-you-work-with-multiple-flutter-flavors) |
+| 97 | [What is code-splitting in Flutter, and how does it help?](#what-is-code-splitting-in-flutter-and-how-does-it-help) |
 
 <!-- QUESTIONS:TOC:END -->
 
@@ -188,17 +202,27 @@ The `runApp()` function takes (as parameter) widget that would be attached to th
 
 <br>
       
-### Differentiate between named parameters and positional parameters in Flutter.
+### Differentiate between named parameters and positional parameters in Dart/Flutter.
       
 <!-- Update here: /questions/differentiate-between-named-parameters-and-positional-parameters-in-flutter/en-US.mdx -->
 
-A `Positional Parameter` is linked by its position. Positional parameters must be specified in the order in which they appear. `Named Parameters` are referenced by name, which means that they can be used during the function invocation in an order different from the function declaration.
+A `Positional Parameter` is identified by its position in the function signature. When calling the function, positional arguments must be passed in the exact same order in which they appear in the declaration. 
 
-To declare a positional optional parameter, we use square brackets `[ ]`, whereas to declare a named optional parameters we use curly braces `{ }`.
+`Named Parameters` are referenced by their explicitly defined names. This means they can be passed in any order during the function invocation, which greatly improves code readability, especially when a function takes many arguments (which is common for Flutter widgets).
+
+By default, positional parameters are required. To declare an **optional positional parameter**, we wrap it in square brackets `[ ]`. 
+
+Named parameters are optional by default. To declare **named parameters**, we wrap them in curly braces `{ }`. To make a named parameter mandatory, we use the `required` keyword.
 
 ```dart
-doSomething(String name, [String greeting = 'Hello']); // Positional Optional Parameter
-doSomething({String? name, String greeting = 'Hello'}); // Named Optional Parameter
+// Required Positional
+void doSomething(String name, int age) {} 
+
+// Optional Positional
+void doSomething(String name, [String greeting = 'Hello']) {} 
+
+// Optional and Required Named
+void doSomething({required String name, String greeting = 'Hello'}) {} 
 ```
 
 <!-- Update here: /questions/differentiate-between-named-parameters-and-positional-parameters-in-flutter/en-US.mdx -->
@@ -213,9 +237,13 @@ doSomething({String? name, String greeting = 'Hello'}); // Named Optional Parame
       
 <!-- Update here: /questions/what-are-widgets-in-flutter/en-US.mdx -->
 
-Widgets are the central class hierarchy in the Flutter framework, that describes the configuration of an element to manage the underlying render tree. A widget is an immutable description of part of a user interface. Widgets themselves have no mutable state, i.e., all their fields must be final.
+Widgets are the central class hierarchy and the core building blocks of a Flutter application's user interface. They describe what their view should look like given their current configuration and state.
 
-In Flutter, **everything is a widget**.
+Key characteristics of widgets include:
+
+1. **"Everything is a widget"**: In Flutter, almost everything is a widget. Not only are structural and visual elements (like buttons, text, and images) widgets, but also layout aspects (like `Padding`, `Row`, and `Center`) and even application-level configurations (like `MaterialApp` and `Theme`).
+2. **Immutability**: A widget is an **immutable** description of a part of the user interface. Widgets themselves have no mutable state, which means all their properties must be declared as `final`. When a UI changes, Flutter simply destroys the old widget and instantiates a new one.
+3. **Blueprints for Rendering**: Under the hood, widgets are extremely lightweight blueprints. They do not paint pixels directly. Instead, the Flutter framework uses the Widget tree to build an `Element` tree (which manages lifecycle and state) and a `RenderObject` tree (which handles the actual heavy lifting of layout sizing and painting pixels to the screen).
 
 <!-- Update here: /questions/what-are-widgets-in-flutter/en-US.mdx -->
 
@@ -261,9 +289,11 @@ Yes, Flutter is an open-source software development kit.
       
 <!-- Update here: /questions/differentiate-between-statelesswidget-and-statefulwidget-in-flutter/en-US.mdx -->
 
-`StatelessWidget`s are those that do not change, or are immutable. Its appearance and properties remain constant throughout the widget's lifetime. **Icon**, **IconButton**, **Text** are examples of stateless widgets.
+In Flutter's architecture, **all** widgets are technically immutable. The fundamental difference between the two lies in how they manage their internal mutable state over time.
 
-`StatefulWidget`s are those that change their properties while running. They are dynamic, which means they can be rebuilt multiple times during their lifetime. It can alter its appearance in response to events caused by the user interactions or when data is received. **Checkbox**, **Radio**, **Slider**, **InkWell**, **Form**, and **TextField** are examples of stateful widgets.
+A **`StatelessWidget`** is a widget that does not require mutable internal state. Its appearance and properties are determined entirely by the configuration data passed into its constructor. It cannot trigger a rebuild on its own; it only rebuilds when its parent changes its configuration (i.e., passes new arguments). **Text**, **Icon**, and **IconButton** are examples of stateless widgets.
+
+A **`StatefulWidget`** is dynamic. It is paired with a separate `State` object that *can* hold mutable internal data across frames. This allows the widget to rebuild itself independently whenever its internal state changes (usually triggered by calling the `setState()` method), in response to user interactions, animations, or async data fetching. **Checkbox**, **Slider**, **TextField**, and **InkWell** are examples of stateful widgets.
 
 <!-- Update here: /questions/differentiate-between-statelesswidget-and-statefulwidget-in-flutter/en-US.mdx -->
 
@@ -357,9 +387,11 @@ _To learn more, check [docs](https://docs.flutter.dev/testing/build-modes)._
       
 <!-- Update here: /questions/what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter/en-US.mdx -->
 
-`WidgetsApp` is a convenient widget that wraps a number of widgets that are commonly required for an application. It also provides basic navigation.
+`WidgetsApp` is the base class for creating an application in Flutter. It provides the core foundational functionalities needed by most apps, such as basic navigation, routing, localization, and app-wide state management. However, it does not enforce any specific design language or UI guidelines.
 
-`MaterialApp` builds an application that uses the material design. It is built upon the `WidgetsApp` and contains some material-design specific functionality, such as **AnimatedTheme**. We certainly don't require `MaterialApp` every time when building a Flutter project. `CupertinoApp` gives iOS like look and feel, or we can even define our custom sets of widgets.
+`MaterialApp` is built on top of `WidgetsApp` and adds **Material Design** specific features. It configures the app with a global `Material` theme, default typography styling, and specialized widgets like `AnimatedTheme`, navigation transitions specific to Material Design, and `Scaffold`. 
+
+You don't strictly need to use `MaterialApp` for every Flutter project. If your goal is to build an iOS-style app, you can use `CupertinoApp` (which also wraps `WidgetsApp`); if you want to build a fully custom design system from scratch with your own UI specifications, you can use `WidgetsApp` directly to strip away all system-provided styles.
 
 <!-- Update here: /questions/what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter/en-US.mdx -->
 
@@ -373,13 +405,13 @@ _To learn more, check [docs](https://docs.flutter.dev/testing/build-modes)._
       
 <!-- Update here: /questions/differentiate-between-final-const-and-static-keyword/en-US.mdx -->
 
-The `final` keyword defines a variable that can be initialized once and cannot be changed after being assigned a value for the first time.
+- **`final`**: Defines a variable that can be assigned a value only once. It is a **runtime-constant**, meaning its value is evaluated and locked in at runtime. For example, `final time = DateTime.now();` is valid because `DateTime.now()` is determined when the code executes.
 
-The `const` keyword defines a constant variable that should not be changed over time.
+- **`const`**: Defines a **compile-time constant**. The value must be known and computed before the program runs. Variables declared as `const` are implicitly `final`. For example, `const pi = 3.14;` is valid, but `const time = DateTime.now();` will cause a compile error. `const` also deeply canonicalizes objects, meaning two identical `const` objects reference the exact same memory location.
 
-Now the only difference between the final and const variable is that **final is a runtime-constant**, which in turn means that its value can be assigned at runtime instead of the compile-time that we had for the const keyword.
+- **`static`**: Used for class-level variables and methods. A `static` member belongs to the class itself rather than to any specific instance of the class, meaning it can be accessed without instantiating an object (e.g., `ClassName.staticVariable`). In Dart, `static` variables are lazily initialized only when they are first accessed.
 
-The `static` keyword is used for a class-level variable and method that is the same for every instance of a class, this means if a data member is static, it can be accessed without creating an object. The static keyword allows data members to persist Values between different instances of a class.
+These keywords can also be combined. For example, `static const` is often used to define class-level constants.
 
 <!-- Update here: /questions/differentiate-between-final-const-and-static-keyword/en-US.mdx -->
 
@@ -421,11 +453,16 @@ The `static` keyword is used for a class-level variable and method that is the s
       
 <!-- Update here: /questions/what-are-keys-and-why-do-we-need-them/en-US.mdx -->
 
-Flutter uses keys to preserve the state and to uniquely identify specific widgets within a widget tree. It is used to preserve the state of the `StatefulWidget`s while they are being replaced with other widgets or just moved in the widget tree.
+Flutter uses keys to preserve the state and to uniquely identify specific widgets within a widget tree. It is used to preserve the state of `StatefulWidget`s while they are being replaced, reordered, or moved around in the widget tree.
 
-The most common usage of key is when we are dealing with collections of widgets that have the same type; so, without keys, the element tree would not know which state corresponds to which widget, as they would all have the same type.
+The most common usage of a key is when we are dealing with **collections of widgets that have the exact same type** (e.g., a list of Stateful ListTiles). Without keys, if the order of the widgets changes, the underlying element tree would not know which State object corresponds to which widget, resulting in state mismatching (e.g., the wrong item remaining checked).
 
-For an explanation with an example, check this [stackoverflow answer](https://stackoverflow.com/a/50081052).
+**Common Types of Keys:**
+- **`ValueKey` / `ObjectKey`**: Local keys often used in lists, uniquely identifying a widget based on a value or object instance.
+- **`UniqueKey`**: Guarantees a completely unique key; useful when you need to force a widget to completely rebuild.
+- **`GlobalKey`**: A heavy key that is unique across the entire app. It allows you to access a widget's state from anywhere (commonly used for Form validation: `GlobalKey<FormState>`).
+
+For an explanation with a practical example of the state mismatch issue, check this [StackOverflow answer](https://stackoverflow.com/a/50081052).
 
 <!-- Update here: /questions/what-are-keys-and-why-do-we-need-them/en-US.mdx -->
 
@@ -592,11 +629,26 @@ Text('Text widget with padding of 16.0').addPadding(16.0);
       
 <!-- Update here: /questions/explain-the-mounted-property-how-is-it-important-and-when-to-use-it/en-US.mdx -->
 
-The mounted property defines whether the state object, associated with it, is currently in the widget tree.
+The `mounted` property is a boolean that indicates whether a `State` object (or a `BuildContext`) is currently in the active widget tree.
 
-After creating a State object and before calling initState, the framework **"mounts"** the State object by associating it with a BuildContext. The State object remains mounted until the framework calls dispose, after which time the framework will never ask the State object to build again.
+After creating a `State` object and before calling `initState`, the Flutter framework **"mounts"** the `State` object by associating it with a `BuildContext`. The `State` object remains mounted until the framework calls `dispose()`, after which it is unmounted and will never build again.
 
-It is an error to call setState unless mounted is true. This property is useful when a method on your state calls setState() but it isn't clear when or how often that method will be called. You can use `if (mounted) {...` to make sure the State exists before calling setState().
+**Why is it important and when to use it?**
+It is an error to call `setState()` if `mounted` is false (i.e., the widget has been removed from the screen). This frequently happens in asynchronous operations. For example, if your widget makes an HTTP request, but the user navigates away from the screen before the request completes, calling `setState()` upon completion will crash the app.
+
+To prevent this, you should check the `mounted` property after any `await` call inside a `State` class before calling `setState()`:
+
+```dart
+Future<void> loadData() async {
+  final data = await fetchNetworkData();
+  if (!mounted) return; // Exit if the widget is no longer in the tree
+  setState(() {
+    _data = data;
+  });
+}
+```
+
+*Note: Since Flutter 3.10, the `mounted` property is also directly available on `BuildContext`, making it easier to check before using `Navigator.of(context)` across async gaps.*
 
 <!-- Update here: /questions/explain-the-mounted-property-how-is-it-important-and-when-to-use-it/en-US.mdx -->
 
@@ -788,15 +840,17 @@ Example of null-aware operators are:
       
 <!-- Update here: /questions/what-is-applifecyclestate/en-US.mdx -->
 
-The `AppLifecycleState` defines the state that an application can be.
+The `AppLifecycleState` enum defines the current lifecycle state of the application within the host operating system.
 
-- **detached (AppLifecycleState.detached):** This means the application is still hosted on flutter engine but is detached from any host views. It can either be in the progress of attaching a view when engine was first initializes, or after the view being destroyed due to a Navigator pop.
+- **detached (`AppLifecycleState.detached`):** This means the application is still hosted on the Flutter engine but is detached from any host views. It can either be in the process of attaching a view when the engine was first initialized, or after the view has been destroyed (e.g., due to a Navigator pop).
 
-- **inactive (AppLifecycleState.inactive):** This means the application is in an inactive state and is not receiving user input. Simply we can say the app is in the foreground and not running in the background on your mobile phone.
+- **inactive (`AppLifecycleState.inactive`):** This means the application is in the foreground but is in an inactive state and is not receiving user input. For example, when a phone call comes in, or when the system notification center is pulled down.
 
-- **paused (AppLifecycleState.paused):** This means the application is not currently visible to the user, not responding to user input, and running in the background.
+- **hidden (`AppLifecycleState.hidden` - New in Flutter 3.13+):** This means all views of an application are hidden (not visible to the user), usually a transitional state right before the app is fully paused in the background.
 
-- **resumed (AppLifecycleState.resumed):** This means the application is visible and responding to user input.
+- **paused (`AppLifecycleState.paused`):** This means the application is not currently visible to the user, not responding to user input, and is running in the background. It may be killed by the OS at any time.
+
+- **resumed (`AppLifecycleState.resumed`):** This means the application is in the foreground, fully visible, and responding to user input normally.
 
 <!-- Update here: /questions/what-is-applifecyclestate/en-US.mdx -->
 
@@ -826,20 +880,26 @@ The `AppLifecycleState` defines the state that an application can be.
       
 <!-- Update here: /questions/explain-async-await-and-future/en-US.mdx -->
 
-The `async` and `await` are keywords in Dart that enable asynchronous programming. They make it easier to write asynchronous code that is readable and easier to maintain.
+**`Future`**: A `Future` is a core Dart class that represents the eventual result of an asynchronous operation. It represents a value (or an error) that will be available at some point in the future. A function that performs an asynchronous operation (like a network request or disk I/O) returns a `Future`.
 
-`Future` is a core Dart library that represents an asynchronous operation that will complete in the future. A `Future` object is returned from an asynchronous function to represent a value that will be available at some point in the future.
+**`async`**: The `async` keyword is added to a function's signature to mark it as an asynchronous function. When a function is marked as `async`, Dart automatically wraps its return value in a `Future`.
 
-In Flutter, `async` and `await` are used to perform asynchronous operations, such as making HTTP requests or reading from a database. The Future object is used to represent the result of an asynchronous operation and is often passed to await in an async function to wait for the result to be available.
+**`await`**: The `await` keyword can only be used inside an `async` function. It pauses the execution of the function until the awaited `Future` completes, allowing you to write asynchronous code that looks and behaves like synchronous, top-down code. This avoids callback hell.
+
+Together, they make asynchronous programming highly readable and maintainable.
 
 ```dart
-Future<String> fetchData() async {
-  // Asynchronous operation
-  return 'Data';
+// A function that returns a Future
+Future<String> fetchNetworkData() async {
+  // Simulate a network delay
+  await Future.delayed(Duration(seconds: 2));
+  return 'Fetched Data';
 }
 
 void main() async {
-  String data = await fetchData();
+  print('Loading...');
+  // The execution pauses here until fetchNetworkData completes
+  String data = await fetchNetworkData();
   print(data);
 }
 ```
@@ -947,11 +1007,13 @@ class _MyAnimationState extends State<MyAnimation>
       
 <!-- Update here: /questions/what-is-inheritedwidget-in-flutter/en-US.mdx -->
 
-`InheritedWidget` is a class in the Flutter framework that is used to pass data down the widget tree. It provides a convenient way to share data between widgets without having to pass the data explicitly through each individual widget in the tree.
+`InheritedWidget` is a base class in the Flutter framework that is used to efficiently pass data down the widget tree. It provides a convenient, built-in way to share data between widgets without having to manually pass the data via constructor arguments through every single intermediary widget in the tree (a problem known as "prop drilling").
 
-An `InheritedWidget` is a widget that, when it is inserted into the widget tree, can be accessed by descendant widgets using the `context.inheritFromWidgetOfExactType` method. This allows data to be passed down the tree to widgets that are nested several levels deep, without having to pass the data through every single widget in between.
+When an `InheritedWidget` is inserted into the top of a widget tree, any descendant widget deep down the tree can access its stored data using the **`context.dependOnInheritedWidgetOfExactType`** method.
 
-`InheritedWidget` is often used to provide data to descendant widgets that is frequently required, such as the theme or the current locale. By wrapping your application in an `InheritedWidget`, you can make this data available to all of your widgets, and avoid having to pass it down through multiple levels of the widget tree.
+What makes `InheritedWidget` special compared to a simple global variable is its **reactivity**. When the data inside the `InheritedWidget` changes, it has the ability to automatically trigger a rebuild exclusively for the specific descendant widgets that are listening to it, without rebuilding the entire app.
+
+`InheritedWidget` is the fundamental architecture powering state management under the hood. It is heavily used internally by Flutter to provide globally required data, such as `Theme.of(context)` or `MediaQuery.of(context)`, and is also the underlying engine for popular third-party state management libraries like `Provider`.
 
 <!-- Update here: /questions/what-is-inheritedwidget-in-flutter/en-US.mdx -->
 
@@ -1001,11 +1063,15 @@ For example, if you want to create a square widget, you can wrap the widget in a
       
 <!-- Update here: /questions/what-is-vsync-explain/en-US.mdx -->
 
-The `vsync` in Flutter is an abbreviation for "vertical synchronization". It's a feature that ensures that animations and user interface updates are synchronized with the device's screen refresh rate. This prevents visual artifacts, such as screen tearing or stuttering, which can occur when the device's screen refresh rate and the animation's frame rate are not in sync.
+The `vsync` in Flutter is an abbreviation for "vertical synchronization". It's a critical feature that ensures animations and user interface visual updates are perfectly synchronized with the device's native screen refresh rate (typically 60Hz, 90Hz, or 120Hz).
 
-In Flutter, `vsync` is provided through the `TickerProvider` interface, which is a factory for creating `Ticker` objects. The `Ticker` objects are used to drive animations, and the `TickerProvider` provides the `vsync` signal that ensures that animations are in sync with the device's screen refresh rate.
+Without vertical synchronization, the framework might attempt to calculate and draw a new frame while the device screen is currently midway through painting the previous frame. This lack of coordination can result in horrible visual artifacts, such as **screen tearing** or **stuttering**, destroying the smooth user experience.
 
-To use `vsync` in Flutter, a `TickerProvider` must be passed to the `AnimationController` when it is created. This allows the `AnimationController` to access the `vsync` signal and use it to drive animations.
+In Flutter, `vsync` is provided through the `TickerProvider` interface, which acts as a factory for creating `Ticker` objects. The `Ticker` "ticks" strictly in harmony with the device's refresh cycle. The `TickerProvider` supplies the `vsync` signal that ensures all dependent animations step forward at the exact right moment.
+
+To enable `vsync` in Flutter, you must pass a `TickerProvider` directly into an `AnimationController` constructor. The most common way to get a `TickerProvider` is by adding the `SingleTickerProviderStateMixin` (or `TickerProviderStateMixin` for multiple animations) to your `State` class.
+
+Here is a null-safe example demonstrating `vsync` in action:
 
 ```dart
 class MyAnimation extends StatefulWidget {
@@ -1013,27 +1079,35 @@ class MyAnimation extends StatefulWidget {
   _MyAnimationState createState() => _MyAnimationState();
 }
 
+// 1. Add SingleTickerProviderStateMixin to gain access to the 'vsync' signal
 class _MyAnimationState extends State<MyAnimation>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
+  
+  // Use 'late' modifier for null-safety
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
+    // 2. Pass 'this' as the vsync parameter. 
+    // It works because of the mixin we added above.
     _controller = AnimationController(
-      duration: Duration(seconds: 2),
-      vsync: this,
+      duration: const Duration(seconds: 2),
+      vsync: this, 
     );
+    
     _animation = Tween<double>(begin: 0, end: 300).animate(_controller)
       ..addListener(() {
         setState(() {});
       });
+      
+    _controller.forward();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller.dispose(); // Always dispose controllers to prevent memory leaks!
     super.dispose();
   }
 
@@ -1042,7 +1116,7 @@ class _MyAnimationState extends State<MyAnimation>
     return Container(
       height: _animation.value,
       width: _animation.value,
-      child: FlutterLogo(),
+      child: const FlutterLogo(),
     );
   }
 }
@@ -1113,19 +1187,17 @@ In summary, `assert` is used in Dart and Flutter to validate conditions during d
       
 <!-- Update here: /questions/can-you-explain-the-process-of-creating-custom-widgets-in-flutter/en-US.mdx -->
 
-The process of creating custom widgets in Flutter involves the following steps:
+The process of creating custom widgets in Flutter typically involves either **Composition** (combining existing widgets) or **Custom Drawing/Layout** (building from scratch).
 
-1. **Extend the `StatelessWidget` or `StatefulWidget` class**: To create a custom widget, we need to extend the `StatelessWidget` or `StatefulWidget` class, depending on whether the widget is stateless or stateful.
+For standard **Composition**, the process involves the following steps:
 
-2. **Override the `build` method**: We need to override the `build` method in our custom widget class to define its appearance. The `build` method returns a widget tree that describes the appearance of the widget. We can use built-in widgets or other custom widgets to create the widget tree.
+1. **Choose the Base Class**: Extend the `StatelessWidget` if your widget's appearance depends only on the configuration passed into its constructor, or `StatefulWidget` if it needs to maintain mutable state that can change over time.
+2. **Define the Constructor**: Define a constructor to accept any required parameters (often using named parameters and passing a `Key` for widget identification).
+3. **Override the `build` method**: Implement the `build` method to return a widget tree that describes the appearance of your custom widget by combining built-in widgets or other custom widgets.
+4. **Manage State (If Stateful)**: If extending `StatefulWidget`, create a corresponding `State` class. Use the `setState` method to trigger a rebuild whenever the internal state changes.
+5. **Use the Custom Widget**: Instantiate and use your new widget in your app's widget tree just like any built-in Flutter widget.
 
-3. **Define the widget's constructor**: We can define a constructor for the custom widget to pass any required data to the widget.
-
-4. **Use the custom widget**: Once we have defined your custom widget, we can use it in your Flutter app just like any other widget. We can add it to the widget tree in our build method or in response to user interactions.
-
-5. **Optionally, manage state**: If the widget is stateful, we can manage its state by using the `setState` method. This method allows us to update the appearance of the widget when its state changes.
-
-These are the basic steps involved in creating custom widgets in Flutter. The exact process may vary depending on the specific requirements of your widget, but this general process should provide a good starting point.
+For highly customized UI that cannot be achieved via standard composition, you can create custom widgets by using `CustomPaint` with a `CustomPainter` to draw graphics directly on the canvas, or by extending `RenderObjectWidget` to define custom layout and painting logic at the rendering tree level.
 
 <!-- Update here: /questions/can-you-explain-the-process-of-creating-custom-widgets-in-flutter/en-US.mdx -->
 
@@ -1169,22 +1241,25 @@ In this example, the `IntCallback` typedef defines a function type that takes an
       
 <!-- Update here: /questions/what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui/en-US.mdx -->
 
-`FutureBuilder` is a widget in Flutter that allows us to build a dynamic UI based on the value of a Future. A Future is an asynchronous operation that returns a value in the future. For example, we might use a Future to retrieve data from a server, or to perform a long-running computation.
+`FutureBuilder` is a widget in Flutter that allows us to build a dynamic UI based on the latest snapshot of interaction with a `Future`. A Future represents an asynchronous operation that will return a value (or an error) at some point in the future. For example, we might use a Future to retrieve data from a server, or to perform a long-running computation.
 
-The `FutureBuilder` widget listens to the Future and builds the UI based on its state. The UI can be different for three states:
+The `FutureBuilder` widget listens to the Future and re-builds the UI based on its `ConnectionState`. The UI is typically different for three main scenarios:
 
-**Uncompleted**: When the Future is running, we can show a loading indicator or any other widget to indicate that the operation is in progress.
+**Uncompleted (Waiting)**: When the Future is still running (`ConnectionState.waiting`), we generally show a loading indicator to tell the user that an operation is in progress.
 
-**Completed with data**: When the Future completes with data, we can use the data to build the UI. For example, we might display a list of items retrieved from the server.
+**Completed with data**: When the Future successfully completes with data (`snapshot.hasData`), we extract that data to build the UI. For example, we might display a list of items retrieved from the server.
 
-**Completed with an error**: If the Future completes with an error, we can show an error message or any other widget to indicate that something went wrong.
+**Completed with an error**: If the Future completes with an exception (`snapshot.hasError`), we extract the error message to show a visual fallback to the user.
 
-Here's an example of using `FutureBuilder` to retrieve data from a server and display a list of items:
+Here is a modern, null-safe example of using `FutureBuilder` to fetch and display a list:
 
 ```dart
 Future<List<String>> _fetchData() async {
-  // Simulate fetching data from a server
-  return Future.delayed(Duration(seconds: 2), () => ["Item 1", "Item 2", "Item 3"]);
+  // Simulate fetching data from a server with a 2-second delay
+  return Future.delayed(
+    const Duration(seconds: 2), 
+    () => ["Item 1", "Item 2", "Item 3"],
+  );
 }
 
 @override
@@ -1192,23 +1267,33 @@ Widget build(BuildContext context) {
   return FutureBuilder<List<String>>(
     future: _fetchData(),
     builder: (context, snapshot) {
+      // 1. Check if the Future is still loading
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      
+      // 2. Check if the Future completed with an error
+      if (snapshot.hasError) {
+        return Center(child: Text("Error: ${snapshot.error}"));
+      }
+      
+      // 3. The Future completed successfully, we can safely use the data
       if (snapshot.hasData) {
+        final data = snapshot.data!; // Use ! to unwrap safely
         return ListView.builder(
-          itemCount: snapshot.data.length,
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            return Text(snapshot.data[index]);
+            return ListTile(title: Text(data[index]));
           },
         );
-      } else if (snapshot.hasError) {
-        return Text("Error: ${snapshot.error}");
       }
-      return CircularProgressIndicator();
+      
+      // Fallback state
+      return const SizedBox.shrink();
     },
   );
 }
 ```
-
-In this example, the `_fetchData` function returns a Future that retrieves data from a server. The `FutureBuilder` widget listens to the Future and uses the `builder` callback to build the UI based on its state. If the Future is running, the `CircularProgressIndicator` is displayed. If the Future completes with data, the data is displayed in a list. If the Future completes with an error, an error message is displayed.
 
 <!-- Update here: /questions/what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui/en-US.mdx -->
 
@@ -1222,48 +1307,58 @@ In this example, the `_fetchData` function returns a Future that retrieves data 
       
 <!-- Update here: /questions/how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used/en-US.mdx -->
 
-Exceptions are errors that occur at runtime and can be handled in Flutter using `try-catch` blocks. Here's a simple example of how to handle exceptions in Flutter:
+Exceptions in Flutter can be handled at the **local level** (within specific functions) or at the **global level** (catching unhandled errors across the entire app to prevent silent crashes).
 
-```dart
-try {
-  // Code that might throw an exception
-} on Exception catch (e) {
-  // Code that is executed when an exception is caught
-  print("Caught exception: $e");
-}
-```
-
-In this example, the code inside the try block is executed. If an exception is thrown, it is caught by the catch block, and the code inside the catch block is executed. You can access the details of the exception by using the e variable.
-
-There are different strategies for handling exceptions in Flutter, including:
-
-**Logging**: We can log the details of the exception to help with debugging and troubleshooting. We can use the print function or a logging library like logging or flutter_logging.
-
-**Showing an error message**: We can show an error message to the user to let them know that something went wrong. For example, we might show a SnackBar with a message, or navigate to an error page.
-
-**Retrying the operation**: If the exception was caused by a temporary error, we might want to retry the operation. For example, we might retry a network request if the first attempt failed due to a timeout.
-
-**Handling specific exceptions**: We can handle specific exceptions by using multiple catch blocks. This allows us to handle each exception differently based on its type. For example, we might handle a SocketException differently from a `FormatException`.
-
-Here's an example of a more advanced exception handling strategy:
+### Local Error Handling
+At the local level, we use `try-catch-finally` blocks. You can handle specific exceptions using the `on` keyword to execute different recovery strategies based on the exact error type:
 
 ```dart
 try {
   // Code that might throw an exception
 } on SocketException catch (e) {
-  // Code that is executed when a SocketException is caught
-  print("Caught SocketException: $e");
-  // Retry the operation
+  print("Network error: $e");
+  // Strategy: Retry the operation or show offline UI
 } on FormatException catch (e) {
-  // Code that is executed when a FormatException is caught
-  print("Caught FormatException: $e");
-  // Show an error message to the user
-} catch (e) {
-  // Code that is executed when any other exception is caught
-  print("Caught exception: $e");
-  // Log the exception for debugging purposes
+  print("Parsing error: $e");
+  // Strategy: Show a data corruption error message
+} catch (e, stackTrace) {
+  print("Unknown error: $e");
+  // Strategy: Log the exception and stack trace
+} finally {
+  // Code that runs regardless of success or failure (e.g., hiding a loading spinner)
 }
 ```
+
+### Global Error Handling
+For errors that slip through local `try-catch` blocks, Flutter provides mechanisms to catch them globally:
+1. **`FlutterError.onError`**: Catches errors that occur during the Flutter framework's execution (e.g., during the `build` phase).
+2. **`PlatformDispatcher.instance.onError`** (Replaced `runZonedGuarded` in newer Flutter versions): Catches all asynchronous errors and errors outside the Flutter framework.
+
+```dart
+import 'dart:ui';
+import 'package:flutter/material.dart';
+
+void main() {
+  // Catch framework errors
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    // Send to crash reporting service
+  };
+
+  // Catch async/Dart errors
+  PlatformDispatcher.instance.onError = (error, stack) {
+    // Send to crash reporting service (e.g., Firebase Crashlytics)
+    return true; // Return true to indicate the error was handled
+  };
+
+  runApp(const MyApp());
+}
+```
+
+### Common Strategies
+1. **Logging & Crash Reporting**: Use services like Firebase Crashlytics or Sentry to log the exception, user device info, and stack trace for debugging purposes.
+2. **User Feedback**: Show user-friendly error messages (e.g., using `SnackBar` or dedicated Error Screens) instead of technical stack traces.
+3. **Graceful Degradation / Retry**: If a network request fails, provide a "Retry" button. If an image fails to load, show a local placeholder instead of breaking the UI.
 
 <!-- Update here: /questions/how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used/en-US.mdx -->
 
@@ -1332,31 +1427,32 @@ Here are some of the features of DevTools:
       
 <!-- Update here: /questions/how-would-you-make-http-requests-in-the-flutter-framework/en-US.mdx -->
 
-Making HTTP requests in Flutter can be done using the `http` package. This package provides a simple API for sending HTTP requests and receiving HTTP responses.
+Making HTTP requests in Flutter is commonly done using the official `http` package. This package provides a simple API for sending standard REST requests and receiving HTTP responses.
 
-Here is an example of how to make a GET request to retrieve data from an API:
+Here is an example of how to make an asynchronous `GET` request and parse the JSON response:
 
 ```dart
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<void> fetchData() async {
-  final response = await http.get('https://jsonplaceholder.typicode.com/posts');
+  // Use Uri.parse to convert the string URL into a Uri object
+  final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+  final response = await http.get(url);
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response, then parse the JSON
-    final data = json.decode(response.body);
+    // If the server returns a 200 OK response, decode the JSON payload
+    final List<dynamic> data = json.decode(response.body);
     print(data);
   } else {
-    // If the server did not return a 200 OK response, then throw an exception
-    throw Exception('Failed to load data');
+    // Handle error appropriately
+    throw Exception('Failed to load data, status code: ${response.statusCode}');
   }
 }
 ```
 
-In this example, we use the `http.get` method to send a GET request to the specified URL. The `await` keyword is used to wait for the response before continuing. If the response has a status code of 200, we parse the JSON data using the `json.decode` method. If the status code is not 200, we throw an exception.
-
-The `http` package is a simple and powerful tool for making HTTP requests in Flutter, and it can be used for a variety of tasks, including retrieving data from APIs, submitting form data, and uploading files.
+**Advanced Alternative (`dio` package):**
+While the `http` package is great for simple use cases, for enterprise-level applications, developers almost exclusively use the **`dio`** package. It is a powerful HTTP client for Dart that automatically handles JSON serialization, and natively supports global interceptors (essential for injecting authentication tokens and logging), file downloading/uploading progress tracking, request cancellation, and connection timeouts.
 
 <!-- Update here: /questions/how-would-you-make-http-requests-in-the-flutter-framework/en-US.mdx -->
 
@@ -1405,13 +1501,15 @@ This helps to create a more flexible and reusable codebase, and it also makes it
       
 <!-- Update here: /questions/can-you-explain-the-process-of-testing-a-flutter-app/en-US.mdx -->
 
-The process of testing a Flutter app involves writing and running different types of tests to verify the behavior and functionality of the app. There are two main types of tests in Flutter: unit tests and integration tests. Unit tests focus on individual pieces of code, such as a single function or widget, and test their behavior in isolation. Integration tests, on the other hand, test the app as a whole, including the interactions between different parts of the app.
+The process of testing a Flutter app involves writing and running different types of automated tests to verify the behavior and functionality of the app. In Flutter, testing is officially categorized into **three main types**:
 
-To write tests in Flutter, we can use the `flutter_test` package, which provides a number of testing widgets and utilities that make it easier to write and run tests. When writing tests, we can use the `test` function to define individual test cases and the expect function to specify the expected behavior of the code under test.
+1. **Unit tests**: Test a single function, method, or class in isolation. The goal is to verify the correctness of business logic under various conditions without rendering any UI.
+2. **Widget tests** (also known as component tests in other frameworks): Test a single widget to ensure its UI looks and interacts as expected. It requires a testing environment that provides the appropriate widget lifecycle context but executes much faster than integration tests.
+3. **Integration tests**: Test a complete app or a large part of an app's flow. The goal is to verify that all the widgets and backend services being tested work together as expected on a real physical device or emulator.
 
-When it comes to testing, we can use a combination of manual testing and automated testing. For manual testing, test the app on a variety of devices and platforms to ensure that it works as expected. For automated testing, use a continuous integration and continuous deployment (CI/CD) pipeline to run tests automatically whenever code changes are pushed to the repository. This helps to catch any issues early and ensures that the app always meets a certain level of quality.
+To write tests, we use the `flutter_test` package for unit and widget tests, and the `integration_test` package for integration tests. We use global functions like `test()`, `testWidgets()`, and `expect()` to define test cases and assertions.
 
-In addition to writing tests, we can also use a number of tools and techniques to test Flutter apps, such as code coverage tools to measure the amount of code that is covered by tests, performance testing tools to measure the performance of the app under different conditions, and accessibility testing tools to ensure that the app is accessible to users with disabilities. Overall, testing is a crucial part of the development process in Flutter and helps to ensure that the app is of high quality and meets the requirements of the users.
+In a professional workflow, automated testing is typically integrated into a continuous integration and continuous deployment (CI/CD) pipeline so tests run automatically whenever code is pushed to the repository. Additionally, tools like code coverage metrics, Flutter DevTools for performance profiling, and accessibility testing tools are used to ensure overall app quality.
 
 <!-- Update here: /questions/can-you-explain-the-process-of-testing-a-flutter-app/en-US.mdx -->
 
@@ -1644,16 +1742,17 @@ If there is more than one Expanded widget in the same Row, Column, or Flex, the 
       
 <!-- Update here: /questions/how-do-you-handle-user-input-in-flutter/en-US.mdx -->
 
-In Flutter, we can handle user input through various widgets such as `TextField`, `Checkbox`, `Radio`, `Slider`, `DropdownButton`, `GestureDetector`, and more.
+In Flutter, user input is handled through various input widgets (like `TextField`, `Checkbox`, `Radio`, `Slider`, `Switch`) or gesture detectors (like `GestureDetector` or `InkWell`).
 
-Here is a simple process for handling user input in Flutter:
+Here is the general process for handling user input:
 
-1. Determine the widget that captures the user's input, such as a `TextField` for text input or a `Checkbox` for boolean input.
-2. Attach a callback function to the widget that should be called when the user interacts with it. For example, we can attach the `onChanged` callback to a `Checkbox` to be notified when the user taps the checkbox.
-3. In the callback function, update the state of the application based on the user's input. For example, we can update a bool variable when the user toggles a `Checkbox`, or update a String variable when the user types into a `TextField`.
-4. If the state has changed, call `setState()` to rebuild the UI with the updated state.
+1. **Choose the Input Widget**: Select the appropriate widget for the type of data you want to collect (e.g., `TextField` for text, `Switch` for boolean).
+2. **Attach a Callback**: Bind a callback function to the widget's event listener, such as `onChanged`, `onSubmitted`, or `onTap`.
+3. **Manage State**: Inside the callback, update the relevant state variable with the new input value and call `setState()` (if using `StatefulWidget`) to rebuild the UI with the updated data.
 
-It's important to note that the specific process for handling user input will vary depending on the widget and the requirements of the app.
+**Advanced Input Handling:**
+- **TextEditingController**: For text inputs, instead of exclusively relying on `onChanged`, a more common approach is to attach a `TextEditingController` to a `TextField`. This allows you to read, modify, or clear the text programmatically at any time without needing to manually sync the state on every keystroke.
+- **Forms and Validation**: When dealing with multiple related inputs (like a login or registration screen), use the `Form` widget paired with multiple `TextFormField`s. This allows you to group inputs, validate them together using `validator` functions, and save or submit them simultaneously using a `GlobalKey<FormState>`.
 
 <!-- Update here: /questions/how-do-you-handle-user-input-in-flutter/en-US.mdx -->
 
@@ -1761,29 +1860,35 @@ Stack(
       
 <!-- Update here: /questions/what-is-a-theme-in-flutter/en-US.mdx -->
 
-In Flutter, a `Theme` is a widget that provides a way to customize the visual appearance of an app. A `Theme` widget can be used to set the colors, fonts, and other visual properties for a specific part or the entire app.
+In Flutter, a `Theme` is a widget that provides a powerful way to customize the visual appearance of an app. A `Theme` widget can be used to set the colors, typography, shapes, and other visual properties either globally for the entire app or locally for a specific part.
 
-Using a `Theme` widget, we can define a set of colors, fonts, and other properties that apply to all widgets within the Theme's subtree. This can make it easier to maintain consistency in the app's visual appearance and reduce the amount of duplicated code.
+Using a `Theme` widget, we can define a consistent set of design tokens that apply automatically to all widgets within the Theme's subtree. This makes it easier to maintain visual consistency and severely reduces the amount of duplicated styling code.
 
 Here are some common use cases for using a Theme widget:
 
-- Setting the app's primary and accent colors
-- Defining text styles for various widget types (e.g. headings, body text, etc.)
-- Setting default button styles
-- Defining shapes and elevations for Material Design widgets
-- Setting default padding and margins for widgets
+- Setting the app's overall `ColorScheme` (primary, secondary, surface, error colors).
+- Defining a unified `TextTheme` for various typography levels (e.g. display, title, body text).
+- Setting default component styles (like `ElevatedButtonTheme` or `AppBarTheme`).
+- Customizing shapes and elevations for Material Design widgets.
 
 ```dart
 MaterialApp(
   theme: ThemeData(
-    primaryColor: Colors.blue,
-    accentColor: Colors.orange,
-    textTheme: TextTheme(
-      headline1: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-      bodyText1: TextStyle(fontSize: 18),
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.blue,
+      secondary: Colors.orange,
+    ),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 18),
+    ),
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
     ),
   ),
-),
+)
 ```
 
 <!-- Update here: /questions/what-is-a-theme-in-flutter/en-US.mdx -->
@@ -1830,22 +1935,37 @@ Visibility(
       
 <!-- Update here: /questions/how-do-you-navigate-between-screens-in-flutter/en-US.mdx -->
 
-In Flutter, we can navigate between screens using the `Navigator` class. We can push a new screen onto the stack using the `push` method, and pop the current screen off the stack using the `pop` method. We can also use named routes to navigate between screens. To do this, we need to define a map of named routes in the `MaterialApp`, and then use the `Navigator.pushNamed` method to navigate to a specific named route.
+In Flutter, we can navigate between screens using the `Navigator` class, which manages a stack of routes. We can push a new screen onto the stack using the `push` method, and pop the current screen off the stack using the `pop` method. 
 
-Here are the basic steps to navigate between screens in Flutter:
+Here are the basic ways to navigate between screens:
 
-1. Define the screens or pages as separate widgets, each with its own unique name and content.
-2. Use the `Navigator.push()` method to push a new Route onto the stack.
+1. **Anonymous Routes (Direct push)**:
+   Use the `Navigator.push()` method and provide a `MaterialPageRoute` to build the new screen on the fly.
    ```dart
    Navigator.push(
      context,
-     MaterialPageRoute(builder: (context) => SecondScreen()),
+     MaterialPageRoute(builder: (context) => const SecondScreen()),
    );
    ```
-3. Now, to go back to the previous screen use the `Navigator.pop()` method.
+
+2. **Named Routes**:
+   Define a map of named routes in the `MaterialApp`, and then use the `Navigator.pushNamed` method with a string identifier.
    ```dart
-   Navigator.pop(context),
+   Navigator.pushNamed(context, '/second');
    ```
+
+3. **Returning (Popping)**:
+   To go back to the previous screen and remove the current screen from the stack, use the `pop` method.
+   ```dart
+   Navigator.pop(context);
+   ```
+
+**Modern Best Practice (Router API)**:
+For medium-to-large apps, or apps that require deep linking (especially Flutter Web), it is highly recommended to use the **`go_router`** package provided by the Flutter team. It sits on top of the complex Navigator 2.0 API and makes URL-based routing declarative and simple:
+```dart
+context.go('/second'); // Replaces current location
+context.push('/second'); // Pushes onto the stack
+```
 
 <!-- Update here: /questions/how-do-you-navigate-between-screens-in-flutter/en-US.mdx -->
 
@@ -1886,30 +2006,36 @@ showModalBottomSheet(
       
 <!-- Update here: /questions/how-do-you-use-the-valuenotifier-class-in-flutter/en-US.mdx -->
 
-In Flutter, the `ValueNotifier` class is a simple class that provides a way to listen for changes to a value and update the UI accordingly. It's a convenient way to manage state for a small number of widgets, and is often used in combination with the `ChangeNotifier` and `Provider` classes from the Flutter `provider` package.
+In Flutter, the `ValueNotifier` class is a specific subclass of `ChangeNotifier` that holds a single value. It provides a simple way to listen for changes to that specific value and update the UI accordingly. It's a convenient way to manage local state for a small number of widgets.
 
-To use `ValueNotifier`, first we need an instance of the class with an initial value:
+To use `ValueNotifier`, follow these three steps:
 
+1. **Instantiate with an initial value**:
 ```dart
 final ValueNotifier<String> _myValue = ValueNotifier<String>('Initial Value');
 ```
 
-To listen for changes to the value, we can use the `ValueListenableBuilder` widget. This widget takes a `ValueNotifier` and a `builder` function, and rebuilds its child whenever the value changes:
+2. **Listen for changes in the UI**:
+To listen for changes to the value, we can use the `ValueListenableBuilder` widget. This widget takes a `ValueNotifier` (or any `ValueListenable`) and a `builder` function. It automatically rebuilds *only* its child whenever the value changes:
 
 ```dart
 ValueListenableBuilder<String>(
   valueListenable: _myValue,
   builder: (BuildContext context, String value, Widget? child) {
-    return Text(value);
+    return Text(value); // This rebuilds automatically when _myValue.value changes
   },
-),
+)
 ```
 
-To update the value of a `ValueNotifier`, simply set its value property:
+3. **Update the value**:
+To update the value of a `ValueNotifier` and trigger a UI rebuild, simply set its `value` property to a new, different value:
 
 ```dart
 _myValue.value = 'New Value';
 ```
+
+**Important Note:** 
+`ValueNotifier` uses the equality operator (`==`) to determine if the value has actually changed. If you are holding a complex object (like a `List` or a custom class), simply mutating the object (e.g., `list.add(item)`) will **not** trigger a notification because the object reference itself hasn't changed. You must either reassign it to a completely new instance, or use a state management approach better suited for complex objects.
 
 <!-- Update here: /questions/how-do-you-use-the-valuenotifier-class-in-flutter/en-US.mdx -->
 
@@ -1923,7 +2049,11 @@ _myValue.value = 'New Value';
       
 <!-- Update here: /questions/how-do-you-use-the-positioned-widget-in-flutter/en-US.mdx -->
 
-In Flutter, the `Positioned` widget is used to position a child widget within a `Stack` widget. The `Positioned` widget takes four optional arguments: `left`, `top`, `right`, and `bottom`, which specify the position of the child widget relative to the edges of the parent `Stack` widget.
+In Flutter, the `Positioned` widget is used to absolutely position a child widget within a `Stack` widget. 
+
+**Important Rule:** The `Positioned` widget must be a direct descendant of a `Stack` widget (or wrapped in a stateless/layout-transparent widget inside a Stack). If you use it outside of a `Stack`, it will throw a rendering error.
+
+The `Positioned` widget takes four optional edge-inset arguments: `left`, `top`, `right`, and `bottom`, as well as `width` and `height`. These specify the exact position and dimensions of the child widget relative to the edges of the parent `Stack` widget.
 
 For example:
 
@@ -1941,10 +2071,10 @@ Stack(
       child: Text('Bye there!'),
     ),
   ],
-),
+)
 ```
 
-In this example, we create a Stack widget with two child widgets that are positioned at opposite corners of the Stack. The first child widget is positioned 10 pixels from the left and top edges of the Stack, while the second child widget is positioned 10 pixels from the right and bottom edges of the Stack.
+In this example, we create a Stack widget with two child widgets that are positioned at opposite corners. The first child widget is positioned 10 pixels from the left and top edges of the Stack, while the second child widget is positioned 10 pixels from the right and bottom edges of the Stack.
 
 <!-- Update here: /questions/how-do-you-use-the-positioned-widget-in-flutter/en-US.mdx -->
 
@@ -1960,7 +2090,7 @@ In this example, we create a Stack widget with two child widgets that are positi
 
 In Flutter, we can pass data between screens using various methods. Some of the most commonly used methods are:
 
-1. **Using constructor parameters**: We can pass data between screens by passing the required data as parameters to the constructor of the destination screen.
+1. **Using constructor parameters**: We can pass data to a new screen by passing the required data directly to its constructor when creating the route.
    
    ```dart
    Navigator.push(
@@ -1973,16 +2103,16 @@ In Flutter, we can pass data between screens using various methods. Some of the 
    class SecondScreen extends StatelessWidget {
      final String data;
 
-     SecondScreen({required this.data});
+     const SecondScreen({super.key, required this.data});
 
      @override
      Widget build(BuildContext context) {
-       return Scaffold( ... );
+       return Scaffold( /* ... */ );
      }
    }
    ```
 
-2. **Using named routes**: We can define named routes in the app and pass data as arguments to these routes.
+2. **Using named routes `arguments`**: We can pass data as `arguments` to a named route.
    
    ```dart
    Navigator.pushNamed(
@@ -1991,17 +2121,26 @@ In Flutter, we can pass data between screens using various methods. Some of the 
      arguments: 'Hello World!',
    );
 
+   // Inside the SecondScreen's build method:
    class SecondScreen extends StatelessWidget {
      @override
      Widget build(BuildContext context) {
        final String data = ModalRoute.of(context)!.settings.arguments as String;
-
-       return Scaffold( ... );
+       return Scaffold( /* ... */ );
      }
    }
    ```
 
-3. **Using a state management library**: We can use a state management library like Provider, Riverpod, Bloc, or MobX to manage the state of the app and pass data between screens. This approach is especially useful when complex data needs to be shared between multiple screens.
+3. **Returning data backwards**: You can pass data back to the previous screen by passing a result into the `Navigator.pop` method, which resolves the Future returned by the original `push`.
+   ```dart
+   // Screen 1
+   final result = await Navigator.push(context, route);
+   
+   // Screen 2
+   Navigator.pop(context, 'Data returned to previous screen');
+   ```
+
+4. **Using a state management library**: You can use a state management library like Provider, Riverpod, Bloc, or GetX to manage app state. This is highly recommended when complex data needs to be shared or synchronized between multiple unrelated screens without explicitly passing arguments back and forth.
 
 <!-- Update here: /questions/how-do-you-pass-data-between-screens-in-flutter/en-US.mdx -->
 
@@ -2015,15 +2154,16 @@ In Flutter, we can pass data between screens using various methods. Some of the 
       
 <!-- Update here: /questions/what-is-a-mediaquery-in-flutter/en-US.mdx -->
 
-In Flutter, a `MediaQuery` is a widget that provides information about the device's screen size, orientation, and other display-related characteristics. It is typically used to create responsive UIs that adapt to different screen sizes and densities.
+In Flutter, `MediaQuery` is a widget that provides detailed information about the device's screen size, orientation, and other system-level display characteristics. It is the primary tool used to create **responsive UIs** that adapt fluidly to different screen dimensions and densities.
 
-The `MediaQuery` widget is usually placed at the root of the widget tree, and it provides a `MediaQueryData` object that contains various properties related to the device's display, such as:
+The `MediaQuery` widget sits near the root of the widget tree (provided automatically by `MaterialApp`), and you can access its data using `MediaQuery.of(context)`. However, for better performance, it is recommended to use specific selector methods:
 
-- **Screen size**: `MediaQueryData.size` returns the size of the device's screen in logical pixels (i.e., independent of the device's pixel density).
-- **Screen orientation**: `MediaQueryData.orientation` returns the orientation of the device's screen (portrait or landscape).
-- **Pixel density**: `MediaQueryData.devicePixelRatio` returns the device's pixel density, which is the ratio between physical pixels and logical pixels.
-- **Text scaling factor**: `MediaQueryData.textScaleFactor` returns the user's preferred text scaling factor, which can be used to adjust the font size of text in the app.
-- **Platform**: `MediaQueryData.platformBrightness` returns the platform's preferred brightness mode (light or dark).
+- **Screen size**: `MediaQuery.sizeOf(context)` returns the `Size` of the device's screen in logical pixels (independent of device pixel density).
+- **Screen orientation**: `MediaQuery.orientationOf(context)` returns whether the screen is in portrait or landscape mode.
+- **Safe Area Insets**: `MediaQuery.paddingOf(context)` provides the parts of the display that are partially obscured by system UI, like notches or the status bar.
+- **Pixel density**: `MediaQuery.devicePixelRatioOf(context)` returns the ratio between physical device pixels and logical pixels.
+- **Text scaling factor**: `MediaQuery.textScalerOf(context)` (which replaces the deprecated `textScaleFactor`) returns the user's OS-level accessibility preference for font sizes.
+- **Platform Brightness**: `MediaQuery.platformBrightnessOf(context)` returns whether the device is currently in light or dark mode.
 
 <!-- Update here: /questions/what-is-a-mediaquery-in-flutter/en-US.mdx -->
 
@@ -2343,27 +2483,24 @@ Overall, the Material Design Icons package is a useful resource for Flutter deve
       
 <!-- Update here: /questions/explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store/en-US.mdx -->
 
-To deploy a Flutter app to the Google Play Store or App Store, follow these steps while adhering to their respective guidelines on content, user privacy, and design:
+To deploy a Flutter app, you must follow the respective platform guidelines regarding content, user privacy, and design. The general technical steps are:
 
 **Deploying to Google Play Store:**
-- Google Play Developer Account: Create an account and set it up.
-- Generate a Signing Key: Sign your app for secure distribution.
-- Prepare App Configuration: Update build.gradle with package details and versioning.
-- Build the Release APK or AAB: Run flutter build apk or flutter build appbundle.
-- Upload and Submit: Submit the app via the Play Console, including screenshots and metadata.
-- Review and Publish: Wait for approval, then publish.
+1. **Developer Account**: Register and set up a Google Play Developer account.
+2. **App Configuration**: Update `android/app/build.gradle` with the correct `applicationId`, `versionCode` (must be incremented per release), and `versionName`.
+3. **Generate a Signing Key**: Create a keystore to cryptographically sign your app for secure distribution.
+4. **Build the Release Bundle**: Run `flutter build appbundle` (Google Play now requires the `.aab` format instead of `.apk` for new apps).
+5. **Upload & Review**: Upload the AAB via the Google Play Console, provide store listing details (screenshots, descriptions, privacy policy), and submit for review.
 
-**Deploying to App Store:**
-- Apple Developer Account: Enroll and set up your account.
-- Provisioning Profile & Certificate: Use Xcode to create a signing certificate and provision your app.
-- Prepare App Configuration: Update your app's bundle ID and version.
-- Build the iOS Archive: Run flutter build ios and export the archive using Xcode.
-- Submit and Review: Upload the app via Xcode or Transporter, fill out metadata, and submit for review.
-- Publish: Once approved, your app goes live.
+**Deploying to Apple App Store:**
+1. **Developer Account**: Enroll in the Apple Developer Program.
+2. **Provisioning & Certificates**: Use Xcode or the Apple Developer portal to create a distribution certificate and a provisioning profile for your app.
+3. **App Configuration**: Update your app's Bundle Identifier and version number in Xcode.
+4. **Build the iOS Archive**: Run `flutter build ipa` to directly build an `.ipa` file (or run `flutter build ios` and archive it manually in Xcode).
+5. **Upload & Review**: Upload the `.ipa` using the Transporter app or Xcode. Then, fill out metadata in App Store Connect and submit for Apple's review.
 
-Ensure you test the app thoroughly and address any guidelines to streamline the approval process.
-- [Google Play Store Guildelines](https://play.google.com/console/about/guides/releasewithconfidence/)
-- [Apple App Review Guildelines](https://developer.apple.com/app-store/review/guidelines/)
+- [Google Play Store Guidelines](https://play.google.com/console/about/guides/releasewithconfidence/)
+- [Apple App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
 
 <!-- Update here: /questions/explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store/en-US.mdx -->
 
@@ -2433,14 +2570,15 @@ Learn more about [FlutterActivitiy](https://api.flutter.dev/javadoc/io/flutter/e
       
 <!-- Update here: /questions/can-you-describe-how-to-implement-internationalization-in-a-flutter-app/en-US.mdx -->
 
-To implement internationalization (i18n) in a Flutter app:
+To implement internationalization (i18n) in a Flutter app using the standard approach:
 
-- Include the `flutter_localizations` package in the `pubspec.yaml` file.
-- Set the `localizationsDelegates` and `supportedLocales` properties in the MaterialApp.
-- Use .arb files to store translations for different locales (e.g., app_en.arb for English, app_es.arb for Spanish).
-- Use the flutter `gen-l10n` tool to generate Dart localization classes from the .arb files.
-- Use the generated localization class (e.g., `AppLocalizations.of(context).<key>`) to access translated strings.
-- Test the app by switching locales in device settings and updating .arb files as needed.
+- Include the `flutter_localizations` and `intl` packages in the `pubspec.yaml` file, and enable the `generate: true` flag.
+- Set up an `l10n.yaml` configuration file at the root of your project to specify the template and output options.
+- Use `.arb` (Application Resource Bundle) files to store translations for different locales (e.g., `app_en.arb` for English, `app_es.arb` for Spanish).
+- The Flutter tool will automatically run `gen-l10n` to generate Dart localization classes from the `.arb` files when you build the app.
+- Set the `localizationsDelegates` and `supportedLocales` properties in your `MaterialApp` using the generated delegates.
+- Use the generated localization class (e.g., `AppLocalizations.of(context)!.helloWorld`) to access translated strings in your widgets.
+- Test the app by switching locales in the device settings.
 
 <!-- Update here: /questions/can-you-describe-how-to-implement-internationalization-in-a-flutter-app/en-US.mdx -->
 
@@ -2450,29 +2588,36 @@ To implement internationalization (i18n) in a Flutter app:
 
 <br>
       
-### How do you implement a custom transition between screens in flutter?
+### How do you implement a custom transition between screens in Flutter?
       
 <!-- Update here: /questions/how-do-you-implement-a-custom-transition-between-screens-in-flutter/en-US.mdx -->
 
-To implement a custom transition between screens in flutter:
+To implement a custom transition between screens in Flutter, you can use a `PageRouteBuilder`:
 
-- Use `PageRouteBuilder` to define the transition animations.
-- In the `pageBuilder`, define the widget for the new screen and use `Animation` objects to control the transition.
-- In the `transitionsBuilder`, use Flutter's animation widgets like `FadeTransition`, `SlideTransition`, or custom combinations to animate the transition.
-- Pass the `PageRouteBuilder` to the `Navigator.push` method.
+1. **`pageBuilder`**: Define the widget for the target new screen.
+2. **`transitionsBuilder`**: Return an animation widget like `FadeTransition`, `SlideTransition`, `ScaleTransition`, or a custom combination. You use the provided `animation` object to drive the transition.
+3. Pass the `PageRouteBuilder` to `Navigator.push()`.
+
+*Pro tip: For a smoother and more natural visual effect, chain a `CurveTween` to your animation tween.*
 
 ```dart
 Navigator.push(
   context,
   PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => NewScreen(),
+    pageBuilder: (context, animation, secondaryAnimation) => const NewScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      final begin = Offset(1.0, 0.0);
-      final end = Offset.zero;
-      final tween = Tween(begin: begin, end: end);
-      final offsetAnimation = animation.drive(tween);
+      const begin = Offset(1.0, 0.0); // Slide in from the right
+      const end = Offset.zero;
+      const curve = Curves.easeInOut; // Non-linear animation curve
 
-      return SlideTransition(position: offsetAnimation, child: child);
+      // Chain the curve and the offset tween for smoothness
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child, // The child is the widget returned by pageBuilder
+      );
     },
   ),
 );
@@ -2492,21 +2637,28 @@ Navigator.push(
 
 To implement a custom animation curve in Flutter:
 
-- Create a custom class that extends `Curve` and override the `transform` method to define the curve's behavior.
-- Apply the custom curve in an `Animation` object using `CurvedAnimation`.
+1. Create a custom class that extends `Curve`.
+2. Override the `transformInternal(double t)` method. The parameter `t` represents the un-curved animation progress (linear time) flowing from `0.0` to `1.0`. You return the transformed value (which can exceed the 0.0-1.0 bounds for effects like bouncing or overshooting).
+3. Apply the custom curve to your animation using `CurvedAnimation`.
+
+*Note: It is best practice to override `transformInternal` rather than `transform`, because the base `Curve.transform` method automatically handles the `t == 0.0` and `t == 1.0` edge cases for you before delegating to `transformInternal`.*
 
 ```dart
 class CustomCurve extends Curve {
+  const CustomCurve();
+
+  // Override transformInternal instead of transform
   @override
-  double transform(double t) {
-    // Example: Ease-in-out quadratic curve
+  double transformInternal(double t) {
+    // Example: A simple ease-in-out quadratic curve math formula
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 }
 
+// Usage:
 final animation = CurvedAnimation(
-  parent: controller,
-  curve: CustomCurve(),
+  parent: controller, // Your AnimationController
+  curve: const CustomCurve(),
 );
 ```
 
@@ -2518,29 +2670,35 @@ final animation = CurvedAnimation(
 
 <br>
       
-### How do you implement a draggable widget in flutter?
+### How do you implement a draggable widget in Flutter?
       
 <!-- Update here: /questions/how-do-you-implement-a-draggable-widget-in-flutter/en-US.mdx -->
 
-To implement a draggable widget in flutter, use the `Draggable` widget. Here's how to do it:
+To implement a draggable widget in Flutter, you use the `Draggable` widget. Usually, this is paired with a `DragTarget` widget that accepts the dragged data.
 
-- Use the `Draggable` widget to wrap the element you want to make draggable.
-- Pass the data you want to drag through the data property.
-- Use `feedback` to specify the widget that appears while dragging and `childWhenDragging` for the widget that replaces the original widget during the drag.
+Here is how to set up the `Draggable` part:
+
+1. Wrap the UI element you want to make draggable with the `Draggable<T>` widget (where `T` is the type of data being dragged).
+2. Pass the underlying data through the `data` property.
+3. Use the `feedback` property to specify the widget that follows the user's finger during the drag.
+4. (Optional) Use `childWhenDragging` to specify what replaces the original widget in its original location while the drag is active.
 
 ```dart
 Draggable<int>(
-  data: 1,
-  feedback: Material(
+  data: 1, // The payload data to be dropped into a DragTarget
+  feedback: const Material(
     color: Colors.transparent,
-    child: Icon(Icons.access_alarm, size: 50),
+    child: Icon(Icons.access_alarm, size: 60, color: Colors.blue), // Follows the finger
   ),
-  childWhenDragging: Container(),
-  child: Icon(Icons.access_alarm),
+  childWhenDragging: const Opacity(
+    opacity: 0.3,
+    child: Icon(Icons.access_alarm, size: 50), // Ghost effect left behind
+  ),
+  child: const Icon(Icons.access_alarm, size: 50), // Default state
 )
 ```
 
-In this example, when the user starts dragging the icon, it shows a smaller icon as the feedback. The original icon disappears until the drag ends.
+In this example, when the user starts dragging the icon, it shows a slightly larger, blue icon as the `feedback`. The original icon becomes semi-transparent (`childWhenDragging`) until the drag ends.
 
 <!-- Update here: /questions/how-do-you-implement-a-draggable-widget-in-flutter/en-US.mdx -->
 
@@ -2554,28 +2712,27 @@ In this example, when the user starts dragging the icon, it shows a smaller icon
       
 <!-- Update here: /questions/how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all/en-US.mdx -->
 
-Yes, accessibility is a critical aspect of Flutter app development to ensure that the app is usable by everyone, including users with disabilities. In Flutter, several techniques are available to enhance accessibility:
+Yes, accessibility (a11y) is a critical aspect of Flutter app development to ensure that the app is inclusive and usable by everyone, including users with visual or motor disabilities. In Flutter, several techniques are available to enhance accessibility:
 
-- **Use of Semantic Widgets:** Flutter provides `Semantics` widget, which allows you to annotate elements in the UI with meaningful descriptions. This helps screen readers understand what the widget represents and provides a better experience for visually impaired users.
+- **Use of Semantic Widgets:** Flutter provides the `Semantics` widget, which allows you to annotate UI elements with meaningful descriptions. This helps screen readers (like TalkBack or VoiceOver) understand what the widget represents and interact with it properly.
 
 ```dart
 Semantics(
-  label: 'Submit button',
+  label: 'Submit form button',
+  button: true,
   child: ElevatedButton(onPressed: () {}, child: Text('Submit')),
 );
 ```
 
-- **Text Accessibility:** Ensure that text content is readable by screen readers. This can be achieved by using accessible widgets like `Text` with clear, concise content and by applying the correct `semanticsLabel` for any custom widgets.
+- **Text Accessibility:** Ensure that text content is readable by screen readers. Standard widgets like `Text` handle this automatically, but for custom icons or heavily customized widgets, always apply the correct `semanticsLabel` to provide clear, concise contextual meaning.
 
-- **Color Contrast:** Ensure sufficient contrast between text and background colors to assist users with visual impairments. Tools like Flutter's accessibility library can help check for contrast issues.
+- **Color Contrast:** Ensure sufficient contrast between text and background colors to assist users with visual impairments. Tools like Flutter DevTools' Accessibility Inspector can help scan for contrast issues automatically.
 
-- **Focus Management:** Implementing keyboard navigation and focus management is essential for users with motor disabilities. Flutter provides `FocusNode` and `FocusScope` to manage focus behavior.
+- **Focus Management:** Implementing logical keyboard navigation and focus management is essential for users with motor disabilities who rely on physical keyboards. Flutter provides `FocusNode` and `FocusScope` to manage focus order and visual behavior.
 
-- **Custom Actions for Screen Readers:** For custom interactions like gestures or animations, use the `excludeSemantics` property wisely to avoid unnecessary verbosity and ensure that screen readers only announce relevant actions.
+- **Exclude Semantics for Screen Readers:** For purely decorative images, background animations, or complex composite widgets, use the `ExcludeSemantics` widget wisely. This prevents screen readers from announcing unnecessary visual clutter and reduces cognitive load for visually impaired users.
 
-- **Testing:** Test your app with accessibility tools like the built-in Android TalkBack or iOS VoiceOver to ensure that all elements are accessible.
-
-By using these techniques and Flutter's built-in tools, we can create more inclusive and accessible apps.
+- **Testing:** Test your app on real devices with accessibility tools like the built-in Android TalkBack or iOS VoiceOver to ensure that all core user flows are navigable without sight.
 
 <!-- Update here: /questions/how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all/en-US.mdx -->
 
@@ -2953,9 +3110,9 @@ var obj = "Hello"; // (obj is inferred as String)
       
 <!-- Update here: /questions/how-do-mixins-differ-from-interfaces-in-dart/en-US.mdx -->
 
-In Dart, mixins and interfaces serve different purposes:
+In Dart, mixins and interfaces serve different purposes, though both allow you to define and abstract behaviors for classes.
 
-**Mixins:** Allow a class to reuse code from multiple classes without using inheritance. Mixins are typically used to add functionality to a class. They are declared using the mixin keyword and can be applied to a class via the with keyword. A class can apply multiple mixins.
+**Mixins:** Allow a class to reuse a specific set of methods and properties from multiple classes without using traditional single inheritance. Mixins are typically used to "mix in" common functionality across unrelated classes. They are declared using the `mixin` keyword and can be applied to a class via the `with` keyword. Importantly, mixins **provide actual code implementation** that the applying class inherits directly.
 
 ```dart
 mixin Walker {
@@ -2963,26 +3120,28 @@ mixin Walker {
 }
 
 class Person with Walker {
-  // Person can now use the walk() method
+  // Person now has the actual implementation of the walk() method
 }
 ```
 
-**Interfaces:** Define a contract that a class must adhere to. In Dart, all classes implicitly act as interfaces. To implement an interface, a class uses the implements keyword. Unlike mixins, interfaces do not allow code reuse—they only define method signatures that must be implemented.
+**Interfaces:** Define a strict contract (a set of method signatures) that a class must adhere to, without providing the implementation details. Historically, every class in Dart acts as an implicit interface. However, Dart 3 introduced the explicit `interface class` modifier. To conform to an interface, a class uses the `implements` keyword. Unlike mixins, interfaces **do not provide code reuse**—they only dictate the API structure, and the implementing class must write all the specific logic itself.
 
 ```dart
-class Animal {
-  void eat();
+// In Dart 3, you can explicitly enforce an interface
+interface class Animal {
+  void eat() {} // This implementation is ignored when implemented by another class
 }
 
 class Dog implements Animal {
   @override
-  void eat() => print("Dog eating");
+  void eat() => print("Dog is eating"); // Must provide its own specific implementation
 }
 ```
 
 **Key Differences:**
-- Mixins provide code reuse; can be used with multiple classes.
-- Interfaces define required methods, but no code reuse. A class can implement multiple interfaces.
+- **Code Reuse**: Mixins provide reusable code implementations. Interfaces only provide a blueprint (method signatures) and no code reuse.
+- **Keywords**: Mixins are applied using `with`. Interfaces are applied using `implements`.
+- **Multiplicity**: While Dart lacks multiple inheritance, a class can use multiple mixins and implement multiple interfaces simultaneously.
 
 <!-- Update here: /questions/how-do-mixins-differ-from-interfaces-in-dart/en-US.mdx -->
 
@@ -3007,7 +3166,7 @@ Flutter Interview Questions categorized by difficulty.
 2. [What is Dart and Why does Flutter use it?](#what-is-dart-and-why-does-flutter-use-it)
 3. [What is `pubspec.yaml` file and what does it do?](#what-is-pubspecyaml-file-and-what-does-it-do)
 4. [What is the difference between `main()` and `runApp()` functions in Flutter?](#what-is-the-difference-between-main-and-runapp-functions-in-flutter)
-5. [Differentiate between named parameters and positional parameters in Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter)
+5. [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter)
 6. [What are widgets in Flutter?](#what-are-widgets-in-flutter)
 7. [What is `Hot Reload` and `Hot Restart` in Flutter?](#what-is-hot-reload-and-hot-restart-in-flutter)
 8. [What do you mean by open-source software? Is Flutter open-source?](#what-do-you-mean-by-open-source-software-is-flutter-open-source)
@@ -3084,7 +3243,7 @@ Flutter Interview Questions categorized by difficulty.
 32. [What is the purpose of the `AnimatedBuilder` widget in Flutter?](#what-is-the-purpose-of-the-animatedbuilder-widget-in-flutter)
 33. [What is the purpose of the `AnimatedSwitcher` widget in Flutter?](#what-is-the-purpose-of-the-animatedswitcher-widget-in-flutter)
 34. [What is State Management in Flutter?](#what-is-state-management-in-flutter)
-35. [How do you implement a draggable widget in flutter?](#how-do-you-implement-a-draggable-widget-in-flutter)
+35. [How do you implement a draggable widget in Flutter?](#how-do-you-implement-a-draggable-widget-in-flutter)
 36. [How do you provide accessibility when developing flutter apps, do you at all?](#how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all)
 37. [How to create a list with persistent headers?](#how-to-create-a-list-with-persistent-headers)
 38. [Explain what a ticker is in flutter.](#explain-what-a-ticker-is-in-flutter)
@@ -3109,7 +3268,7 @@ Flutter Interview Questions categorized by difficulty.
 9. [What are the advantages of a Flutter Inspector?](#what-are-the-advantages-of-a-flutter-inspector)
 10. [List the responsibilities of `FlutterActivity`.](#list-the-responsibilities-of-flutteractivity)
 11. [Can you describe how to implement internationalization in a flutter app?](#can-you-describe-how-to-implement-internationalization-in-a-flutter-app)
-12. [How do you implement a custom transition between screens in flutter?](#how-do-you-implement-a-custom-transition-between-screens-in-flutter)
+12. [How do you implement a custom transition between screens in Flutter?](#how-do-you-implement-a-custom-transition-between-screens-in-flutter)
 13. [How do you implement a custom animation curve in flutter?](#how-do-you-implement-a-custom-animation-curve-in-flutter)
 14. [Can you communicate between isolates? Describe an Isolate?](#can-you-communicate-between-isolates-describe-an-isolate)
 15. [What is the Flutter rendering pipeline and how does it work?](#what-is-the-flutter-rendering-pipeline-and-how-does-it-work)

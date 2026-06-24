@@ -1,0 +1,29 @@
+---
+title: "在 Flutter 中，你是如何实现可拖拽（Draggable）组件的？"
+---
+
+在 Flutter 中实现可拖拽组件，你需要使用 `Draggable` 组件。在实际开发中，它通常与 `DragTarget` 组件配对使用（`DragTarget` 负责接收被拖拽的数据）。
+
+设置 `Draggable` 的基本步骤如下：
+
+1. 将你想要拖拽的 UI 元素用 `Draggable<T>` 包装起来（其中 `T` 是你要传递的数据类型）。
+2. 通过 `data` 属性传递底层的核心数据（即拖拽时携带的“有效载荷”）。
+3. 使用 `feedback` 属性指定在拖拽过程中，一直跟随着用户手指移动的 Widget。
+4. （可选）使用 `childWhenDragging` 属性指定当组件正在被拖拽时，原本停留在原地的 Widget 该显示成什么样。
+
+```dart
+Draggable<int>(
+  data: 1, // 要传递给 DragTarget 的数据载荷
+  feedback: const Material(
+    color: Colors.transparent,
+    child: Icon(Icons.access_alarm, size: 60, color: Colors.blue), // 拖拽时跟随手指移动放大的图标
+  ),
+  childWhenDragging: const Opacity(
+    opacity: 0.3,
+    child: Icon(Icons.access_alarm, size: 50), // 拖拽时留在原地的半透明残影效果
+  ),
+  child: const Icon(Icons.access_alarm, size: 50), // 默认状态下的图标
+)
+```
+
+在这个例子中，当用户开始拖拽图标时，手指下方会显示一个略大的蓝色图标作为拖拽反馈（`feedback`）。而图标原本所在的位置会变成一个半透明的残影（`childWhenDragging`），直到用户的拖拽动作结束。

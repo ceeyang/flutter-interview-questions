@@ -1,0 +1,13 @@
+---
+title: "在 Flutter 架构中 `FlutterEngine`（Flutter引擎）扮演了什么角色？"
+---
+
+Flutter 架构由顶层向底层的三座大山分别是：Framework 层（用 Dart 编写的业务代码库）、Engine 层（用 C++ 编写的核心引擎）和 Embedder 层（特定平台的嵌入器）。
+
+位于核心枢纽地位的 **Flutter Engine（Flutter 引擎）是承载所有 Flutter 应用运行环境的基石。**
+
+**它的核心职责与作用极其硬核：**
+1. **渲染主干（Rendering Pipeline）**：它内部包裹并驱动着核心的图形渲染引擎（过去是 Skia 引擎，现在默认升级为彻底消除着色器编译卡顿的 Impeller 引擎），负责将 Widget 抽象代码硬核地光栅化为屏幕上真实的绚丽像素。
+2. **Dart 运行环境托管**：它内置了 Dart VM 虚拟机（在调试时）以及 AOT 运行时环境（在发布时），在一个完全独立的后台 Isolate 中飞速解析和执行所有的 Dart 业务逻辑代码和并发任务。
+3. **平台通讯桥梁（Platform Channels）**：它构建了不可逾越的鸿沟之上的桥梁，让顶层的 Flutter 代码能够与底层的原生操作系统（如 iOS 的 Swift/Objective-C、Android 的 Kotlin/Java）通过二进制消息进行双向安全通信。
+4. **底层事件处理**：全面接管并消化底层宿主系统传递上来的复杂事件，例如触摸手势的识别解析、文件系统读写、网络底层 I/O 调度以及无障碍（Accessibility）服务的无缝对接。

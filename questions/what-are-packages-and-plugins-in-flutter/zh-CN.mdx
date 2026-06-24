@@ -1,0 +1,11 @@
+---
+title: "在 Flutter 中，Package（包）和 Plugin（插件）有什么区别？"
+---
+
+在 Flutter 生态系统中，Package 和 Plugin 都是可以作为依赖引入到项目中的代码库，但它们的底层实现和适用场景有所不同：
+
+**Package（纯 Dart 包）**：
+一个 Package 内部**只包含纯 Dart 代码**。某些 Package 可能依赖了 Flutter 框架特有的功能（例如基于 `Widget` 封装的 UI 库），但它们不需要任何平台底层的原生代码支持。例如：`provider`、`flutter_bloc`、`http`。
+
+**Plugin（插件）**：
+Plugin 是一种特殊的 Package，它**不仅包含 Dart 代码，还包含一个或多个特定平台（Android/iOS/Web/Windows 等）的原生代码实现**（如 Java/Kotlin、Swift/Objective-C、C++ 或 JavaScript）。Plugin 的 API 使用 Dart 编写，而其具体功能由原生语言实现，Flutter 会通过**平台通道（Platform Channels）**与原生代码进行通信。例如：`camera`、`shared_preferences`、`url_launcher`。

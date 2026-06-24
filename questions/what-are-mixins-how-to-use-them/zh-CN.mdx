@@ -1,0 +1,54 @@
+---
+title: "什么是 Mixin？如何使用它们？"
+---
+
+Mixin（混入）是一种在不使用传统类继承（没有父子类层级关系）的情况下，在多个不同类之间**复用类代码**的机制。它本质上是一个包含了方法和属性的独立代码块，可以像插件一样“插入”（plug in）到任何需要这些功能的类中。
+
+Mixin 的基本使用示例：
+
+```dart
+// 要创建一个 Mixin，请使用 `mixin` 关键字而不是 `class`。
+mixin GreetingsMixin {
+  String greeting = '大家好';
+
+  void introduce() => print('$greeting，我是 Sandip。');
+}
+
+// 下面的示例展示了两个不同的类如何通过 `with` 关键字使用同一个 mixin。
+class Something extends MyClass with GreetingsMixin {
+  // ...
+}
+
+class SomethingElse extends MyAnotherClass with GreetingsMixin {
+  SomethingElse() {
+    greeting = '嗨，所有人'; // 可以直接访问并修改 mixin 中的属性
+  }
+}
+
+// 使用方式：
+SomethingElse obj = SomethingElse();
+obj.introduce();  // 输出: 嗨，所有人，我是 Sandip。
+```
+
+**限制 Mixin 的使用范围 (`on` 关键字)**
+有时你希望限制 Mixin 只能被混入到特定类型的类中，以确保 Mixin 内部能够安全地调用该特定基类的方法。要限制 Mixin，可以使用 `on` 关键字来指定必需的父类约束。
+
+```dart
+class SocialMedia {
+  // ...
+}
+
+// 创建一个限定只能用于 [SocialMedia] 子类的 mixin
+mixin SocialMediaGreetings on SocialMedia {
+  String greeting = '大家好';
+
+  void introduce() => print('$greeting，我是 Sandip。');
+}
+
+// 只有继承或实现了 [SocialMedia] 类的类，才能通过 `with` 使用这个 mixin。
+class Twitter extends SocialMedia with SocialMediaGreetings {
+  Twitter() {
+    greeting = '推友们好';
+  }
+}
+```

@@ -1,0 +1,34 @@
+---
+title: "在 Flutter 中，你是如何实现自定义的页面跳转过渡动画（Transition）的？"
+---
+
+在 Flutter 中实现自定义的页面过渡动画，最常用的标准方法是使用 `PageRouteBuilder`：
+
+1. **`pageBuilder`**：用于构建并返回你要跳转到的目标新页面（Screen）。
+2. **`transitionsBuilder`**：用于定义具体的过渡动画效果。你可以返回诸如 `FadeTransition`（渐隐渐显）、`SlideTransition`（滑动）、`ScaleTransition`（缩放）等动画组件，或者它们的嵌套组合。你需要使用回调中提供的 `animation` 对象来驱动这些动画。
+3. 最后，将这个 `PageRouteBuilder` 传递给 `Navigator.push()` 或相应的路由导航方法即可。
+
+*进阶技巧：为了让过渡动画看起来更自然、不那么生硬，通常我们会把一个 `CurveTween` 链接（chain）到原始的动画补间（Tween）中，以此来赋予它非线性的物理动画曲线。*
+
+```dart
+Navigator.push(
+  context,
+  PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const NewScreen(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0); // 从屏幕右侧滑入
+      const end = Offset.zero;
+      const curve = Curves.easeInOut; // 使用缓入缓出曲线
+
+      // 将非线性曲线与位移 Tween 链接起来，让动画更平滑
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child, // child 就是 pageBuilder 返回的新页面
+      );
+    },
+  ),
+);
+```

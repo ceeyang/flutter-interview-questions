@@ -2,24 +2,21 @@
 title: Explain how you will deploy a Flutter app to the Google Play/App Store?
 ---
 
-To deploy a Flutter app to the Google Play Store or App Store, follow these steps while adhering to their respective guidelines on content, user privacy, and design:
+To deploy a Flutter app, you must follow the respective platform guidelines regarding content, user privacy, and design. The general technical steps are:
 
 **Deploying to Google Play Store:**
-- Google Play Developer Account: Create an account and set it up.
-- Generate a Signing Key: Sign your app for secure distribution.
-- Prepare App Configuration: Update build.gradle with package details and versioning.
-- Build the Release APK or AAB: Run flutter build apk or flutter build appbundle.
-- Upload and Submit: Submit the app via the Play Console, including screenshots and metadata.
-- Review and Publish: Wait for approval, then publish.
+1. **Developer Account**: Register and set up a Google Play Developer account.
+2. **App Configuration**: Update `android/app/build.gradle` with the correct `applicationId`, `versionCode` (must be incremented per release), and `versionName`.
+3. **Generate a Signing Key**: Create a keystore to cryptographically sign your app for secure distribution.
+4. **Build the Release Bundle**: Run `flutter build appbundle` (Google Play now requires the `.aab` format instead of `.apk` for new apps).
+5. **Upload & Review**: Upload the AAB via the Google Play Console, provide store listing details (screenshots, descriptions, privacy policy), and submit for review.
 
-**Deploying to App Store:**
-- Apple Developer Account: Enroll and set up your account.
-- Provisioning Profile & Certificate: Use Xcode to create a signing certificate and provision your app.
-- Prepare App Configuration: Update your app's bundle ID and version.
-- Build the iOS Archive: Run flutter build ios and export the archive using Xcode.
-- Submit and Review: Upload the app via Xcode or Transporter, fill out metadata, and submit for review.
-- Publish: Once approved, your app goes live.
+**Deploying to Apple App Store:**
+1. **Developer Account**: Enroll in the Apple Developer Program.
+2. **Provisioning & Certificates**: Use Xcode or the Apple Developer portal to create a distribution certificate and a provisioning profile for your app.
+3. **App Configuration**: Update your app's Bundle Identifier and version number in Xcode.
+4. **Build the iOS Archive**: Run `flutter build ipa` to directly build an `.ipa` file (or run `flutter build ios` and archive it manually in Xcode).
+5. **Upload & Review**: Upload the `.ipa` using the Transporter app or Xcode. Then, fill out metadata in App Store Connect and submit for Apple's review.
 
-Ensure you test the app thoroughly and address any guidelines to streamline the approval process.
-- [Google Play Store Guildelines](https://play.google.com/console/about/guides/releasewithconfidence/)
-- [Apple App Review Guildelines](https://developer.apple.com/app-store/review/guidelines/)
+- [Google Play Store Guidelines](https://play.google.com/console/about/guides/releasewithconfidence/)
+- [Apple App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)

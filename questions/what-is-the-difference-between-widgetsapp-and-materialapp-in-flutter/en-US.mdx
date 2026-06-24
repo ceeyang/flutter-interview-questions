@@ -2,6 +2,8 @@
 title: What is the difference between `WidgetsApp` and `MaterialApp` in Flutter?
 ---
 
-`WidgetsApp` is a convenient widget that wraps a number of widgets that are commonly required for an application. It also provides basic navigation.
+`WidgetsApp` is the base class for creating an application in Flutter. It provides the core foundational functionalities needed by most apps, such as basic navigation, routing, localization, and app-wide state management. However, it does not enforce any specific design language or UI guidelines.
 
-`MaterialApp` builds an application that uses the material design. It is built upon the `WidgetsApp` and contains some material-design specific functionality, such as **AnimatedTheme**. We certainly don't require `MaterialApp` every time when building a Flutter project. `CupertinoApp` gives iOS like look and feel, or we can even define our custom sets of widgets.
+`MaterialApp` is built on top of `WidgetsApp` and adds **Material Design** specific features. It configures the app with a global `Material` theme, default typography styling, and specialized widgets like `AnimatedTheme`, navigation transitions specific to Material Design, and `Scaffold`. 
+
+You don't strictly need to use `MaterialApp` for every Flutter project. If your goal is to build an iOS-style app, you can use `CupertinoApp` (which also wraps `WidgetsApp`); if you want to build a fully custom design system from scratch with your own UI specifications, you can use `WidgetsApp` directly to strip away all system-provided styles.

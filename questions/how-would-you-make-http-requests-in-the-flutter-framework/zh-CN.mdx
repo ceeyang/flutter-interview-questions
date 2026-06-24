@@ -1,0 +1,36 @@
+---
+title: "在 Flutter 框架中，你会如何发起 HTTP 网络请求？"
+---
+
+在 Flutter 中发起 HTTP 请求，最基础的方式是使用官方提供的 `http` 库。它提供了直观的 API 来处理标准的 RESTful 请求。
+
+以下是一个发起异步 `GET` 请求并解析 JSON 响应数据的标准示例：
+
+```dart
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+Future<void> fetchData() async {
+  // 使用 Uri.parse 将字符串 URL 转换为符合现代 http 库规范的 Uri 对象
+  final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+  final response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    // 如果服务器返回 200 OK，则使用 json.decode 解析 JSON 字符串
+    final List<dynamic> data = json.decode(response.body);
+    print(data);
+  } else {
+    // 抛出异常或进行相应的错误提示处理
+    throw Exception('数据加载失败，状态码: ${response.statusCode}');
+  }
+}
+```
+
+**进阶方案（高级面试加分项：使用 `dio` 库）：**
+在实际的企业级商业项目中，由于原生 `http` 库功能过于基础，开发者极少直接“裸用”它，而是普遍采用强大的第三方开源 **`dio`** 库。
+
+`dio` 是一个强大的 Dart Http 客户端，它不仅**自动处理了 JSON 序列化与反序列化**，还原生支持以下高级特性：
+- **全局拦截器（Interceptors）**：非常适合统一注入 Token 鉴权、统一打印日志或处理全局 HTTP 错误。
+- 文件上传/下载的流式进度监听。
+- 请求取消机制（Cancellation tokens）。
+- 更易用的连接与读取超时设置（Timeout）。

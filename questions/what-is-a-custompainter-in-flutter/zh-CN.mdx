@@ -1,0 +1,38 @@
+---
+title: "在 Flutter 中什么是 `CustomPainter`？"
+---
+
+在 Flutter 中，`CustomPainter` 是一个底层的绘制类，它允许开发者通过直接在一个纯粹的画布（Canvas）上使用画笔（Paint）进行绘制，从而创建高度自定义的图形、图表或复杂的动画效果。它通常与 `CustomPaint` 组件结合使用，以便将绘制出的图形作为普通的组件嵌入到 Widget 树中。
+
+要使用自定义绘制，我们需要创建一个继承自 `CustomPainter` 的子类，并强制重写以下两个核心方法：
+1. **`paint(Canvas canvas, Size size)`**：这是执行所有绘制操作（画线、画圆、画路径等）的核心方法。
+2. **`shouldRepaint(covariant CustomPainter oldDelegate)`**：用于优化性能。它决定了当组件配置发生变化时，是否需要触发 `paint` 方法进行重绘。通常在这里对比新旧数据，如果不相等则返回 `true`。
+
+**示例代码：**
+```dart
+// 1. 定义自定义画板
+class RectanglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // 定义画笔样式
+    final paint = Paint()
+      ..color = Colors.blue
+      ..style = PaintingStyle.fill;
+      
+    // 定义要绘制的矩形区域
+    final rect = Rect.fromLTWH(0, 0, size.width, size.height);
+    
+    // 在画布上绘制
+    canvas.drawRect(rect, paint);
+  }
+
+  @override
+  bool shouldRepaint(RectanglePainter oldDelegate) => false; // 静态图形无需重绘
+}
+
+// 2. 在 UI 中使用它
+CustomPaint(
+  painter: RectanglePainter(),
+  size: const Size(200, 200), // 限定画布的尺寸
+)
+```

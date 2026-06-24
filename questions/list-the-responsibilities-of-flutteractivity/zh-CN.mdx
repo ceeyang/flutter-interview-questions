@@ -1,0 +1,17 @@
+---
+title: "请列举 Android 端 `FlutterActivity` 的主要职责。"
+---
+
+`FlutterActivity` 是将 Flutter 引擎集成到 Android 原生应用中最简单、最直接的方式（通常也是新建 Flutter 项目时的默认入口点）。
+
+`FlutterActivity` 主要承担了以下几项核心底层职责：
+
+- **展示启动画面**：在 Flutter 引擎初始化和首帧渲染出来之前，负责展示 Android 端的启动图（Launch Screen），以避免黑屏。
+- **配置状态栏外观**：负责协调和控制 Android 系统状态栏（Status Bar）的颜色与透明度，使其与 Flutter 层协调。
+- **配置 Dart 执行环境**：负责选择和定位 Dart 执行环境的 App Bundle 路径、入口函数（Entrypoint，通常是 `main`）以及传递给入口函数的附加参数。
+- **确定初始路由**：负责向 Flutter 层传递最初始的导航路由名称（Initial Route）。
+- **透明渲染控制**：如果业务有特殊需求，它支持将 Activity 背景设置为透明，从而允许底层的原生 UI 透过 Flutter 界面显示出来。
+- **提供引擎钩子（Hooks）**：为开发者提供了子类化重写的钩子（如 `configureFlutterEngine`），允许原生端开发者手动配置和注册自定义原生插件到 `FlutterEngine`。
+- **状态保存与恢复**：负责在 Android 系统因资源不足杀后台或发生配置更改（如屏幕旋转）时，保存和恢复 Flutter 层的实例状态。
+
+欲了解更多底层原理细节，可查阅官方文档：[FlutterActivity](https://api.flutter.dev/javadoc/io/flutter/embedding/android/FlutterActivity.html)。

@@ -1,0 +1,29 @@
+---
+title: "在 Dart 中什么是 Typedef？"
+---
+
+在 Dart 中，`typedef`（类型定义）的核心作用是：**为一个复杂冗长的函数签名结构或具体的强类型对象，贴上一个好记、简短且语义明确的“别名（Alias）”。**
+
+在日常开发中，我们经常需要把一个匿名函数当作参数到处传递（比如网络请求成功或失败的回调方法）。如果不使用别名，函数的参数声明会变得极度臃肿，且重复代码极多。
+
+使用 `typedef` 可以将这块冗长的结构固化为一个“自定义类型”，极大地提升了代码的高级感、复用性和阅读体验。
+
+**示例解析：**
+
+```dart
+// 极其繁琐的写法：没有任何别名
+void fetchNetworkData(void Function(bool success, String? errorMsg, Map<String, dynamic>? data) callback) {
+  // 复杂的业务逻辑
+}
+
+// 优雅的现代写法：使用 typedef 定义清晰的别名
+typedef NetworkResultCallback = void Function(bool success, String? errorMsg, Map<String, dynamic>? data);
+
+// 此时参数的声明看起来就像传入一个普通的 String 类型一样极其清爽
+void fetchNetworkDataElegant(NetworkResultCallback callback) {
+  // 复杂的业务逻辑
+  callback(true, null, {"id": 123});
+}
+```
+
+> **补充特性**：从 Dart 2.13 版本开始，`typedef` 变得更加强大了。它不再局限于函数类型的别名，而是允许为**任何对象数据类型**声明别名！例如：`typedef JSONMap = Map<String, dynamic>;`。

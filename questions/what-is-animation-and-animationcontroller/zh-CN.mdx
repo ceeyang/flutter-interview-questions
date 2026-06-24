@@ -1,0 +1,59 @@
+---
+title: "什么是 `Animation` 和 `AnimationController`？"
+---
+
+在 Flutter 的动画框架中：
+
+**`Animation`（动画对象）**
+它是一个抽象的类，用于表示一个随时间变化的“值”。它本身并不知道屏幕上显示的是什么，也不知道动画如何随时间流逝，它只负责保存当前的动画值（如大小、颜色、位置或透明度）及其状态（如是否完成、被挂起等）。
+
+**`AnimationController`（动画控制器）**
+它是 Flutter 动画框架的控制中枢。它是一个特殊的 `Animation` 对象，用于生成从 0.0 到 1.0 之间的数值序列。它决定了动画的持续时间（duration）、方向，并提供了启动（`forward`）、停止（`stop`）、倒放（`reverse`）和监听动画进度的方法。
+
+在实际开发中，动画通常由 `AnimationController` 提供时间线动力，配合 `Tween`（定义起点和终点的值映射）和 `Curve`（定义非线性的物理动画曲线）来组合使用。
+
+**示例代码：**
+```dart
+class MyAnimation extends StatefulWidget {
+  @override
+  _MyAnimationState createState() => _MyAnimationState();
+}
+
+// 必须混入 SingleTickerProviderStateMixin 提供屏幕刷新率的时钟
+class _MyAnimationState extends State<MyAnimation> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    // 初始化控制器
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    // 将控制器与一个 0 到 300 的数值渐变范围绑定
+    _animation = Tween<double>(begin: 0, end: 300).animate(_controller)
+      ..addListener(() {
+        setState(() {}); // 每次值变化时触发 UI 重新渲染
+      });
+      
+    _controller.forward(); // 启动动画
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // 极其重要：离开页面时必须销毁防止内存泄漏
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: _animation.value, // 动态高度
+      width: _animation.value,  // 动态宽度
+      child: const FlutterLogo(),
+    );
+  }
+}
+```

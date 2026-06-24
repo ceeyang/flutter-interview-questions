@@ -1,0 +1,13 @@
+---
+title: "您能描述一下如何在 Flutter 应用程序中实现国际化（i18n）吗？"
+---
+
+要在 Flutter 应用中实现国际化（i18n），通常遵循以下标准步骤：
+
+- 在 `pubspec.yaml` 文件中添加 `flutter_localizations` 和 `intl` 依赖包，并开启 `generate: true` 标志。
+- 在项目根目录配置 `l10n.yaml` 文件，用于指定生成代码的输入输出路径和类名。
+- 使用 `.arb` (Application Resource Bundle) 文件来存储不同语言环境的翻译文案（例如：`app_en.arb` 用于英语，`app_zh.arb` 用于中文）。
+- 每次构建或使用 Flutter 的 `gen-l10n` 工具时，会自动根据 `.arb` 文件生成 Dart 本地化类代码。
+- 在 `MaterialApp` 中配置 `localizationsDelegates`（本地化委托）和 `supportedLocales`（支持的语言地区列表）属性，并传入生成的 delegate。
+- 在 UI 代码中使用生成的本地化类来访问翻译后的字符串（例如：`AppLocalizations.of(context)!.helloWorld`）。
+- 最后，通过在设备的系统设置中切换语言环境，或者在代码中更新 `.arb` 文件并重载来测试国际化效果。

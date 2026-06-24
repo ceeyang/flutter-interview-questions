@@ -1,0 +1,36 @@
+---
+title: "在 Dart 中，Mixin 和 Interface（接口）有什么区别？"
+---
+
+在 Dart 中，Mixin（混入）和 Interface（接口）都有助于类的行为抽象与定义，但它们的目的和工作方式截然不同：
+
+**Mixin（混入）**：允许一个类在不使用传统单继承的情况下，重用来自多个其他类的特定方法和属性。Mixin 通常用于为不同的类“混入”通用的功能模块。它们使用 `mixin` 关键字声明，并通过 `with` 关键字应用到目标类上。最重要的是，Mixin **提供了实际的代码实现**，应用它的类可以直接复用这些代码逻辑。
+
+```dart
+mixin Walker {
+  void walk() => print("走来走去");
+}
+
+class Person with Walker {
+  // Person 类现在直接拥有了 walk() 方法的具体实现逻辑
+}
+```
+
+**Interface（接口）**：定义了一个严格的契约（即一组方法签名），类必须遵守该契约，但不提供具体的行为实现。在 Dart 的早期版本中，每个普通类都隐式地充当一个接口。而在 Dart 3 中，官方引入了明确的 `interface class` 修饰符。要实现一个接口，类需要使用 `implements` 关键字。与 Mixin 不同，接口 **不提供任何代码重用**——它只规定了 API 的骨架结构，具体的实现类必须自己编写所有方法的底层实现。
+
+```dart
+// 在 Dart 3 中，你可以明确声明一个接口类
+interface class Animal {
+  void eat() {} // 当被 implements 时，这里的具体代码会被强制忽略
+}
+
+class Dog implements Animal {
+  @override
+  void eat() => print("狗正在吃东西"); // 必须由子类提供自己的具体实现
+}
+```
+
+**核心区别总结：**
+- **代码重用**：Mixin 提供可重用的具体代码实现；接口只提供蓝图（方法声明），没有任何代码重用。
+- **关键字**：应用 Mixin 使用 `with` 关键字；实现接口使用 `implements` 关键字。
+- **多重性**：Dart 不支持多继承，但一个类可以同时混入多个 Mixin，也可以同时实现多个接口。

@@ -1,0 +1,16 @@
+---
+title: "在 StatefulWidget 中 `dispose()` 方法的作用是什么？"
+---
+
+`dispose()` 是 `StatefulWidget` 中 `State` 对象生命周期的最后一个方法。它的核心作用是：**在组件被永久性销毁并从组件树（Widget Tree）中彻底移除时，执行最终的清理工作。**
+
+如果不正确地在 `dispose()` 中进行清理，将会导致极其严重的**内存泄漏（Memory Leaks）**或**空指针崩溃**。
+
+**必须在 `dispose()` 中执行的典型任务包括：**
+1. 销毁所有的动画控制器（如 `AnimationController.dispose()`）。
+2. 销毁所有的文本输入控制器或滚动控制器（如 `TextEditingController.dispose()`、`ScrollController.dispose()`）。
+3. 取消所有的流监听器（`StreamSubscription.cancel()`）以防组件被销毁后后台还在不断推数据。
+4. 清除并取消任何未执行完毕的 `Timer`（定时器）。
+5. 移除任何全局注册的观察者（如 `WidgetsBinding.instance.removeObserver(this)`）。
+
+> **注意事项**：`dispose()` 只会在组件真正被移出视图时调用。在日常开发的“热重载（Hot Reload）”过程中它并不会触发。

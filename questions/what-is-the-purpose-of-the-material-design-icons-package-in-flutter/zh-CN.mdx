@@ -1,0 +1,12 @@
+---
+title: "在 Flutter 中 Material Design Icons 包的作用是什么？"
+---
+
+Material Design Icons 包（在 Flutter 内置核心库中体现为 `Icons` 类）的主要目的是：**为 Flutter 开发者提供一套开箱即用、完全符合 Google Material Design 官方严格规范的、庞大且标准化的图标库。**
+
+它的优势包括：
+1. **全面性**：它包含了多达数千个极其清晰、易读的矢量图标，涵盖了硬件、社交、地图、通知、文件编辑等你能想到的任何应用场景。
+2. **矢量无损**：由于本质上是基于字体图标（Font Icon）构建的矢量图元，你可以任意放大它的体积或改变它的颜色，绝对不会出现模糊或像素失真。
+3. **极简调用**：你可以极其优雅地通过内置常量去引用它们，例如使用 `Icon(Icons.home)` 或 `Icon(Icons.settings)`。
+
+在最新的 Flutter 版本中，还可以开启 `MaterialSymbols` 库以支持更加细腻的可变级图标定制（调整字重、光边、斜体等属性）。此外，对于需要第三方社区图标集的需求，社区也提供了对应的扩展包（如 `material_design_icons_flutter`）。

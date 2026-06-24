@@ -2,11 +2,12 @@
 title: Can you describe how to implement internationalization in a flutter app?
 ---
 
-To implement internationalization (i18n) in a Flutter app:
+To implement internationalization (i18n) in a Flutter app using the standard approach:
 
-- Include the `flutter_localizations` package in the `pubspec.yaml` file.
-- Set the `localizationsDelegates` and `supportedLocales` properties in the MaterialApp.
-- Use .arb files to store translations for different locales (e.g., app_en.arb for English, app_es.arb for Spanish).
-- Use the flutter `gen-l10n` tool to generate Dart localization classes from the .arb files.
-- Use the generated localization class (e.g., `AppLocalizations.of(context).<key>`) to access translated strings.
-- Test the app by switching locales in device settings and updating .arb files as needed.
+- Include the `flutter_localizations` and `intl` packages in the `pubspec.yaml` file, and enable the `generate: true` flag.
+- Set up an `l10n.yaml` configuration file at the root of your project to specify the template and output options.
+- Use `.arb` (Application Resource Bundle) files to store translations for different locales (e.g., `app_en.arb` for English, `app_es.arb` for Spanish).
+- The Flutter tool will automatically run `gen-l10n` to generate Dart localization classes from the `.arb` files when you build the app.
+- Set the `localizationsDelegates` and `supportedLocales` properties in your `MaterialApp` using the generated delegates.
+- Use the generated localization class (e.g., `AppLocalizations.of(context)!.helloWorld`) to access translated strings in your widgets.
+- Test the app by switching locales in the device settings.

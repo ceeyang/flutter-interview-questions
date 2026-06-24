@@ -1,0 +1,11 @@
+---
+title: "在 Flutter 中，什么是 Widget（组件）？"
+---
+
+在 Flutter 框架中，`Widget` 是构建用户界面的核心构建块。它负责描述一个 UI 元素在当前给定配置和状态下应该长什么样子。
+
+以下是 `Widget` 的几个核心特性：
+
+1. **一切皆为 Widget**：在 Flutter 中，几乎所有的视觉元素、结构布局（如 Padding、Row）、甚至是不可见的配置层（如 Theme、Provider）都是 Widget。
+2. **不可变性（Immutable）**：`Widget` 本身是极其轻量级且**不可变**的。这意味着它所有的属性字段都必须是 `final` 的。当 UI 需要更新时，Flutter 实际上是销毁了旧的 Widget 并重新创建了一个新的 Widget 实例，而不是去修改原有的 Widget。
+3. **配置描述符**：在底层架构中，Widget 仅仅是一个包含了配置信息的“蓝图”或“描述符”。它并不负责真正的屏幕渲染工作。Flutter 引擎会读取 Widget 树，生成与之对应的 `Element` 树（负责管理生命周期和状态），并最终转化为底层的 `RenderObject` 树（负责真实的测量、布局和绘制像素）。

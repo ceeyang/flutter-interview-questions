@@ -2,19 +2,34 @@
 title: How do you navigate between screens in Flutter?
 ---
 
-In Flutter, we can navigate between screens using the `Navigator` class. We can push a new screen onto the stack using the `push` method, and pop the current screen off the stack using the `pop` method. We can also use named routes to navigate between screens. To do this, we need to define a map of named routes in the `MaterialApp`, and then use the `Navigator.pushNamed` method to navigate to a specific named route.
+In Flutter, we can navigate between screens using the `Navigator` class, which manages a stack of routes. We can push a new screen onto the stack using the `push` method, and pop the current screen off the stack using the `pop` method. 
 
-Here are the basic steps to navigate between screens in Flutter:
+Here are the basic ways to navigate between screens:
 
-1. Define the screens or pages as separate widgets, each with its own unique name and content.
-2. Use the `Navigator.push()` method to push a new Route onto the stack.
+1. **Anonymous Routes (Direct push)**:
+   Use the `Navigator.push()` method and provide a `MaterialPageRoute` to build the new screen on the fly.
    ```dart
    Navigator.push(
      context,
-     MaterialPageRoute(builder: (context) => SecondScreen()),
+     MaterialPageRoute(builder: (context) => const SecondScreen()),
    );
    ```
-3. Now, to go back to the previous screen use the `Navigator.pop()` method.
+
+2. **Named Routes**:
+   Define a map of named routes in the `MaterialApp`, and then use the `Navigator.pushNamed` method with a string identifier.
    ```dart
-   Navigator.pop(context),
+   Navigator.pushNamed(context, '/second');
    ```
+
+3. **Returning (Popping)**:
+   To go back to the previous screen and remove the current screen from the stack, use the `pop` method.
+   ```dart
+   Navigator.pop(context);
+   ```
+
+**Modern Best Practice (Router API)**:
+For medium-to-large apps, or apps that require deep linking (especially Flutter Web), it is highly recommended to use the **`go_router`** package provided by the Flutter team. It sits on top of the complex Navigator 2.0 API and makes URL-based routing declarative and simple:
+```dart
+context.go('/second'); // Replaces current location
+context.push('/second'); // Pushes onto the stack
+```

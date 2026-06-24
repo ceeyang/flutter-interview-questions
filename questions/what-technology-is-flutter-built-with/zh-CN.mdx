@@ -1,0 +1,21 @@
+---
+title: "Flutter 框架主要是由哪些底层技术构建而成的？"
+---
+
+Flutter 是 Google 打造的一个极具野心的开源跨端 UI 软件开发工具包。它的核心愿景是通过极低成本的一套代码库，直接编译运行在所有主流平台上。
+
+它的架构极其巧妙地分为三大核心层级，它们分别基于不同的核心技术构建：
+
+1. **Framework 层（框架与业务核心）**：
+   这一层是我们最熟悉、日常写代码直接打交道的一层。它是完全使用 **Dart 语言** 纯手写打造的。无论是 `Material Design`、`Cupertino` 组件库，还是动画（Animation）、手势（Gestures）、各种基础 Widget，全都是由纯 Dart 语言构建的一张巨大的代码网络。Dart 本身支持 AOT（预先编译）是 Flutter 能获得超高性能的基石。
+   
+2. **Engine 层（引擎渲染中枢）**：
+   这是深埋底层的硬核驱动力。它绝大部分是由 **C++ 语言** 编写。它包含并深度整合了最底层的图形渲染引擎库。最初，Flutter 借助经典的 **Skia 2D 图形库** 将指令硬翻译成像素光芒；然而从 Flutter 3.x 版本开始，为了彻底解决由于着色器（Shader）预热缓慢而导致的初始动画卡顿问题，Google 发明了专为现代 GPU 定制的革命性渲染引擎：**Impeller**（支持直接与 Apple Metal 或 Vulkan 高速通信）。引擎内部同时也包裹了一整套极其庞大的 Dart 虚拟机（Dart VM）用于解析指令。
+
+3. **Embedder 层（系统级嵌入器）**：
+   这是最靠外的壳子，负责把 Flutter 这个“异形怪物”伪装并嵌入到各个系统原生平台里。因此，它的语言因平台而异：
+   - Android 端的嵌入器是由 **Java 和 C++** 混合编写，负责对接 JNI 接口。
+   - iOS 端的嵌入器是由 **Objective-C 和 Objective-C++** 编写，负责调用系统底层的生命周期管理。
+
+**扩展阅读：**
+- [Flutter 架构深度全景揭秘官方长文](https://docs.flutter.dev/resources/architectural-overview)

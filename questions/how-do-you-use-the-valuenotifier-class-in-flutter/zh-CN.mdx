@@ -1,0 +1,35 @@
+---
+title: "在 Flutter 中，你是如何使用 `ValueNotifier` 类的？"
+---
+
+在 Flutter 中，`ValueNotifier` 继承自 `ChangeNotifier`，是一个非常轻量级的状态管理工具。它内部封装了一个单一的数据值，当这个值发生改变时，它会自动通知所有注册了监听器的观察者，从而触发相关 UI 的更新。它非常适合用来管理局部的、简单的小状态。
+
+使用 `ValueNotifier` 通常分为以下三个核心步骤：
+
+1. **实例化并赋予初始值**：
+我们需要创建一个带初始值的 `ValueNotifier` 实例：
+```dart
+// 创建一个监听字符串变化的 ValueNotifier
+final ValueNotifier<String> _myValue = ValueNotifier<String>('初始值');
+```
+
+2. **监听变化并重构 UI**：
+在 UI 层，我们通常不需要手动写 `addListener`，而是直接使用 Flutter 提供的内置包裹组件 `ValueListenableBuilder`。这个组件会监听指定的 `ValueNotifier`，只要里面的数据发生变化，它就会局部重新执行内部的 `builder` 函数，实现精准刷新。
+```dart
+ValueListenableBuilder<String>(
+  valueListenable: _myValue,
+  builder: (BuildContext context, String value, Widget? child) {
+    // 每次 _myValue.value 改变时，这里的 Text 会自动更新
+    return Text(value);
+  },
+)
+```
+
+3. **更新数据**：
+当你需要更新状态时，只需直接给 `value` 属性赋一个**与之前不同的新值**即可，底层会自动触发通知机制。
+```dart
+_myValue.value = '更新后的新值';
+```
+
+**注意事项**：
+`ValueNotifier` 底层使用 `==` 操作符来判断新值和旧值是否相同。如果是复杂对象（如 `List` 或 `Map`），直接修改对象内部的属性（如 `list.add()`）并不会触发通知机制。你必须重新赋值一个新的对象实例，或者手动调用（如果你继承了它）`notifyListeners()`。

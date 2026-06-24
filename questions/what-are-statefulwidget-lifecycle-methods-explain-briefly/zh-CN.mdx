@@ -1,0 +1,29 @@
+---
+title: "请简述 `StatefulWidget` 的完整生命周期方法。"
+---
+
+`StatefulWidget` 的生命周期实际上主要由其关联的 `State` 对象来管理。以下是其生命周期中被调用的核心方法（按时间顺序排列）：
+
+1. **`createState()`**：
+当框架指示构建一个 StatefulWidget 时，必定会立即调用此方法创建一个与之绑定的、全新的 `State` 实例对象。该方法必须被重写。
+
+2. **`initState()`**：
+在 `State` 对象被插入到 Widget 树中后**仅会被调用一次**。这是执行一次性初始化逻辑的最佳地点，例如初始化动画控制器、分配资源或注册监听器。
+
+3. **`didChangeDependencies()`**：
+紧随 `initState()` 之后会被调用。此外，当该 State 依赖的 `InheritedWidget` 发生数据改变时，也会再次调用此方法。如果有些数据必须要依赖 `BuildContext` 来获取（如 `Theme.of(context)` 或 `Provider.of`），应该在此方法中获取而不是在 `initState` 中。
+
+4. **`build()`**：
+核心渲染方法。只要 UI 需要更新，这个方法就会被反复调用。它会在 `initState()`、`didChangeDependencies()`、`didUpdateWidget()` 之后调用，或者在开发者手动调用 `setState()` 后被触发。它必须是一个纯函数，不应包含耗时的副作用。
+
+5. **`didUpdateWidget(covariant T oldWidget)`**：
+当父组件触发重建，导致当前的 Widget 被一个新的、有着相同类型和 Key 的 Widget 替换时，框架会调用此方法。你可以在这里对比 `oldWidget` 和新 `widget` 的配置参数，并据此决定是否需要重启某些内部逻辑（典型应用：隐式动画组件）。
+
+6. **`setState(VoidCallback fn)`**：
+这是开发者最常用的方法。它向框架发出信号，表明该状态对象的内部数据发生了改变，框架随后会将该组件标记为脏（dirty），并在下一帧调度执行 `build()` 方法重新渲染。
+
+7. **`deactivate()`**：
+当 `State` 对象暂时被从 Widget 树中移除时调用（例如由于 GlobalKey 的页面切换操作导致组件在树中被移动）。此时它还有可能在同一帧被重新插入到树的其他位置。
+
+8. **`dispose()`**：
+当 `State` 对象被**永久销毁**并从树中移除时调用。这是生命周期的最后一步。你必须重写此方法来释放所有的资源，例如取消定时器、注销事件监听、释放动画控制器等，以防止内存泄漏。

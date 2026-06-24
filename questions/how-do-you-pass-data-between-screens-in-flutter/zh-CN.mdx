@@ -1,0 +1,41 @@
+---
+title: "在 Flutter 中，你是如何在不同页面之间传递数据的？"
+---
+
+在 Flutter 中，我们在不同页面（Screens）之间传递数据通常有以下几种方式：
+
+1. **通过构造函数传参（最基础、最常用）**：
+当你使用 `Navigator.push` 和 `MaterialPageRoute` 进行跳转时，可以直接将目标数据作为参数传递给目标组件的构造函数。
+```dart
+Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => SecondScreen(data: 'Hello World!'),
+  ),
+);
+
+class SecondScreen extends StatelessWidget {
+  final String data;
+  const SecondScreen({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( /* ... */ );
+  }
+}
+```
+
+2. **通过命名路由的 `arguments` 传递**：
+如果你的应用使用的是原生的命名路由，可以在调用 `pushNamed` 时附带 `arguments`，然后在目标页面通过 `ModalRoute` 提取数据。
+```dart
+Navigator.pushNamed(context, '/second', arguments: 'Hello World!');
+
+// 在 SecondScreen 的 build 方法中提取数据：
+final String data = ModalRoute.of(context)!.settings.arguments as String;
+```
+
+3. **从后一个页面向前面回传数据**：
+当你通过 `Navigator.pop(context, result)` 关闭当前页面时，可以将数据作为第二个参数传递回去。前一个页面发起跳转的 `await Navigator.push(...)` 就能接收到这个返回的数据。
+
+4. **使用状态管理库（适用于全局或复杂状态共享）**：
+如果数据需要在多个非直接层级关联的页面之间共享，建议使用状态管理库（如 Provider、Riverpod、Bloc 或 GetX）将数据提升到全局或更高层级的状态树中。这样各个页面可以直接监听并获取最新数据，而无需在路由之间层层传参。

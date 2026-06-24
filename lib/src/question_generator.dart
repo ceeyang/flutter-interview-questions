@@ -43,20 +43,31 @@ ${item.formatter.content}
   }
 
   /// Generates a markdown Table of Contents from the list of questions.
-  String generateTableOfContents(List<QuestionItem> questionItems) {
-    final tableOfContentsLines = [
-      '| No. | Questions | Level |',
-      '| --- | :-- | :-- |',
-    ];
+  String generateTableOfContents(List<QuestionItem> questionItems, [String locale = 'en-US']) {
+    final easyItems = questionItems.where((i) => i.metadata.difficulty.isEasy).toList();
+    final interItems = questionItems.where((i) => i.metadata.difficulty.isIntermediate).toList();
+    final advItems = questionItems.where((i) => i.metadata.difficulty.isAdvanced).toList();
 
-    for (final item in questionItems) {
-      tableOfContentsLines.add(
-        '| ${item.metadata.rank} | [${item.formatter.title}](#${item.metadata.slug}) | '
-        '${item.metadata.difficulty.name.capitalize} |',
-      );
+    String generateTable(List<QuestionItem> items) {
+      final lines = [
+        '| No. | Questions |',
+        '| --- | :-- |',
+      ];
+      for (final item in items) {
+        lines.add('| ${item.metadata.rank} | [${item.formatter.title}](#${item.metadata.slug}) |');
+      }
+      return lines.join('\n');
     }
 
-    return tableOfContentsLines.join('\n');
+    final easyTitle = locale == 'zh-CN' ? '### 初级 (Easy)' : '### Easy';
+    final interTitle = locale == 'zh-CN' ? '### 中级 (Intermediate)' : '### Intermediate';
+    final advTitle = locale == 'zh-CN' ? '### 高级 (Advanced)' : '### Advanced';
+
+    return [
+      '$easyTitle\n\n${generateTable(easyItems)}',
+      '$interTitle\n\n${generateTable(interItems)}',
+      '$advTitle\n\n${generateTable(advItems)}',
+    ].join('\n\n');
   }
 
   /// Generates a simple bullet list of questions.
@@ -73,10 +84,11 @@ ${item.formatter.content}
 
   /// Reads the README file and updates content within a specific placeholder.
   Future<void> updateReadmeContent({
+    required File targetFile,
     required String content,
     required String placeholderRegexPattern,
   }) async {
-    final readmeFileContent = await genReadmeFile.readAsString();
+    final readmeFileContent = await targetFile.readAsString();
     final contentPlaceholderRegExp = RegExp(placeholderRegexPattern);
     final match = contentPlaceholderRegExp.firstMatch(readmeFileContent);
 
@@ -98,7 +110,7 @@ ${item.formatter.content}
       '$firstGroup\n\n$content\n\n$lastGroup',
     );
 
-    await genReadmeFile.writeAsString(updatedContent);
+    await targetFile.writeAsString(updatedContent);
   }
 
   /// Extracts [QuestionItem]s by reading and formatting MDX files.
@@ -114,10 +126,15 @@ ${item.formatter.content}
         metadata.slug,
         '$locale.mdx',
       );
-      final localeFile = File(localeFilePath);
+      var localeFile = File(localeFilePath);
 
       if (!localeFile.existsSync()) {
-        throw Exception('Locale file does not exist for ${metadata.slug}');
+        if (locale != 'en-US') {
+          localeFile = File(path.join(questionsDir.path, metadata.slug, 'en-US.mdx'));
+        }
+        if (!localeFile.existsSync()) {
+          throw Exception('Locale file does not exist for ${metadata.slug}');
+        }
       }
 
       final mdxContent = await localeFile.readAsString();
@@ -174,21 +191,26 @@ ${item.formatter.content}
   /// - Table of Contents
   /// - All questions with their formatted content
   /// - Difficulty-specific question lists
-  Future<void> generateReadmeContents() async {
+  Future<void> generateReadmeContents({
+    required File targetFile,
+    String locale = 'en-US',
+  }) async {
     final questionsMetadata = await readQuestionsMetadata();
     questionsMetadata.sort((a, b) => a.rank - b.rank);
-    final questionItems = await extractQuestionItems(questionsMetadata);
+    final questionItems = await extractQuestionItems(questionsMetadata, locale);
 
-    final newTableOfContents = generateTableOfContents(questionItems);
-    final newQuestionContent = generateQuestionsContent(questionItems);
+    final newTableOfContents = generateTableOfContents(questionItems, locale);
+    final newQuestionContent = generateQuestionsContent(questionItems, locale);
 
     await updateReadmeContent(
+      targetFile: targetFile,
       content: newTableOfContents,
       placeholderRegexPattern:
           r'(<!-- QUESTIONS:TOC:START -->)\n([\s\S]*?)\n(<!-- QUESTIONS:TOC:END -->)',
     );
 
     await updateReadmeContent(
+      targetFile: targetFile,
       content: newQuestionContent,
       placeholderRegexPattern:
           r'(<!-- QUESTIONS:ALL:START -->)\n([\s\S]*?)\n(<!-- QUESTIONS:ALL:END -->)',
@@ -199,6 +221,7 @@ ${item.formatter.content}
     final newEasyContent = generateBulletList(easyItems);
 
     await updateReadmeContent(
+      targetFile: targetFile,
       content: newEasyContent,
       placeholderRegexPattern:
           r'(<!-- QUESTIONS:EASY:START -->)\n([\s\S]*?)\n(<!-- QUESTIONS:EASY:END -->)',
@@ -211,6 +234,7 @@ ${item.formatter.content}
     final newIntermediateContent = generateBulletList(intermediateItems);
 
     await updateReadmeContent(
+      targetFile: targetFile,
       content: newIntermediateContent,
       placeholderRegexPattern:
           r'(<!-- QUESTIONS:INTERMEDIATE:START -->)\n([\s\S]*?)\n(<!-- QUESTIONS:INTERMEDIATE:END -->)',
@@ -223,6 +247,7 @@ ${item.formatter.content}
     final newAdvancedContent = generateBulletList(advancedItems);
 
     await updateReadmeContent(
+      targetFile: targetFile,
       content: newAdvancedContent,
       placeholderRegexPattern:
           r'(<!-- QUESTIONS:ADVANCED:START -->)\n([\s\S]*?)\n(<!-- QUESTIONS:ADVANCED:END -->)',

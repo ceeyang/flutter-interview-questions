@@ -1,0 +1,23 @@
+---
+title: "请解释一下你会如何将 Flutter 应用程序部署到 Google Play 或 App Store？"
+---
+
+部署 Flutter 应用不仅需要遵循各个平台的上架规范（如内容、隐私和设计要求），还需要经历以下标准的构建与提审技术流程：
+
+**部署到 Google Play Store 的步骤：**
+1. **开发者账号**：注册并配置 Google Play 开发者账号（需一次性付费）。
+2. **应用配置**：在 `android/app/build.gradle` 文件中配置正确的 `applicationId`、`versionCode`（每次发版必须递增）和 `versionName`。
+3. **生成签名密钥**：创建一个 keystore 密钥库文件，用于给你的应用进行数字签名以确保分发安全。
+4. **构建发布包**：运行 `flutter build appbundle` 命令。注意，Google Play 现已强制要求新应用使用 `.aab`（Android App Bundle）格式而不是传统的 `.apk`。
+5. **上传与审核**：在 Google Play Console 中上传生成的 AAB 文件，完善商店元数据（截图、描述、隐私政策等），最后提交审核。
+
+**部署到 Apple App Store 的步骤：**
+1. **开发者账号**：注册 Apple Developer Program（需按年付费）。
+2. **配置文件与证书**：使用 Xcode 或在苹果开发者后台为你的应用创建发布证书（Distribution Certificate）和描述文件（Provisioning Profile）。
+3. **应用配置**：在 Xcode 中配置应用对应的 Bundle Identifier（包名）以及版本号。
+4. **构建 iOS 安装包**：现代的 Flutter 推荐直接运行 `flutter build ipa` 命令来一键生成 `.ipa` 文件（传统方式是运行 `flutter build ios` 后再去 Xcode 中手动执行 Archive 归档）。
+5. **上传与审核**：使用 Transporter 桌面应用或 Xcode 将 `.ipa` 文件上传至苹果服务器。随后进入 App Store Connect 填写应用的元数据并提交给苹果进行人工审核。
+
+相关官方指南：
+- [Google Play 商店发布指南](https://play.google.com/console/about/guides/releasewithconfidence/)
+- [Apple App 审核指南](https://developer.apple.com/app-store/review/guidelines/)

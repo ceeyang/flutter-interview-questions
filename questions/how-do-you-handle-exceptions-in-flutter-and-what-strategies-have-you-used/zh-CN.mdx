@@ -1,0 +1,56 @@
+---
+title: "在 Flutter 中你是如何处理异常的？你使用过哪些策略？"
+---
+
+在 Flutter 中，异常处理通常分为**局部处理**（针对特定代码块）和**全局处理**（兜底捕获未处理的错误）两个层面。
+
+### 局部异常处理
+在局部代码中，我们主要使用 `try-catch-finally` 块。你可以使用 `on` 关键字来捕获特定类型的异常，从而根据具体的错误类型执行不同的恢复策略：
+
+```dart
+try {
+  // 可能抛出异常的代码
+} on SocketException catch (e) {
+  print("网络错误: $e");
+  // 策略：自动重试请求，或显示“处于离线状态”的 UI
+} on FormatException catch (e) {
+  print("解析错误: $e");
+  // 策略：提示数据格式异常
+} catch (e, stackTrace) {
+  print("未知异常: $e");
+  // 策略：记录未知错误日志和调用栈信息
+} finally {
+  // 无论成功或失败都会执行的代码（例如：关闭 Loading 动画）
+}
+```
+
+### 全局异常处理
+对于那些漏网之鱼（未被局部 `try-catch` 捕获的异常），我们需要在应用最顶层进行全局拦截，以防止应用闪退或无提示白屏：
+1. **`FlutterError.onError`**：用于捕获 Flutter 框架层抛出的同步错误（例如在 `build` 渲染阶段发生的 Widget 溢出错误等）。
+2. **`PlatformDispatcher.instance.onError`**（在较新的 Flutter 版本中官方推荐使用该方式，替代了以往复杂的 `runZonedGuarded`）：用于捕获所有未处理的异步错误以及 Flutter 框架之外的 Dart 原生错误。
+
+```dart
+import 'dart:ui';
+import 'package:flutter/material.dart';
+
+void main() {
+  // 1. 捕获 Flutter 框架级别的错误
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    // TODO: 将 details 上报到崩溃监控平台
+  };
+
+  // 2. 捕获所有异步/底层的 Dart 错误
+  PlatformDispatcher.instance.onError = (error, stack) {
+    // TODO: 将 error 和 stack 上报到崩溃监控平台 (例如 Firebase Crashlytics)
+    return true; // 返回 true 表示该错误已被拦截处理
+  };
+
+  runApp(const MyApp());
+}
+```
+
+### 常用的异常处理策略
+1. **日志记录与崩溃上报**：对于未知的或未预料到的异常，通过监控平台（如 Sentry、Bugly、Firebase Crashlytics）进行日志上报，以便开发团队追踪修复。
+2. **友好的用户反馈**：当错误发生时，绝不能向普通用户展示代码堆栈，而是通过 `SnackBar`、弹窗或专门的占位界面展示人性化的提示（如“网络开小差了，请稍后再试”）。
+3. **优雅降级与重试机制**：如果是网络波动引发的异常，提供“点击重试”按钮；如果是某些非核心数据加载失败，可以使用本地缓存数据作为降级展示。

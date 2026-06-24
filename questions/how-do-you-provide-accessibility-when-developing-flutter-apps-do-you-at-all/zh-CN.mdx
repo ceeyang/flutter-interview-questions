@@ -1,0 +1,27 @@
+---
+title: "在开发 Flutter 应用时，你会提供无障碍支持（Accessibility）吗？你是怎么做的？"
+---
+
+是的，无障碍支持（Accessibility / a11y）是前端及移动端开发中至关重要的一环，它能确保残障人士（尤其是视觉和运动障碍用户）也能顺畅使用我们的应用。Flutter 框架底层提供了一套完整的机制来增强无障碍体验：
+
+1. **使用 `Semantics` 组件**：
+Flutter 提供了 `Semantics` 组件，允许你用有意义的语言描述来为 UI 元素添加语义注解。这能帮助操作系统的屏幕阅读器（如 Android TalkBack 或 iOS VoiceOver）准确地向视障用户播报当前所选组件的功能。
+```dart
+Semantics(
+  label: '提交表单按钮', // 屏幕阅读器会读出这句话
+  button: true,
+  child: ElevatedButton(onPressed: () {}, child: const Text('提交')),
+);
+```
+
+2. **文本可读性与语义化标签**：
+确保屏幕阅读器能读懂界面内容。许多标准的 Flutter 组件（如 `Text`）本身已经内置了基本的无障碍支持，但对于使用了自定义图标或非常规的自定义绘制组件，你必须使用 `semanticsLabel` 属性为其补充清晰的文字说明。
+
+3. **色彩对比度（Color Contrast）**：
+确保文本与背景颜色之间有足够高的对比度，以帮助有视觉障碍或色弱的用户阅读。可以使用 Flutter DevTools 中的 Accessibility（无障碍）检查器来扫描界面的对比度问题。
+
+4. **焦点管理（Focus Management）**：
+对于存在运动障碍并极度依赖外接键盘导航的用户，必须实现合理的焦点流转。Flutter 提供了 `FocusNode` 和 `FocusScope` 来管理组件获得焦点的视觉表现和顺序行为。
+
+5. **排除冗余的语义树（ExcludeSemantics）**：
+对于纯装饰性的背景图片、复杂动效或冗余的复合组件，应当明智地使用 `ExcludeSemantics` 组件包裹它们，以避免屏幕阅读器播报过多无关紧要的垃圾信息，从而降低用户的认知负担。

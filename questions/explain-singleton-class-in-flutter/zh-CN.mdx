@@ -1,0 +1,42 @@
+---
+title: "请解释一下 Flutter（Dart）中的单例类（Singleton class）。"
+---
+
+单例类（Singleton class）是一种软件设计模式，它确保一个类在整个应用程序的生命周期中只能被实例化一次。它为外界提供了一个全局唯一的访问点，使得应用程序的任何地方都可以共享并访问该对象的同一个实例。
+
+在 Dart/Flutter 中创建一个单例类，我们需要定义一个只能在类内部被访问的**私有命名构造函数**。然后，我们创建一个静态（`static`）的 final 字段来持有这个类的唯一实例，并通过一个工厂（`factory`）构造函数来返回该实例。以下是 Dart 中单例类的标准写法：
+
+```dart
+class MySingleton {
+  // 1. 静态的私有常量字段，保存全局唯一的实例
+  static final MySingleton _singleton = MySingleton._internal();
+
+  // 2. 工厂构造函数，确保每次调用构造函数时都返回同一个实例
+  factory MySingleton() {
+    return _singleton;
+  }
+
+  // 3. 私有的命名构造函数，防止在类外部被直接实例化
+  MySingleton._internal();
+
+  void doSomething() {
+    print('单例类正在执行操作');
+  }
+}
+```
+
+在这个例子中，`MySingleton` 有一个私有命名构造函数 `_internal`，一个保存着唯一实例的静态字段 `_singleton`，以及一个总是返回该实例的 `factory` 构造函数。
+
+要使用这个单例类，我们只需像实例化普通对象一样直接调用构造函数即可：
+
+```dart
+MySingleton singleton1 = MySingleton();
+MySingleton singleton2 = MySingleton();
+
+singleton1.doSomething();
+
+// 验证这两个变量是否指向内存中的同一个实例
+print(identical(singleton1, singleton2)); // 输出: true
+```
+
+由于 `MySingleton` 使用了 `factory` 构造函数模式，任何对 `MySingleton()` 的后续调用都不会在内存中开辟新空间去创建新对象，而是直接返回第一次就创建好的那个 `_singleton` 实例。

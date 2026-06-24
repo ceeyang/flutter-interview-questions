@@ -1,0 +1,21 @@
+---
+title: "在 Flutter 中 Cupertino 和 Material Design 有什么区别？"
+---
+
+在 Flutter 中，`Material Design` 和 `Cupertino` 是两套截然不同的系统级设计语言和视觉组件库，分别对应了 Android 和 iOS 的官方视觉规范。
+
+它们的主要区别体现在以下几个方面：
+
+1. **视觉设计语言（Visual Design）**：
+   - **Material（安卓风格）**：强调层次感（Z轴阴影）、大胆的排版、醒目的色彩块和波纹水滴点击动效（Ripple effect）。
+   - **Cupertino（苹果风格）**：强调极简主义、毛玻璃半透明模糊效果（Translucency）、大面积留白和微妙渐变的纯色点击反馈。
+
+2. **核心交互与布局（Navigation & Layout）**：
+   - **Material**：通常使用顶部带颜色的 `AppBar`、屏幕左侧滑出的侧边栏（Drawer）和右下角的浮动按钮（FAB）。页面切换动画一般是底部向上浮现或缩放。
+   - **Cupertino**：通常使用底部大图标的选项卡导航（Tab Bar）、居中标题的白色/透明导航栏。页面切换动画是标志性的“右侧滑入”和平滑返回手势。
+
+3. **专有组件库（Widgets）**：
+   Flutter 提供了两套独立的包。诸如开关、弹窗和选择器，它们的 UI 差异极大（比如 Material 是复选框勾选，而 Cupertino 是滚动拨轮选择器 Picker）。开发者可以使用 `CupertinoSwitch` 或 `Switch` 来分别调用它们。
+
+**跨平台处理策略**：
+为了保证代码的复用性，Flutter 开发者并不会为 iOS 和 Android 写两套完全隔离的代码。相反，可以通过自动判断平台（`Platform.isIOS`）来条件渲染特定的系统样式，或者直接使用 Flutter 提供的高级跨平台自适应包（如 `flutter_platform_widgets`），实现一份逻辑自动呈现双端原生 UI。

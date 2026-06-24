@@ -1,0 +1,11 @@
+---
+title: "在 Flutter 中什么是 `InheritedWidget`？"
+---
+
+`InheritedWidget` 是 Flutter 框架中用于在组件树中自顶向下高效传递数据的核心基类。它提供了一种优雅的内置机制，让你能跨越深深的组件层级共享数据，而无需手动地将数据通过每一层 Widget 的构造函数逐级传递（避免了所谓的“属性透传 / Prop Drilling”地狱）。
+
+当一个 `InheritedWidget` 被挂载到组件树的上游时，树中任何下层的后代组件都可以通过调用 **`context.dependOnInheritedWidgetOfExactType<T>()`**（或者更常见的静态封装方法 `of(context)`）来瞬间获取其内部持有的数据。
+
+与简单的全局静态变量相比，`InheritedWidget` 最强大之处在于其底层的**响应式更新机制**。当 `InheritedWidget` 内部的数据发生变化时，它能够精准定位并**仅触发那些依赖了该数据的后代组件进行重新构建（Rebuild）**，而不会引发整个应用的高昂重绘开销。
+
+在实际开发中，Flutter 源码深度依赖了它，我们最常用的 `Theme.of(context)` 和 `MediaQuery.of(context)` 底层都是基于它实现的。同时，几乎所有主流的第三方状态管理库（如极其流行的 `Provider`）的核心引擎也完全建立在 `InheritedWidget` 之上。

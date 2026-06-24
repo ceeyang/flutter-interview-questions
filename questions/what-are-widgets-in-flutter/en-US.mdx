@@ -2,6 +2,10 @@
 title: What are widgets in Flutter?
 ---
 
-Widgets are the central class hierarchy in the Flutter framework, that describes the configuration of an element to manage the underlying render tree. A widget is an immutable description of part of a user interface. Widgets themselves have no mutable state, i.e., all their fields must be final.
+Widgets are the central class hierarchy and the core building blocks of a Flutter application's user interface. They describe what their view should look like given their current configuration and state.
 
-In Flutter, **everything is a widget**.
+Key characteristics of widgets include:
+
+1. **"Everything is a widget"**: In Flutter, almost everything is a widget. Not only are structural and visual elements (like buttons, text, and images) widgets, but also layout aspects (like `Padding`, `Row`, and `Center`) and even application-level configurations (like `MaterialApp` and `Theme`).
+2. **Immutability**: A widget is an **immutable** description of a part of the user interface. Widgets themselves have no mutable state, which means all their properties must be declared as `final`. When a UI changes, Flutter simply destroys the old widget and instantiates a new one.
+3. **Blueprints for Rendering**: Under the hood, widgets are extremely lightweight blueprints. They do not paint pixels directly. Instead, the Flutter framework uses the Widget tree to build an `Element` tree (which manages lifecycle and state) and a `RenderObject` tree (which handles the actual heavy lifting of layout sizing and painting pixels to the screen).

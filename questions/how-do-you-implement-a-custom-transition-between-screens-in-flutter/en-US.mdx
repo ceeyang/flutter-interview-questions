@@ -1,26 +1,33 @@
 ---
-title: How do you implement a custom transition between screens in flutter?
+title: How do you implement a custom transition between screens in Flutter?
 ---
 
-To implement a custom transition between screens in flutter:
+To implement a custom transition between screens in Flutter, you can use a `PageRouteBuilder`:
 
-- Use `PageRouteBuilder` to define the transition animations.
-- In the `pageBuilder`, define the widget for the new screen and use `Animation` objects to control the transition.
-- In the `transitionsBuilder`, use Flutter's animation widgets like `FadeTransition`, `SlideTransition`, or custom combinations to animate the transition.
-- Pass the `PageRouteBuilder` to the `Navigator.push` method.
+1. **`pageBuilder`**: Define the widget for the target new screen.
+2. **`transitionsBuilder`**: Return an animation widget like `FadeTransition`, `SlideTransition`, `ScaleTransition`, or a custom combination. You use the provided `animation` object to drive the transition.
+3. Pass the `PageRouteBuilder` to `Navigator.push()`.
+
+*Pro tip: For a smoother and more natural visual effect, chain a `CurveTween` to your animation tween.*
 
 ```dart
 Navigator.push(
   context,
   PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => NewScreen(),
+    pageBuilder: (context, animation, secondaryAnimation) => const NewScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      final begin = Offset(1.0, 0.0);
-      final end = Offset.zero;
-      final tween = Tween(begin: begin, end: end);
-      final offsetAnimation = animation.drive(tween);
+      const begin = Offset(1.0, 0.0); // Slide in from the right
+      const end = Offset.zero;
+      const curve = Curves.easeInOut; // Non-linear animation curve
 
-      return SlideTransition(position: offsetAnimation, child: child);
+      // Chain the curve and the offset tween for smoothness
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child, // The child is the widget returned by pageBuilder
+      );
     },
   ),
 );

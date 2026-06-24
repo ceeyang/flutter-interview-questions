@@ -2,7 +2,11 @@
 title: How do you use the `Positioned` widget in Flutter?
 ---
 
-In Flutter, the `Positioned` widget is used to position a child widget within a `Stack` widget. The `Positioned` widget takes four optional arguments: `left`, `top`, `right`, and `bottom`, which specify the position of the child widget relative to the edges of the parent `Stack` widget.
+In Flutter, the `Positioned` widget is used to absolutely position a child widget within a `Stack` widget. 
+
+**Important Rule:** The `Positioned` widget must be a direct descendant of a `Stack` widget (or wrapped in a stateless/layout-transparent widget inside a Stack). If you use it outside of a `Stack`, it will throw a rendering error.
+
+The `Positioned` widget takes four optional edge-inset arguments: `left`, `top`, `right`, and `bottom`, as well as `width` and `height`. These specify the exact position and dimensions of the child widget relative to the edges of the parent `Stack` widget.
 
 For example:
 
@@ -20,7 +24,7 @@ Stack(
       child: Text('Bye there!'),
     ),
   ],
-),
+)
 ```
 
-In this example, we create a Stack widget with two child widgets that are positioned at opposite corners of the Stack. The first child widget is positioned 10 pixels from the left and top edges of the Stack, while the second child widget is positioned 10 pixels from the right and bottom edges of the Stack.
+In this example, we create a Stack widget with two child widgets that are positioned at opposite corners. The first child widget is positioned 10 pixels from the left and top edges of the Stack, while the second child widget is positioned 10 pixels from the right and bottom edges of the Stack.

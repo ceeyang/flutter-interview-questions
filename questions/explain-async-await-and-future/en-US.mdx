@@ -2,20 +2,26 @@
 title: Explain async, await and Future.
 ---
 
-The `async` and `await` are keywords in Dart that enable asynchronous programming. They make it easier to write asynchronous code that is readable and easier to maintain.
+**`Future`**: A `Future` is a core Dart class that represents the eventual result of an asynchronous operation. It represents a value (or an error) that will be available at some point in the future. A function that performs an asynchronous operation (like a network request or disk I/O) returns a `Future`.
 
-`Future` is a core Dart library that represents an asynchronous operation that will complete in the future. A `Future` object is returned from an asynchronous function to represent a value that will be available at some point in the future.
+**`async`**: The `async` keyword is added to a function's signature to mark it as an asynchronous function. When a function is marked as `async`, Dart automatically wraps its return value in a `Future`.
 
-In Flutter, `async` and `await` are used to perform asynchronous operations, such as making HTTP requests or reading from a database. The Future object is used to represent the result of an asynchronous operation and is often passed to await in an async function to wait for the result to be available.
+**`await`**: The `await` keyword can only be used inside an `async` function. It pauses the execution of the function until the awaited `Future` completes, allowing you to write asynchronous code that looks and behaves like synchronous, top-down code. This avoids callback hell.
+
+Together, they make asynchronous programming highly readable and maintainable.
 
 ```dart
-Future<String> fetchData() async {
-  // Asynchronous operation
-  return 'Data';
+// A function that returns a Future
+Future<String> fetchNetworkData() async {
+  // Simulate a network delay
+  await Future.delayed(Duration(seconds: 2));
+  return 'Fetched Data';
 }
 
 void main() async {
-  String data = await fetchData();
+  print('Loading...');
+  // The execution pauses here until fetchNetworkData completes
+  String data = await fetchNetworkData();
   print(data);
 }
 ```

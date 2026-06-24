@@ -1,0 +1,11 @@
+---
+title: "在 Flutter 中 `NetworkImage` 和 `Image.network` 有什么区别？"
+---
+
+这是面试中极其经典的“类与组件”概念混淆题：
+
+- **`NetworkImage`（图片提供者 Provider）**：
+  它继承自 `ImageProvider`。它**并不是一个 Widget**，因此你不能把它直接写在 Widget 树里（不能放进 Column 或 Row 中）。它的唯一作用是执行底层逻辑去目标 URL 下载二进制图像数据并放入内存中。它常被用在需要图片提供者的地方，比如作为 `Container` 盒装饰属性 `BoxDecoration` 的背景图（`image: DecorationImage(image: NetworkImage('url'))`）。
+
+- **`Image.network`（渲染组件 Widget）**：
+  它是一个真正的 UI 视图组件（Widget），你可以把它直接塞进 Widget 树中让屏幕把它画出来。在底层，它实际上只是 `Image` 类的一个便捷命名构造函数。当你调用 `Image.network('url')` 时，它在内部自动帮你实例化了一个 `NetworkImage` 去下载数据，并将下载好的图呈现在屏幕上。

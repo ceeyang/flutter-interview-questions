@@ -1,0 +1,16 @@
+---
+title: "在 Flutter 中什么是 DevTools（开发者工具）？"
+---
+
+Flutter 的 `DevTools` 是一套功能强大的、基于浏览器的性能分析和调试工具套件。它为开发者提供了有关其应用程序底层运行状态的详细视图，包括 CPU 占用率、内存使用情况、GPU 渲染性能以及网络请求活动。
+
+`DevTools` 通常用于定位性能瓶颈、诊断 UI 渲染问题、检查 Widget 树结构以及实时调试代码。
+
+`DevTools` 包含以下核心功能模块：
+
+- **Flutter Inspector（检查器）**：允许我们以可视化的方式检查 Widget 树（Widget Tree），深入查看每个 Widget 的确切布局约束、尺寸属性和屏幕坐标位置。
+- **Timeline / Performance View（性能视图）**：提供应用程序性能的图形化时间轴表现，可以用来分析 UI 线程和 Raster（GPU）线程的耗时，排查卡顿（Jank）。
+- **Debugger（调试器）**：允许我们设置代码断点、单步执行代码以及在运行时检查和修改变量的值。
+- **Network View（网络视图）**：用于监控和分析应用程序发出的所有 HTTP、HTTPS 以及 WebSocket 网络请求。
+- **Memory View（内存视图）**：用于观察内存的分配情况，抓取堆快照（Heap Snapshot），并帮助定位内存泄漏问题。
+- **Logging View（日志视图）**：集中显示应用程序生成的调试日志消息和抛出的错误异常。

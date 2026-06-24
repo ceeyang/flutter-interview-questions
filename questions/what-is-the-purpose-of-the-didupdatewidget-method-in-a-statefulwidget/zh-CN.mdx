@@ -1,0 +1,23 @@
+---
+title: "在 StatefulWidget 中 `didUpdateWidget` 方法的作用是什么？"
+---
+
+在 Flutter 的生命周期中，`didUpdateWidget` 是一个专门用于**响应父组件传下来的配置数据发生改变**的核心方法。
+
+当父组件发生重绘（Rebuild），并向当前 `StatefulWidget` 传递了与之前不同（或者相同，但对象引用更新了）的参数时，Flutter 引擎会去复用现有的 `State` 对象，但同时必须将包含新参数的 `Widget` 实例替换进来。在这个切换的瞬间，`didUpdateWidget` 就会被触发。
+
+**它的核心作用与使用场景：**
+1. **对比新旧配置**：它会传入一个极其关键的参数 `oldWidget`。你可以在方法内通过比对 `oldWidget.property` 和当前新的 `widget.property`，来判断外界传入的核心参数是否真的变了。
+2. **响应变化并更新状态**：如果发现关键参数变了，你可以在这里执行一些重新初始化的逻辑，比如：外界传入的某个用户 ID 变了，你在这里取消上一个用户的网络请求订阅，并使用新的 ID 发起全新的网络请求拉取数据；或者外界传入的动画配置变了，你需要重新配置 `AnimationController`。
+
+```dart
+@override
+void didUpdateWidget(covariant MyWidget oldWidget) {
+  super.didUpdateWidget(oldWidget);
+  // 对比新旧值
+  if (widget.userId != oldWidget.userId) {
+    // 发现 ID 变了，执行更新操作
+    _fetchDataForNewUser(widget.userId);
+  }
+}
+```

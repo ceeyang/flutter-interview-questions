@@ -1,0 +1,11 @@
+---
+title: "在 Flutter 中 `WidgetsApp` 和 `MaterialApp` 有什么区别？"
+---
+
+这两者都是用于在应用的最顶层包裹和初始化整个 Flutter 项目的根容器组件，但它们提供的能力范畴不同：
+
+**`WidgetsApp`（纯粹的基础架构）：**
+它是最底层、最原生态的根应用类。它只提供了应用程序运行必须的基础基础设施：比如底层导航与路由系统、全局多语言支持（Localization）、横竖屏和无障碍服务。**但它本身完全不带任何视觉设计语言和排版样式**。如果你想从零开始完全摒弃 Android 和 iOS 的系统默认外观，彻底写一套自己独创的怪异 UI 设计规范，你就可以直接使用 `WidgetsApp`。
+
+**`MaterialApp`（谷歌 Material 设计体系全家桶）：**
+它是直接包裹并建立在 `WidgetsApp` 之上的超级扩展类。除了拥有 `WidgetsApp` 的所有基础能力外，它**强制注入了 Google Material Design 的全套视觉灵魂**。它默认初始化了强大的全局 `ThemeData`（主题体系）、Material 的默认字体排版、默认的涟漪点击动效以及 Android 风格的页面切换动画。我们在日常开发绝大多数普通应用时，几乎总是直接从使用 `MaterialApp` 起手。（对应在 iOS 风格上，还有一个对等的 `CupertinoApp`）。

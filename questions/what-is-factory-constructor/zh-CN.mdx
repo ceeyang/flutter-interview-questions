@@ -1,0 +1,28 @@
+---
+title: "什么是工厂构造函数（Factory constructor）？"
+---
+
+在 Dart/Flutter 中，工厂构造函数（使用 `factory` 关键字声明）是一种极其特殊的设计模式级构造函数。**普通的构造函数每次被调用时，必定会强制在内存中分配并返回一个全新的对象实例**。但是，工厂构造函数打破了这个限制：它**不一定**会创建一个新对象。
+
+工厂构造函数允许你在创建对象时隐藏背后的实例化逻辑，你可以：
+1. **从缓存中返回一个已经存在的实例**（用于实现单例模式 Singleton）。
+2. **返回该类的某一个具体的子类实例**（根据传入的参数决定返回哪种子类型）。
+3. **在返回对象之前执行一些前置的逻辑校验或复杂的构建操作**。
+
+**示例代码：单例模式的实现**
+```dart
+class DatabaseConnection {
+  // 静态私有变量，用于缓存全局唯一实例
+  static final DatabaseConnection _instance = DatabaseConnection._internal();
+
+  // 私有的命名构造函数，外部无法直接调用
+  DatabaseConnection._internal();
+
+  // 工厂构造函数，总是返回同一个缓存实例
+  factory DatabaseConnection() {
+    return _instance;
+  }
+}
+```
+
+这种机制让 API 的设计者拥有了极大的灵活性，调用者只需要像调用普通构造函数一样 `DatabaseConnection()`，而无需关心底层到底是在新建对象还是在复用缓存。

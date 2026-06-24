@@ -1,0 +1,60 @@
+---
+title: "什么是 `vsync`？请详细解释。"
+---
+
+在 Flutter 中，`vsync` 是“Vertical Synchronization（垂直同步）”的缩写。它是一项极其关键的底层特性，核心职责是**强制确保应用内部所有的动画刷新、UI 每一帧重绘步伐，与手机物理硬件屏幕真实的刷新率（如 60Hz、90Hz、120Hz）保持绝对完美的同步。**
+
+如果在没有垂直同步信号的环境下盲目跑动画，由于屏幕刷新和动画逻辑更新不同步，画面极易出现断层、撕裂（Screen Tearing）或者令人难受的掉帧卡顿感。
+
+在 Flutter 的框架中，这个能力是通过 `TickerProvider` 接口提供的。`TickerProvider` 就像是一个超级精准的节拍器工厂。只要屏幕即将刷出新的一帧，系统底层就会向它发送一个极速跳动的时钟信号（Tick），提醒应用现在可以安全地更新并推入下一帧的动画数据了。
+
+要为动画注入 `vsync` 灵魂，我们通常需要在创建 `AnimationController` 的时候，将一个 `TickerProvider` 传进它的 `vsync` 参数中。在最常见的 Stateful 页面里，我们只需要通过混入（`with`）官方提供好的 `SingleTickerProviderStateMixin` 魔法特质，就可以直接把整个 `State` 本身（也就是 `this`）当做 `vsync` 参数直接喂给动画控制器。
+
+**完整的空安全配置示例：**
+```dart
+class MyAnimation extends StatefulWidget {
+  @override
+  _MyAnimationState createState() => _MyAnimationState();
+}
+
+// 1. 混入 SingleTickerProviderStateMixin 从而获得发射同步信号的能力
+class _MyAnimationState extends State<MyAnimation>
+    with SingleTickerProviderStateMixin {
+  
+  // 现代 Dart 使用 late 延迟初始化对象
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    // 2. 初始化时，直接将 this 赋值给 vsync
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this, 
+    );
+    
+    _animation = Tween<double>(begin: 0, end: 300).animate(_controller)
+      ..addListener(() {
+        setState(() {}); // 每当跳过一帧时触发屏幕重绘
+      });
+      
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose(); // 动画切记要销毁！
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: _animation.value,
+      width: _animation.value,
+      child: const FlutterLogo(),
+    );
+  }
+}
+```

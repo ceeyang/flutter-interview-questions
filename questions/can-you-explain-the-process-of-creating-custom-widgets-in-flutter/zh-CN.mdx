@@ -1,0 +1,15 @@
+---
+title: "你能解释一下在 Flutter 中创建自定义组件（Custom Widgets）的过程吗？"
+---
+
+在 Flutter 中创建自定义组件通常分为两种方式：**组合现有组件（Composition）** 或 **自定义绘制/布局（Custom Drawing/Layout）**。
+
+对于最常见的**组合现有组件**，其过程通常包含以下步骤：
+
+1. **选择基类**：如果你的组件的外观仅依赖于传入的配置数据，请继承 `StatelessWidget`；如果它需要维护随时间发生变化的可变状态，请继承 `StatefulWidget`。
+2. **定义构造函数**：为你的自定义组件定义构造函数以接收所需的参数（通常建议使用命名参数，并传递 `Key` 以用于组件树更新时的唯一标识）。
+3. **重写 `build` 方法**：在组件类中重写 `build` 方法。在该方法内，通过组合 Flutter 内置的基础组件或其他自定义组件，返回一棵描述该新组件外观的 Widget 树。
+4. **管理状态（如果是 StatefulWidget）**：如果使用的是 `StatefulWidget`，你需要创建一个对应的 `State` 类。当内部业务逻辑或用户交互导致状态发生改变时，调用 `setState` 方法来触发组件的重新构建（Rebuild）。
+5. **使用自定义组件**：像使用 Flutter 任何自带组件一样，在你的应用 Widget 树中实例化并使用这个新创建的自定义组件。
+
+对于那些无法通过简单的组件组合来实现的复杂、高度定制化的 UI 需求，你可以使用 `CustomPaint` 配合 `CustomPainter` 直接在底层画布（Canvas）上绘制图形，或者通过继承 `RenderObjectWidget` 来在底层渲染树（Render Tree）级别实现完全自定义的布局（Layout）和绘制（Paint）逻辑。

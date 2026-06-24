@@ -4,20 +4,27 @@ title: How do you implement a custom animation curve in flutter?
 
 To implement a custom animation curve in Flutter:
 
-- Create a custom class that extends `Curve` and override the `transform` method to define the curve's behavior.
-- Apply the custom curve in an `Animation` object using `CurvedAnimation`.
+1. Create a custom class that extends `Curve`.
+2. Override the `transformInternal(double t)` method. The parameter `t` represents the un-curved animation progress (linear time) flowing from `0.0` to `1.0`. You return the transformed value (which can exceed the 0.0-1.0 bounds for effects like bouncing or overshooting).
+3. Apply the custom curve to your animation using `CurvedAnimation`.
+
+*Note: It is best practice to override `transformInternal` rather than `transform`, because the base `Curve.transform` method automatically handles the `t == 0.0` and `t == 1.0` edge cases for you before delegating to `transformInternal`.*
 
 ```dart
 class CustomCurve extends Curve {
+  const CustomCurve();
+
+  // Override transformInternal instead of transform
   @override
-  double transform(double t) {
-    // Example: Ease-in-out quadratic curve
+  double transformInternal(double t) {
+    // Example: A simple ease-in-out quadratic curve math formula
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 }
 
+// Usage:
 final animation = CurvedAnimation(
-  parent: controller,
-  curve: CustomCurve(),
+  parent: controller, // Your AnimationController
+  curve: const CustomCurve(),
 );
 ```

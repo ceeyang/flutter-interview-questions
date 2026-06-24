@@ -2,8 +2,23 @@
 title: Explain the `mounted` property. How is it important and when to use it?
 ---
 
-The mounted property defines whether the state object, associated with it, is currently in the widget tree.
+The `mounted` property is a boolean that indicates whether a `State` object (or a `BuildContext`) is currently in the active widget tree.
 
-After creating a State object and before calling initState, the framework **"mounts"** the State object by associating it with a BuildContext. The State object remains mounted until the framework calls dispose, after which time the framework will never ask the State object to build again.
+After creating a `State` object and before calling `initState`, the Flutter framework **"mounts"** the `State` object by associating it with a `BuildContext`. The `State` object remains mounted until the framework calls `dispose()`, after which it is unmounted and will never build again.
 
-It is an error to call setState unless mounted is true. This property is useful when a method on your state calls setState() but it isn't clear when or how often that method will be called. You can use `if (mounted) {...` to make sure the State exists before calling setState().
+**Why is it important and when to use it?**
+It is an error to call `setState()` if `mounted` is false (i.e., the widget has been removed from the screen). This frequently happens in asynchronous operations. For example, if your widget makes an HTTP request, but the user navigates away from the screen before the request completes, calling `setState()` upon completion will crash the app.
+
+To prevent this, you should check the `mounted` property after any `await` call inside a `State` class before calling `setState()`:
+
+```dart
+Future<void> loadData() async {
+  final data = await fetchNetworkData();
+  if (!mounted) return; // Exit if the widget is no longer in the tree
+  setState(() {
+    _data = data;
+  });
+}
+```
+
+*Note: Since Flutter 3.10, the `mounted` property is also directly available on `BuildContext`, making it easier to check before using `Navigator.of(context)` across async gaps.*

@@ -1,0 +1,55 @@
+---
+title: "什么是 `FutureBuilder`？如何用它构建动态 UI？"
+---
+
+`FutureBuilder` 是 Flutter 中的一个核心异步 UI 组件，它能够根据一个异步操作（`Future`）的最新执行状态，自动动态地构建并刷新界面的显示内容。
+
+网络请求、数据库查询或耗时的文件读写等操作通常会返回一个 `Future`。`FutureBuilder` 会监听这个 `Future` 的状态（`ConnectionState`），并主要处理以下三种业务场景的动态 UI 渲染：
+
+1. **未完成状态（Waiting）**：当异步请求还在进行中时，我们通常会在界面上显示一个加载指示器（如圆圈动画 `CircularProgressIndicator`）。
+2. **成功返回数据（hasData）**：当异步请求成功完成并携带了数据时，我们提取数据（`snapshot.data`）并将其渲染为实际的内容界面（如商品列表）。
+3. **发生错误（hasError）**：如果请求过程中发生网络异常或崩溃，我们可以捕捉错误信息（`snapshot.error`）并展示对应的错误提示界面或重试按钮。
+
+**空安全标准的实战代码示例：**
+
+```dart
+Future<List<String>> _fetchData() async {
+  // 模拟一个耗时 2 秒的网络数据请求
+  return Future.delayed(
+    const Duration(seconds: 2), 
+    () => ["Item 1", "Item 2", "Item 3"],
+  );
+}
+
+@override
+Widget build(BuildContext context) {
+  return FutureBuilder<List<String>>(
+    future: _fetchData(),
+    builder: (context, snapshot) {
+      // 1. 正在等待数据（加载中）
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      
+      // 2. 捕捉到错误异常
+      if (snapshot.hasError) {
+        return Center(child: Text("发生错误: ${snapshot.error}"));
+      }
+      
+      // 3. 成功获取数据，进行 UI 列表渲染
+      if (snapshot.hasData) {
+        final data = snapshot.data!; // 空安全断言提取数据
+        return ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return ListTile(title: Text(data[index]));
+          },
+        );
+      }
+      
+      // 兜底的空白界面
+      return const SizedBox.shrink();
+    },
+  );
+}
+```

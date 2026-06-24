@@ -1,0 +1,30 @@
+---
+title: "什么是空值感知运算符（Null-aware operators）？"
+---
+
+在 Dart 语言中，空值感知运算符是一组极其方便的语法糖，它允许我们基于某个变量是否为 `null` 来安全地进行条件计算或赋值，从而大幅减少繁琐的 `if (obj != null)` 样板代码，并避免空指针异常。
+
+常见的空值感知运算符有以下几种：
+
+- **可选链式调用运算符（Optional Chaining Operator `?.`）**：
+  只有当对象不为 `null` 时，才会去调用其属性或方法。如果对象为 `null`，则直接静默返回 `null`，而不会抛出异常崩溃。
+  ```dart
+  String? name = user?.name;
+  // 等价于：String? name = (user == null) ? null : user.name;
+  ```
+
+- **空值合并运算符（If-null Operator `??`）**：
+  提供一个后备的默认值。如果左侧的表达式求值结果不是 `null`，则返回左侧的值；如果左侧为 `null`，则计算并返回右侧的值。
+  ```dart
+  String? hello;
+  String greeting = hello ?? '你好';
+  // 等价于：String greeting = (hello == null) ? '你好' : hello;
+  ```
+
+- **空值赋值运算符（Logical Nullish Assignment `??=`）**：
+  只有当左侧变量当前的值为 `null` 时，才会将右侧的值赋给它。如果不为 `null`，则保持原值不变。它非常适合用于懒加载或属性初始化。
+  ```dart
+  int? x;
+  x ??= 3;  // 由于此时 x 是 null，所以赋值成功，x 变成 3
+  x ??= 5;  // 此时 x 已经不是 null，所以赋值被忽略，x 依然是 3
+  ```

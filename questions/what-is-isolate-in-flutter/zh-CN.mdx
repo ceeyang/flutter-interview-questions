@@ -1,0 +1,40 @@
+---
+title: "在 Flutter 中什么是 Isolate（隔离区）？"
+---
+
+在 Flutter 和 Dart 的并发模型中，`Isolate` 相当于传统编程语言中的“线程（Thread）”。由于 Dart 默认是单线程执行的（通过事件循环 Event Loop 机制处理异步操作），如果在主线程（主 Isolate）中执行极其耗时的 CPU 密集型计算（例如解析超大 JSON 文件或复杂的图像处理），会导致主线程被阻塞，UI 画面发生严重卡顿（掉帧）。
+
+为了解决这个问题，我们需要衍生出一个全新的 `Isolate` 在后台并发运行。
+
+**核心特征（面试必考点）：**
+与 Java 或 C++ 等语言中的传统多线程不同，Dart 中的每个 Isolate 都拥有**完全独立且隔离的内存堆（Memory Heap）**。这意味着两个 Isolate 之间**绝对不能共享内存状态**，因此也永远不需要使用锁（Locks）或互斥量（Mutexes）来防止数据竞态，这极大地降低了并发编程的复杂性。
+
+**通信方式：**
+由于不共享内存，Isolate 之间必须通过消息传递（Message Passing）机制进行通信。它们使用 `SendPort` 和 `ReceivePort` 对象来回发送数据（如字符串、数字或简单对象结构）。
+
+**简单示例：**
+```dart
+import 'dart:isolate';
+
+// 必须是顶级函数或静态方法
+void backgroundTask(SendPort sendPort) {
+  // 在后台 Isolate 中执行极其耗时的计算
+  int result = 999 * 999; 
+  // 将结果通过端口发送回主 Isolate
+  sendPort.send(result);
+}
+
+void main() async {
+  // 1. 创建一个接收端口
+  final receivePort = ReceivePort();
+  
+  // 2. 派生出一个新的子 Isolate，并把发送端口传给它
+  await Isolate.spawn(backgroundTask, receivePort.sendPort);
+  
+  // 3. 监听子 Isolate 传回的数据
+  receivePort.listen((message) {
+    print('收到来自后台 Isolate 的结果: $message');
+  });
+}
+```
+*(提示：在现代 Flutter 编程中，执行一次性的后台并发任务，通常推荐使用更简便的高级封装函数 `compute()`，其底层也是基于 Isolate 实现的。)*

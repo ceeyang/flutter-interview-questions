@@ -4,7 +4,7 @@ title: How do you pass data between screens in Flutter?
 
 In Flutter, we can pass data between screens using various methods. Some of the most commonly used methods are:
 
-1. **Using constructor parameters**: We can pass data between screens by passing the required data as parameters to the constructor of the destination screen.
+1. **Using constructor parameters**: We can pass data to a new screen by passing the required data directly to its constructor when creating the route.
    
    ```dart
    Navigator.push(
@@ -17,16 +17,16 @@ In Flutter, we can pass data between screens using various methods. Some of the 
    class SecondScreen extends StatelessWidget {
      final String data;
 
-     SecondScreen({required this.data});
+     const SecondScreen({super.key, required this.data});
 
      @override
      Widget build(BuildContext context) {
-       return Scaffold( ... );
+       return Scaffold( /* ... */ );
      }
    }
    ```
 
-2. **Using named routes**: We can define named routes in the app and pass data as arguments to these routes.
+2. **Using named routes `arguments`**: We can pass data as `arguments` to a named route.
    
    ```dart
    Navigator.pushNamed(
@@ -35,14 +35,23 @@ In Flutter, we can pass data between screens using various methods. Some of the 
      arguments: 'Hello World!',
    );
 
+   // Inside the SecondScreen's build method:
    class SecondScreen extends StatelessWidget {
      @override
      Widget build(BuildContext context) {
        final String data = ModalRoute.of(context)!.settings.arguments as String;
-
-       return Scaffold( ... );
+       return Scaffold( /* ... */ );
      }
    }
    ```
 
-3. **Using a state management library**: We can use a state management library like Provider, Riverpod, Bloc, or MobX to manage the state of the app and pass data between screens. This approach is especially useful when complex data needs to be shared between multiple screens.
+3. **Returning data backwards**: You can pass data back to the previous screen by passing a result into the `Navigator.pop` method, which resolves the Future returned by the original `push`.
+   ```dart
+   // Screen 1
+   final result = await Navigator.push(context, route);
+   
+   // Screen 2
+   Navigator.pop(context, 'Data returned to previous screen');
+   ```
+
+4. **Using a state management library**: You can use a state management library like Provider, Riverpod, Bloc, or GetX to manage app state. This is highly recommended when complex data needs to be shared or synchronized between multiple unrelated screens without explicitly passing arguments back and forth.

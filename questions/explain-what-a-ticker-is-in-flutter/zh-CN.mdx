@@ -1,0 +1,39 @@
+---
+title: "请解释一下在 Flutter 中什么是 Ticker（滴答定时器）？"
+---
+
+在 Flutter 中，`Ticker`（滴答定时器）是用来驱动动画的核心底层机制。它提供了一个连续的时间流，以固定的时间间隔（通常与屏幕的刷新帧率对齐，如 60Hz 或 120Hz）发出“滴答”回调。这使得动画框架能够以平滑、稳定且一致的频率来更新 UI。
+
+`Ticker` 最常与 `AnimationController` 配合使用，后者负责随时间推移计算和控制动画的进度。`Ticker` 的职责是在屏幕需要绘制每一帧时通知动画控制器，以便控制器能够计算出最新的动画状态值，进而触发 UI 的重新构建（Rebuild）。
+
+```dart
+class MyAnimatedWidget extends StatefulWidget {
+  @override
+  _MyAnimatedWidgetState createState() => _MyAnimatedWidgetState();
+}
+
+class _MyAnimatedWidgetState extends State<MyAnimatedWidget> with TickerProviderStateMixin {
+  late Ticker _ticker;
+
+  @override
+  void initState() {
+    super.initState();
+    // 创建一个 Ticker，每当屏幕刷新一帧时就会执行一次此回调
+    _ticker = createTicker((elapsed) {
+      print('从 Ticker 启动至今经过的时间: $elapsed');
+    });
+    _ticker.start();  // 启动 Ticker
+  }
+
+  @override
+  void dispose() {
+    _ticker.dispose(); // 组件销毁时必须清理 Ticker 释放资源，避免内存泄漏
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```

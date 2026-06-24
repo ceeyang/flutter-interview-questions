@@ -1,23 +1,29 @@
 ---
-title: How do you implement a draggable widget in flutter?
+title: How do you implement a draggable widget in Flutter?
 ---
 
-To implement a draggable widget in flutter, use the `Draggable` widget. Here's how to do it:
+To implement a draggable widget in Flutter, you use the `Draggable` widget. Usually, this is paired with a `DragTarget` widget that accepts the dragged data.
 
-- Use the `Draggable` widget to wrap the element you want to make draggable.
-- Pass the data you want to drag through the data property.
-- Use `feedback` to specify the widget that appears while dragging and `childWhenDragging` for the widget that replaces the original widget during the drag.
+Here is how to set up the `Draggable` part:
+
+1. Wrap the UI element you want to make draggable with the `Draggable<T>` widget (where `T` is the type of data being dragged).
+2. Pass the underlying data through the `data` property.
+3. Use the `feedback` property to specify the widget that follows the user's finger during the drag.
+4. (Optional) Use `childWhenDragging` to specify what replaces the original widget in its original location while the drag is active.
 
 ```dart
 Draggable<int>(
-  data: 1,
-  feedback: Material(
+  data: 1, // The payload data to be dropped into a DragTarget
+  feedback: const Material(
     color: Colors.transparent,
-    child: Icon(Icons.access_alarm, size: 50),
+    child: Icon(Icons.access_alarm, size: 60, color: Colors.blue), // Follows the finger
   ),
-  childWhenDragging: Container(),
-  child: Icon(Icons.access_alarm),
+  childWhenDragging: const Opacity(
+    opacity: 0.3,
+    child: Icon(Icons.access_alarm, size: 50), // Ghost effect left behind
+  ),
+  child: const Icon(Icons.access_alarm, size: 50), // Default state
 )
 ```
 
-In this example, when the user starts dragging the icon, it shows a smaller icon as the feedback. The original icon disappears until the drag ends.
+In this example, when the user starts dragging the icon, it shows a slightly larger, blue icon as the `feedback`. The original icon becomes semi-transparent (`childWhenDragging`) until the drag ends.

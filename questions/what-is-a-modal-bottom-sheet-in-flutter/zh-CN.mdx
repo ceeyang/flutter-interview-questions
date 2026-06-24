@@ -1,0 +1,27 @@
+---
+title: "在 Flutter 中什么是底部模态抽屉（Modal Bottom Sheet）？"
+---
+
+在 Flutter 中，模态底部抽屉（Modal Bottom Sheet）是一种从屏幕底部向上滑出的弹窗面板，它会覆盖在当前页面的部分或大部分内容之上，并且带有一层半透明的黑色遮罩（阻断与底层内容的交互）。它常用于提供与当前页面紧密相关的**额外选项、表单或详细操作**。
+
+底部抽屉是通过调用 Flutter 的内置函数 `showModalBottomSheet()` 来触发显示的。这个函数需要传入当前的 `BuildContext`，并通过 `builder` 回调函数返回抽屉内部具体显示的 UI 组件。
+
+```dart
+showModalBottomSheet(
+  context: context,
+  isScrollControlled: true, // 设置为 true 允许抽屉占据更高的屏幕比例
+  builder: (BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min, // 使得内容高度自适应
+        children: [
+          const Text('请选择操作'),
+          ListTile(title: const Text('分享'), onTap: () {}),
+          ListTile(title: const Text('删除'), onTap: () {}),
+        ],
+      ),
+    );
+  },
+);
+```

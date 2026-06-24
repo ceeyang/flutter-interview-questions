@@ -1,0 +1,18 @@
+---
+title: "`Expanded` 和 `Flexible` 组件有什么区别？"
+---
+
+这两个组件都只能且必须用在 Flex 布局（即 `Row`、`Column` 或 `Flex`）内部的子组件身上，用于分配剩余的空白空间。它们的唯一区别在于对**剩余空间的填补态度**：
+
+- **`Flexible`（弹性妥协）**：
+它允许子组件最多只能占据分配给它的剩余空间，但**并不强制要求它填满**。如果子组件自身原本的尺寸很小，那么它就保持很小的尺寸，剩下的空间依然留白。
+
+- **`Expanded`（强行撑满）**：
+它是 `Flexible` 的一个更激进的快捷子类。它不仅会去争夺剩余的可用空间，而且会**强制它的子组件无情地拉伸拉满**，完全占据分配给它的所有空间。
+
+**底层原理解析：**
+在源码中，`Expanded` 实际上就是简单继承自 `Flexible`，只不过它把 `fit` 属性强制锁定为了 `FlexFit.tight`，而默认的 `Flexible` 的 `fit` 属性是 `FlexFit.loose`。
+
+<p align="center">
+  <img src="assets/expanded_vs_flexible.PNG" alt="Expanded vs Flexible" width="800px" />
+</p>

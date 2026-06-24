@@ -1,0 +1,13 @@
+---
+title: "什么是 `TextEditingController`？"
+---
+
+`TextEditingController` 是 Flutter 框架中专门用来控制和管理文本输入框（如 `TextField` 或 `TextFormField`）的一个核心控制器类。
+
+由于 Flutter 中的输入框组件本身是无状态或者不直接暴露内部数据的，因此必须通过将一个 `TextEditingController` 实例赋值给 `TextField` 的 `controller` 属性来对它进行操控。
+
+**它的核心作用包括：**
+1. **获取输入的文本**：通过 `controller.text` 属性，你可以随时读取用户在文本框里输入的内容（例如在点击提交按钮时获取密码）。
+2. **设置或修改初始文本**：你可以通过代码强制清空文本框（`controller.clear()`）或者填入默认值。
+3. **实时监听文字改变**：通过 `controller.addListener(...)` 可以实时捕获用户每一次的击键输入，常用于实现搜索联想词建议或密码强度校验。
+4. **控制光标与选区**：可以通过它精确控制光标的位置，或者高亮选中文本框内的某段文字（通过 `controller.selection`）。

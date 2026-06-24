@@ -1,0 +1,30 @@
+---
+title: "在 Flutter 中你是如何实现自定义动画曲线（Curve）的？"
+---
+
+在 Flutter 中实现自定义动画曲线，通常需要以下几个步骤：
+
+1. 创建一个继承自 `Curve` 的自定义类。
+2. 重写 `transformInternal(double t)` 方法。参数 `t` 代表了线性的动画时间进度，取值范围是从 `0.0` 到 `1.0`。你需要在这个方法里编写你的数学公式，返回转换后的值（注意：返回值可以超出 0.0-1.0 的范围，以实现诸如回弹、超出边界的特殊物理效果）。
+3. 使用 `CurvedAnimation` 将这个自定义的曲线应用到你的动画控制器上。
+
+*注意细节：在面试中，如果你提到**最佳实践是重写 `transformInternal` 方法而不是直接重写 `transform` 方法**，会是一个很大的加分项。因为基类的 `transform` 方法底层会自动帮你拦截和处理 `t == 0.0` 和 `t == 1.0` 的边界情况，然后再去委托调用 `transformInternal`。*
+
+```dart
+class CustomCurve extends Curve {
+  const CustomCurve();
+
+  // 重写 transformInternal 而不是 transform
+  @override
+  double transformInternal(double t) {
+    // 示例：一个简单的缓入缓出（ease-in-out）二次曲线数学公式
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  }
+}
+
+// 使用方式：
+final animation = CurvedAnimation(
+  parent: controller, // 你的 AnimationController
+  curve: const CustomCurve(),
+);
+```

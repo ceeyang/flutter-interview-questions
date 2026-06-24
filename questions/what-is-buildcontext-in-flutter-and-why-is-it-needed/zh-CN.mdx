@@ -1,0 +1,15 @@
+---
+title: "在 Flutter 中什么是 `BuildContext`？为什么需要它？"
+---
+
+`BuildContext` 是 Flutter 框架中极其重要的一个核心概念。简单来说，它是一个**定位器对象**，它的主要作用是追踪并定位当前 Widget 在整个全局 Widget 树（组件树）中的**精确物理位置**。
+
+每个 Widget 在构建时都会被隐式或显式地传递一个独立的 `BuildContext` 对象。
+
+**为什么我们需要它？**
+它的核心重要性在于充当了**组件与底层渲染树/状态树之间的桥梁**。由于单独的 Widget 本身只是一张轻量级的、不可变的蓝图配置，它自身并不保存关于周围环境的信息，因此必须依赖 `BuildContext` 来实现以下功能：
+
+1. **向上查找信息**：诸如 `Theme.of(context)`、`MediaQuery.of(context)`、`Provider.of(context)` 甚至 `Navigator.push(context, ...)` 等常用的全局静态方法，都必须依靠传入当前的 `context`，沿着组件树向上追溯，才能找到最近的匹配数据或组件。
+2. **连接 Element**：在底层，`BuildContext` 实际上就是与其绑定的 `Element` 对象。通过它，开发者可以触及底层状态，比如要求重绘、或者查找对应的底层渲染对象（RenderObject）。
+
+总而言之，没有 `BuildContext`，Widget 就如同一个失去坐标的孤岛，无法知道自己的父节点是谁，也无法获取全局的任何样式和路由状态。

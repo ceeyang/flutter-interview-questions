@@ -1,0 +1,59 @@
+---
+title: "如何创建一个带有吸顶（Persistent Header）效果的列表？"
+---
+
+在 Flutter 中，要创建一个带有吸顶（悬停）效果的列表头部，我们需要使用滑动机制的核心组件 `CustomScrollView`，并结合 `SliverList` 和 `SliverPersistentHeader`。这种组合允许我们在用户往下滚动长列表时，让头部悬停固定在屏幕的顶部。
+
+具体实现步骤如下：
+1. 将整个列表结构作为 `slivers` 数组的子集传递给 `CustomScrollView`。
+2. 使用 `SliverPersistentHeader` 组件来创建头部。重点是通过将其 `pinned` 属性设置为 `true`，来告诉系统它在滚动时应该吸顶。
+3. `SliverPersistentHeader` 强制要求提供一个继承自 `SliverPersistentHeaderDelegate` 的自定义委托类。你需要在这个类中定义头部的最大展开高度、最小收缩高度，以及具体的 UI 构建逻辑。
+
+```dart
+class PersistentHeaderList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          // 吸顶头部区域
+          SliverPersistentHeader(
+            delegate: _MyPersistentHeaderDelegate(),
+            pinned: true, // 设置为 true 实现吸顶悬停效果
+          ),
+          // 列表内容区域
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return ListTile(title: Text('列表项 $index'));
+              },
+              childCount: 100,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// 必须自定义的头部委托类
+class _MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
+  @override
+  double get maxExtent => 100.0; // 头部完全展开时的最大高度
+  
+  @override
+  double get minExtent => 60.0;  // 头部收缩到极致（吸顶）时的最小高度
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.blue,
+      alignment: Alignment.center,
+      child: const Text('吸顶头部', style: TextStyle(color: Colors.white)),
+    );
+  }
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+}
+```

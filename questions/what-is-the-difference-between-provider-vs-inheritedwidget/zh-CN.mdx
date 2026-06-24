@@ -1,0 +1,14 @@
+---
+title: "Provider 和 InheritedWidget 之间有什么区别？"
+---
+
+`InheritedWidget` 和 `Provider` 都是 Flutter 中用于在组件树中自顶向下共享数据的解决方案，但它们的抽象层级和开发体验有着本质的区别。
+
+**`InheritedWidget`（底层原生的基石）：**
+它是 Flutter 框架内置的底层核心组件。它通过在 Widget 树中建立特殊的数据节点，使得后代组件可以跨层级访问数据而无需层层传参（Prop Drilling）。然而，原生的 `InheritedWidget` 存在严重的缺陷：它的模板样板代码（Boilerplate）极其冗长难写，且很难处理复杂的可变状态更新。
+
+**`Provider`（现代的声明式封装）：**
+`Provider` 是一个广受欢迎的第三方包（并且长期受 Flutter 官方极力推崇）。它的**底层原理完全是基于 `InheritedWidget` 构建的**。可以把 `Provider` 视为 `InheritedWidget` 的高级语法糖与豪华封装版。
+它彻底掩盖了底层复杂的样板代码，并结合了 `ChangeNotifier`，使得状态的管理、数据的注入和局部 UI 的精准响应式重建变得难以置信的简单和声明式。它还完美地处理了内存泄漏问题（会在组件销毁时自动调用 `dispose`）。
+
+总结来说，`InheritedWidget` 是枯燥的底层引擎，而 `Provider` 是这台引擎上舒适且易于驾驶的汽车外壳。在现代实际项目中，极少有人直接裸写 `InheritedWidget`，绝大多数人都在使用 `Provider`（或类似框架如 Riverpod）。

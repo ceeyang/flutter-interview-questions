@@ -1,0 +1,25 @@
+---
+title: "解释一下 `mounted` 属性。它有多重要以及何时使用它？"
+---
+
+`mounted` 是一个布尔属性，用于标识一个 `State` 对象（或 `BuildContext`）当前是否还存在于活跃的 Widget 树中。
+
+在创建一个 `State` 对象之后、调用 `initState` 之前，Flutter 框架会将其与一个 `BuildContext` 关联起来，这个过程被称为**“挂载（mount）”**。`State` 对象会一直保持挂载状态，直到框架调用 `dispose()` 销毁它。一旦被销毁，它就处于 unmounted 状态，且永远不会再次构建。
+
+**为什么它很重要？何时使用？**
+如果 `mounted` 为 `false`（即组件已经被移出屏幕销毁），此时调用 `setState()` 会引发严重错误导致应用奔溃。这种情况最常发生在**异步操作**中。例如，你的组件发起了一个耗时的 HTTP 请求，但在请求完成之前，用户按返回键退出了该页面，当请求完成并试图调用 `setState()` 更新 UI 时，组件实际上已经不存在了。
+
+为了防止这种崩溃，在 `State` 类中的任何 `await` 异步挂起之后，调用 `setState()` 前都必须检查 `mounted` 属性：
+
+```dart
+Future<void> loadData() async {
+  final data = await fetchNetworkData();
+  // 如果组件已经被销毁移出树，则直接返回
+  if (!mounted) return; 
+  setState(() {
+    _data = data;
+  });
+}
+```
+
+*注意：从 Flutter 3.10 开始，`mounted` 属性也可以直接在 `BuildContext` 上使用了。这使得在异步操作后使用 `Navigator.of(context)` 等需要 context 的方法前，可以更方便地进行上下文存活性检查。*

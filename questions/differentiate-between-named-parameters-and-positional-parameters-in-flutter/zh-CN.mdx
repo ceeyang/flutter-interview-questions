@@ -1,0 +1,22 @@
+---
+title: "请区分 Dart/Flutter 中的命名参数（Named parameters）和位置参数（Positional parameters）。"
+---
+
+**位置参数（Positional Parameter）** 是通过它们在函数签名中的排列位置来识别的。在调用函数时，传递的实参必须与函数声明时形参的顺序完全一致。
+
+**命名参数（Named Parameters）** 是通过明确指定参数的名称来引用的。这意味着在调用函数时，参数可以按照任何顺序进行传递。这极大地提高了代码的可读性，特别是当一个函数接收大量参数时（这在 Flutter 的 Widget 构造函数中非常常见）。
+
+默认情况下，位置参数是必传的。如果你想声明**可选的位置参数**，需要将其包裹在方括号 `[ ]` 中。
+
+命名参数默认是可选的。要声明**命名参数**，需要将其包裹在大括号 `{ }` 中。如果你想让某个命名参数变为必传项，需要使用 `required` 关键字进行修饰。
+
+```dart
+// 必传的位置参数
+void doSomething(String name, int age) {} 
+
+// 可选的位置参数
+void doSomething(String name, [String greeting = 'Hello']) {} 
+
+// 可选的与必传的命名参数
+void doSomething({required String name, String greeting = 'Hello'}) {} 
+```

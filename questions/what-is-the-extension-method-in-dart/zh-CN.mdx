@@ -1,0 +1,30 @@
+---
+title: "在 Dart 中什么是扩展方法（Extension Method）？"
+---
+
+扩展方法（Extension Method）是 Dart 2.7 引入的一项极其惊艳且强大的语法特性。它允许你**在不修改原有第三方类或底层核心库源码的情况下，直接为它们注入并追加新的自定义方法和属性**。
+
+这就好像你拿到了一个你根本无法控制其源码的黑盒对象（例如系统自带的 `String` 类或 Flutter 的 `Widget` 类），然后直接在它身上插上了你自己编写的新功能。
+
+**创建和使用示例：**
+例如，我们想给系统默认的 `String` 类型增加一个首字母大写的功能：
+
+```dart
+// 使用 extension 关键字定义扩展
+extension StringExtension on String {
+  // this 就代表了当前调用该方法的字符串本身
+  String capitalizeFirstLetter() {
+    if (this.isEmpty) return this;
+    return this[0].toUpperCase() + this.substring(1);
+  }
+}
+
+// 在任何地方都可以极其自然地像调用原生自带方法一样去使用它
+void main() {
+  String myString = 'flutter';
+  // 直接点出你的扩展方法！
+  print(myString.capitalizeFirstLetter()); // 打印出：Flutter
+}
+```
+
+在 Flutter 现代开发中，扩展方法被疯狂地用于构建流畅的链式调用语法（例如给 Widget 写扩展 `Text('hello').padding(8.0).center()`），极大提升了代码的简洁度与可读性。

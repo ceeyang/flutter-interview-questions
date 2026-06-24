@@ -1,0 +1,11 @@
+---
+title: "请区分 Dart 中的 final、const 和 static 关键字。"
+---
+
+- **`final`**：用于定义只能被赋值一次的变量。它是一个**运行时常量（Runtime constant）**，意味着它的值是在程序运行到该代码时才被计算并锁定的。例如，`final time = DateTime.now();` 是合法的，因为当前时间是在运行时确定的。
+
+- **`const`**：用于定义**编译时常量（Compile-time constant）**。它的值必须在程序编译阶段就能确定，不能依赖运行时的任何外部计算。被声明为 `const` 的变量隐式地包含了 `final` 的特性。例如，`const pi = 3.14;` 是合法的，但 `const time = DateTime.now();` 会导致编译报错。此外，`const` 会在内存中对对象进行深度规范化（Canonicalization），这意味着两个结构完全相同的 `const` 实例在内存中实际上是同一个引用。
+
+- **`static`**：用于声明类级别的变量和方法。`static` 成员属于整个类本身，而不属于该类的任何特定实例对象。这意味着你可以在不实例化对象的情况下，直接通过类名来访问它（例如 `ClassName.staticVariable`）。在 Dart 中，`static` 变量是**懒加载（Lazy initialization）**的，即只有在它们第一次被访问时才会真正分配内存和初始化。
+
+注意，这些关键字也可以组合使用。例如，在类中定义常量时，我们经常会使用 `static const` 组合。

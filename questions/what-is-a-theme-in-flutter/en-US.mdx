@@ -2,27 +2,33 @@
 title: What is a `Theme` in Flutter?
 ---
 
-In Flutter, a `Theme` is a widget that provides a way to customize the visual appearance of an app. A `Theme` widget can be used to set the colors, fonts, and other visual properties for a specific part or the entire app.
+In Flutter, a `Theme` is a widget that provides a powerful way to customize the visual appearance of an app. A `Theme` widget can be used to set the colors, typography, shapes, and other visual properties either globally for the entire app or locally for a specific part.
 
-Using a `Theme` widget, we can define a set of colors, fonts, and other properties that apply to all widgets within the Theme's subtree. This can make it easier to maintain consistency in the app's visual appearance and reduce the amount of duplicated code.
+Using a `Theme` widget, we can define a consistent set of design tokens that apply automatically to all widgets within the Theme's subtree. This makes it easier to maintain visual consistency and severely reduces the amount of duplicated styling code.
 
 Here are some common use cases for using a Theme widget:
 
-- Setting the app's primary and accent colors
-- Defining text styles for various widget types (e.g. headings, body text, etc.)
-- Setting default button styles
-- Defining shapes and elevations for Material Design widgets
-- Setting default padding and margins for widgets
+- Setting the app's overall `ColorScheme` (primary, secondary, surface, error colors).
+- Defining a unified `TextTheme` for various typography levels (e.g. display, title, body text).
+- Setting default component styles (like `ElevatedButtonTheme` or `AppBarTheme`).
+- Customizing shapes and elevations for Material Design widgets.
 
 ```dart
 MaterialApp(
   theme: ThemeData(
-    primaryColor: Colors.blue,
-    accentColor: Colors.orange,
-    textTheme: TextTheme(
-      headline1: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-      bodyText1: TextStyle(fontSize: 18),
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.blue,
+      secondary: Colors.orange,
+    ),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 18),
+    ),
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
     ),
   ),
-),
+)
 ```

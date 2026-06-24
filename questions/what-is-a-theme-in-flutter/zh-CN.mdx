@@ -1,0 +1,38 @@
+---
+title: "在 Flutter 中什么是 `Theme`（主题）？"
+---
+
+在 Flutter 中，`Theme` 是一个极其核心的组件，它为我们提供了一种全局统一定制应用程序视觉外观的强大机制。通过配置 `Theme`，你可以设置应用的颜色集、排版体系（字体）、组件形状以及各种基础的视觉属性。
+
+只要在 Widget 树的上层配置了 `Theme`，其子树下的所有标准 Material 组件都会**自动继承并应用**这些设计规范。这极大地减少了我们在每个 UI 组件上重复编写底层颜色和字体样式的冗余代码，从而确保整个应用视觉风格的完美统一。
+
+以下是 `Theme` 组件最常见的几个配置应用场景：
+
+- **配置全局色彩体系**：通过定义 `ColorScheme` 来统一应用的主色调、次要颜色、卡片背景色和错误警报色。
+- **配置全局文本排版系统**：通过 `TextTheme` 统一定义大标题（Display）、子标题（Title）和长篇正文（Body）等不同层级的字体大小和字重。
+- **全局覆盖特定组件的默认样式**：例如通过 `AppBarTheme` 统一所有导航栏的居中和阴影，或通过 `ElevatedButtonTheme` 统一所有主按钮的圆角弧度。
+- 支持一键切换浅色模式（Light Theme）与深色模式（Dark Theme）。
+
+**现代 Flutter 3.x (Material 3) 的标准使用示例：**
+```dart
+MaterialApp(
+  theme: ThemeData(
+    useMaterial3: true, // 启用最新的 Material 3 设计规范
+    // 基于一个种子颜色自动计算并生成全局的和谐色彩体系
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.blue,
+      secondary: Colors.orange,
+    ),
+    // 全局文字排版体系
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 18),
+    ),
+    // 统一配置全局的导航栏样式
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
+    ),
+  ),
+)
+```

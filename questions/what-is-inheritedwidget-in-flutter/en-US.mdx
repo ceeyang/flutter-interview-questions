@@ -2,8 +2,10 @@
 title: What is `InheritedWidget` in Flutter?
 ---
 
-`InheritedWidget` is a class in the Flutter framework that is used to pass data down the widget tree. It provides a convenient way to share data between widgets without having to pass the data explicitly through each individual widget in the tree.
+`InheritedWidget` is a base class in the Flutter framework that is used to efficiently pass data down the widget tree. It provides a convenient, built-in way to share data between widgets without having to manually pass the data via constructor arguments through every single intermediary widget in the tree (a problem known as "prop drilling").
 
-An `InheritedWidget` is a widget that, when it is inserted into the widget tree, can be accessed by descendant widgets using the `context.inheritFromWidgetOfExactType` method. This allows data to be passed down the tree to widgets that are nested several levels deep, without having to pass the data through every single widget in between.
+When an `InheritedWidget` is inserted into the top of a widget tree, any descendant widget deep down the tree can access its stored data using the **`context.dependOnInheritedWidgetOfExactType`** method.
 
-`InheritedWidget` is often used to provide data to descendant widgets that is frequently required, such as the theme or the current locale. By wrapping your application in an `InheritedWidget`, you can make this data available to all of your widgets, and avoid having to pass it down through multiple levels of the widget tree.
+What makes `InheritedWidget` special compared to a simple global variable is its **reactivity**. When the data inside the `InheritedWidget` changes, it has the ability to automatically trigger a rebuild exclusively for the specific descendant widgets that are listening to it, without rebuilding the entire app.
+
+`InheritedWidget` is the fundamental architecture powering state management under the hood. It is heavily used internally by Flutter to provide globally required data, such as `Theme.of(context)` or `MediaQuery.of(context)`, and is also the underlying engine for popular third-party state management libraries like `Provider`.

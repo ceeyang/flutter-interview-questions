@@ -1,0 +1,27 @@
+---
+title: "请解释一下 Dart 中的 async、await 和 Future。"
+---
+
+**`Future`（未来值）**：`Future` 是 Dart 中的核心类，用于表示一个异步操作的最终结果。它代表一个在未来某个时间点才会生成的值（或抛出的错误）。任何执行异步操作的底层函数（例如发起网络请求、读取本地磁盘）通常都会返回一个 `Future` 对象。
+
+**`async`（异步）**：`async` 关键字用于修饰函数声明，用来标记该函数是一个异步函数。当一个函数被标记为 `async` 时，Dart 会自动将它的返回值包装成一个 `Future`。
+
+**`await`（等待）**：`await` 关键字只能在被 `async` 修饰的函数内部使用。它的作用是“挂起（暂停）”当前异步函数的后续执行，直到它所等待的那个 `Future` 执行完成并返回结果。这使得开发者可以用看似同步、线性的代码风格来编写复杂的异步逻辑，避免了传统回调地狱（Callback Hell）。
+
+这三者结合起来，极大地提高了异步代码的可读性和可维护性。
+
+```dart
+// 一个返回 Future 对象的异步函数
+Future<String> fetchNetworkData() async {
+  // 模拟网络请求的耗时延迟
+  await Future.delayed(Duration(seconds: 2));
+  return '获取到的数据';
+}
+
+void main() async {
+  print('加载中...');
+  // 代码执行到这里会“暂停”，直到 fetchNetworkData 完成并返回结果
+  String data = await fetchNetworkData();
+  print(data);
+}
+```

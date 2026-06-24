@@ -2,22 +2,25 @@
 title: What is `FutureBuilder` in Flutter and how is it used to build dynamic UI?
 ---
 
-`FutureBuilder` is a widget in Flutter that allows us to build a dynamic UI based on the value of a Future. A Future is an asynchronous operation that returns a value in the future. For example, we might use a Future to retrieve data from a server, or to perform a long-running computation.
+`FutureBuilder` is a widget in Flutter that allows us to build a dynamic UI based on the latest snapshot of interaction with a `Future`. A Future represents an asynchronous operation that will return a value (or an error) at some point in the future. For example, we might use a Future to retrieve data from a server, or to perform a long-running computation.
 
-The `FutureBuilder` widget listens to the Future and builds the UI based on its state. The UI can be different for three states:
+The `FutureBuilder` widget listens to the Future and re-builds the UI based on its `ConnectionState`. The UI is typically different for three main scenarios:
 
-**Uncompleted**: When the Future is running, we can show a loading indicator or any other widget to indicate that the operation is in progress.
+**Uncompleted (Waiting)**: When the Future is still running (`ConnectionState.waiting`), we generally show a loading indicator to tell the user that an operation is in progress.
 
-**Completed with data**: When the Future completes with data, we can use the data to build the UI. For example, we might display a list of items retrieved from the server.
+**Completed with data**: When the Future successfully completes with data (`snapshot.hasData`), we extract that data to build the UI. For example, we might display a list of items retrieved from the server.
 
-**Completed with an error**: If the Future completes with an error, we can show an error message or any other widget to indicate that something went wrong.
+**Completed with an error**: If the Future completes with an exception (`snapshot.hasError`), we extract the error message to show a visual fallback to the user.
 
-Here's an example of using `FutureBuilder` to retrieve data from a server and display a list of items:
+Here is a modern, null-safe example of using `FutureBuilder` to fetch and display a list:
 
 ```dart
 Future<List<String>> _fetchData() async {
-  // Simulate fetching data from a server
-  return Future.delayed(Duration(seconds: 2), () => ["Item 1", "Item 2", "Item 3"]);
+  // Simulate fetching data from a server with a 2-second delay
+  return Future.delayed(
+    const Duration(seconds: 2), 
+    () => ["Item 1", "Item 2", "Item 3"],
+  );
 }
 
 @override
@@ -25,20 +28,30 @@ Widget build(BuildContext context) {
   return FutureBuilder<List<String>>(
     future: _fetchData(),
     builder: (context, snapshot) {
+      // 1. Check if the Future is still loading
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return const Center(child: CircularProgressIndicator());
+      }
+      
+      // 2. Check if the Future completed with an error
+      if (snapshot.hasError) {
+        return Center(child: Text("Error: ${snapshot.error}"));
+      }
+      
+      // 3. The Future completed successfully, we can safely use the data
       if (snapshot.hasData) {
+        final data = snapshot.data!; // Use ! to unwrap safely
         return ListView.builder(
-          itemCount: snapshot.data.length,
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            return Text(snapshot.data[index]);
+            return ListTile(title: Text(data[index]));
           },
         );
-      } else if (snapshot.hasError) {
-        return Text("Error: ${snapshot.error}");
       }
-      return CircularProgressIndicator();
+      
+      // Fallback state
+      return const SizedBox.shrink();
     },
   );
 }
 ```
-
-In this example, the `_fetchData` function returns a Future that retrieves data from a server. The `FutureBuilder` widget listens to the Future and uses the `builder` callback to build the UI based on its state. If the Future is running, the `CircularProgressIndicator` is displayed. If the Future completes with data, the data is displayed in a list. If the Future completes with an error, an error message is displayed.

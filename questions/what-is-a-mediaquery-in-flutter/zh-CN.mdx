@@ -1,0 +1,14 @@
+---
+title: "在 Flutter 中什么是 `MediaQuery`？"
+---
+
+在 Flutter 中，`MediaQuery` 是一个提供设备屏幕尺寸、方向和其它显示相关特征系统信息的**顶层内置数据组件**。它通常被广泛用于开发**响应式布局（Responsive UI）**，以确保应用能自适应不同尺寸和像素密度的设备。
+
+`MediaQuery` 通常作为 `MaterialApp` 的内部机制根植在 Widget 树的顶层。我们可以通过 `MediaQuery.of(context)` 获取一个包含各种设备信息的 `MediaQueryData` 对象：
+
+- **屏幕尺寸（Screen size）**：`MediaQuery.sizeOf(context)` 返回设备屏幕的逻辑像素宽高。
+- **屏幕方向（Screen orientation）**：`MediaQuery.orientationOf(context)` 返回设备当前的横竖屏状态（Portrait 或 Landscape）。
+- **刘海屏与安全区域（Safe Area）**：`MediaQuery.paddingOf(context)` 可以获取屏幕四周被物理刘海或系统状态栏遮挡的安全内边距。
+- **像素密度（Pixel density）**：`MediaQueryData.devicePixelRatio` 返回物理像素与逻辑像素的缩放比例。
+- **文本缩放比例（Text scaling）**：`MediaQuery.textScalerOf(context)`（*现代 Flutter 替代了旧的 textScaleFactor*）返回用户在系统设置中偏好的字体缩放系数，常用于动态调整应用内的字体大小。
+- **深色模式（Dark mode）**：`MediaQuery.platformBrightnessOf(context)` 返回系统当前处于浅色还是深色模式。

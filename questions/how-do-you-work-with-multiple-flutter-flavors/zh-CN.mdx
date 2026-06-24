@@ -1,0 +1,25 @@
+---
+title: "在 Flutter 中，你是如何处理多环境/多渠道打包（Flavors）的？"
+---
+
+在 Flutter 中处理多环境配置（通常称为 Flavors，例如区分开发、测试和生产环境），一般需要结合原生平台的配置和 Dart 的入口点来实现：
+
+1. **Android 端配置**：
+在 `android/app/build.gradle` 中定义 `productFlavors` 闭包。例如，添加 `dev`、`staging` 和 `prod`。你可以在这里为它们分别配置不同的应用包名（`applicationIdSuffix`）、应用名称（`resValue`）以及特定环境的变量。
+
+2. **iOS 端配置**：
+在 Xcode 中设置不同的 Scheme（方案）和 Build Configuration（构建配置）。你需要为每个环境创建对应的 `.xcconfig` 文件，以动态配置不同的 Bundle Identifier、App 图标和应用名称。
+
+3. **Dart 入口点分离**：
+在代码层面，为不同的环境创建单独的入口文件，例如 `main_dev.dart`、`main_staging.dart` 和 `main_prod.dart`。在这些文件中注入特定环境的配置参数（如 API 请求域名、第三方 SDK 的 Key），然后再统一调用底层的 `runApp()` 方法。
+
+**运行与构建命令**：
+在终端执行指令时，使用 `--flavor` 标志告诉原生端该构建哪个渠道，并使用 `-t` 标志指定对应的 Dart 启动文件：
+
+```sh
+# 运行开发环境
+flutter run --flavor dev -t lib/main_dev.dart
+
+# 构建生产环境的 Android 安装包
+flutter build apk --flavor prod -t lib/main_prod.dart
+```

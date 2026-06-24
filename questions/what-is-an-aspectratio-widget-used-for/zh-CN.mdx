@@ -1,0 +1,24 @@
+---
+title: "在 Flutter 中 `AspectRatio` 组件是用来做什么的？"
+---
+
+在 Flutter 中，`AspectRatio` 组件专门用于强制其子组件保持特定的**宽高比（Aspect Ratio）**，无论其外层父容器的尺寸如何变化。这在需要固定形状（如正方形、16:9 的视频播放器或 4:3 的缩略图）的场景中非常有用。
+
+宽高比被定义为组件的“宽度除以高度”。`AspectRatio` 接受一个 `aspectRatio` 参数，并会自动调整组件的宽度或高度，以确保始终维持这个比例。另一个未指定的维度会自动进行计算匹配。
+
+例如，如果您想创建一个正方形组件，您可以将该组件包裹在一个 `aspectRatio` 为 `1.0` 的 `AspectRatio` 中，无论父容器如何拉伸，该组件将始终保持正方形：
+
+```dart
+AspectRatio(
+  aspectRatio: 1.0, // 宽:高 = 1:1
+  child: Container(
+    color: Colors.red,
+  ),
+)
+
+// 常见的 16:9 比例
+AspectRatio(
+  aspectRatio: 16 / 9, 
+  child: VideoPlayerWidget(),
+)
+```
