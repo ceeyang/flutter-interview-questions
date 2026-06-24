@@ -22,116 +22,116 @@
 
 | No. | Questions |
 | --- | :-- |
-| 1 | [什么是 Flutter？](#what-is-flutter) |
-| 2 | [什么是 Dart 语言？为什么 Flutter 选择使用它？](#what-is-dart-and-why-does-flutter-use-it) |
-| 3 | [什么是 `pubspec.yaml` 文件？它有什么作用？](#what-is-pubspecyaml-file-and-what-does-it-do) |
-| 4 | [在 Flutter 中，`main()` 和 `runApp()` 函数有什么区别？](#what-is-the-difference-between-main-and-runapp-functions-in-flutter) |
-| 5 | [请区分 Dart/Flutter 中的命名参数（Named parameters）和位置参数（Positional parameters）。](#differentiate-between-named-parameters-and-positional-parameters-in-flutter) |
-| 6 | [在 Flutter 中，什么是 Widget（组件）？](#what-are-widgets-in-flutter) |
-| 7 | [在 Flutter 中，热重载（Hot Reload）和热重启（Hot Restart）有什么区别？](#what-is-hot-reload-and-hot-restart-in-flutter) |
-| 8 | [什么是开源软件（Open-source software）？Flutter 是开源的吗？](#what-do-you-mean-by-open-source-software-is-flutter-open-source) |
-| 9 | [在 Flutter 中，`StatelessWidget` 和 `StatefulWidget` 的区别是什么？](#differentiate-between-statelesswidget-and-statefulwidget-in-flutter) |
-| 11 | [在 Flutter 中，Package（包）和 Plugin（插件）有什么区别？](#what-are-packages-and-plugins-in-flutter) |
-| 12 | [请列举一些使用 Flutter 开发的知名应用程序。](#name-some-popular-apps-made-with-flutter) |
-| 15 | [请区分 Dart 中的 final、const 和 static 关键字。](#differentiate-between-final-const-and-static-keyword) |
-| 19 | [在 Dart 中什么是胖箭头语法（Fat Arrow Notation）？](#what-is-fat-arrow-notation-in-dart) |
-| 20 | [在 Flutter 中 `SafeArea` 组件的目的是什么？](#what-is-the-purpose-of-safearea-widget-in-flutter) |
-| 25 | [请区分 `mainAxisAlignment` 和 `crossAxisAlignment` 的概念。](#differentiate-between-mainaxisalignment-and-crossaxisalignment) |
-| 27 | [`Container` 和 `SizedBox` 组件有什么区别？](#what-is-the-difference-between-container-and-sizedbox-widget) |
-| 28 | [什么是空值感知运算符（Null-aware operators）？](#what-do-you-mean-by-null-aware-operators) |
-| 33 | [什么是 `TextEditingController`？](#what-is-texteditingcontroller) |
-| 37 | [在 Flutter 中 `AspectRatio` 组件是用来做什么的？](#what-is-an-aspectratio-widget-used-for) |
-| 40 | [在 Dart 和 Flutter 中，`assert`（断言）是用来做什么的？](#what-is-assert-used-for-in-dart-and-flutter) |
-| 47 | [在 Flutter 框架中，你会如何发起 HTTP 网络请求？](#how-would-you-make-http-requests-in-the-flutter-framework) |
-| 51 | [Flutter 框架主要是由哪些底层技术构建而成的？](#what-technology-is-flutter-built-with) |
-| 54 | [在 StatefulWidget 中 `initState()` 方法的作用是什么？](#what-is-the-purpose-of-the-initstate-method-in-a-statefulwidget) |
-| 55 | [在 StatefulWidget 中 `dispose()` 方法的作用是什么？](#what-is-the-purpose-of-the-dispose-method-in-a-statefulwidget) |
-| 57 | [在 Flutter 中 padding 和 margin 有什么区别？](#what-is-the-difference-between-padding-and-margin-in-flutter) |
-| 58 | [在 Flutter 中 `Scaffold` 组件的作用是什么？](#what-is-the-purpose-of-the-scaffold-widget-in-flutter) |
-| 59 | [在 Flutter 中 `Expanded` 组件的作用是什么？](#what-is-the-purpose-of-the-expanded-widget-in-flutter) |
-| 62 | [在 Flutter 中 `SingleChildScrollView` 组件的作用是什么？](#what-is-the-purpose-of-the-singlechildscrollview-widget-in-flutter) |
-| 63 | [在 Flutter 中 `Stack` 组件的作用是什么？](#what-is-the-purpose-of-the-stack-widget-in-flutter) |
-| 64 | [在 Flutter 中什么是 `Theme`（主题）？](#what-is-a-theme-in-flutter) |
-| 65 | [在 Flutter 中 `Visibility` 组件的作用是什么？](#what-is-the-purpose-of-the-visibility-widget-in-flutter) |
-| 66 | [在 Flutter 中，你是如何在不同页面（Screens）之间进行路由跳转的？](#how-do-you-navigate-between-screens-in-flutter) |
-| 67 | [在 Flutter 中什么是底部模态抽屉（Modal Bottom Sheet）？](#what-is-a-modal-bottom-sheet-in-flutter) |
-| 69 | [在 Flutter 中，你是如何使用 `Positioned` 组件的？](#how-do-you-use-the-positioned-widget-in-flutter) |
-| 70 | [在 Flutter 中，你是如何在不同页面之间传递数据的？](#how-do-you-pass-data-between-screens-in-flutter) |
-| 75 | [在 Flutter 中 `Navigator` 类的作用是什么？](#what-is-the-purpose-of-the-navigator-class-in-flutter) |
-| 77 | [在 Flutter 中 `FittedBox` 组件的作用是什么？](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter) |
-| 79 | [在 Flutter 中 Cupertino 和 Material Design 有什么区别？](#what-is-the-difference-between-cupertino-and-material-design-in-flutter) |
-| 80 | [在 Flutter 中 Material Design Icons 包的作用是什么？](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter) |
-| 99 | [在 Dart 中，Object、dynamic 和 var 有什么区别？](#how-doobjectdynamic-andvardiffer-in-dart) |
+| 1 | [什么是 Flutter？](#-flutter) |
+| 2 | [什么是 Dart 语言？为什么 Flutter 选择使用它？](#-dart-flutter-) |
+| 3 | [什么是 `pubspec.yaml` 文件？它有什么作用？](#-pubspecyaml-) |
+| 4 | [在 Flutter 中，`main()` 和 `runApp()` 函数有什么区别？](#-flutter-main-runapp-) |
+| 5 | [请区分 Dart/Flutter 中的命名参数（Named parameters）和位置参数（Positional parameters）。](#-dartflutter-named-parameterspositional-parameters) |
+| 6 | [在 Flutter 中，什么是 Widget（组件）？](#-flutter-widget) |
+| 7 | [在 Flutter 中，热重载（Hot Reload）和热重启（Hot Restart）有什么区别？](#-flutter-hot-reloadhot-restart) |
+| 8 | [什么是开源软件（Open-source software）？Flutter 是开源的吗？](#open-source-softwareflutter-) |
+| 9 | [在 Flutter 中，`StatelessWidget` 和 `StatefulWidget` 的区别是什么？](#-flutter-statelesswidget-statefulwidget-) |
+| 11 | [在 Flutter 中，Package（包）和 Plugin（插件）有什么区别？](#-flutter-package-plugin) |
+| 12 | [请列举一些使用 Flutter 开发的知名应用程序。](#-flutter-) |
+| 15 | [请区分 Dart 中的 final、const 和 static 关键字。](#-dart-finalconst-static-) |
+| 19 | [在 Dart 中什么是胖箭头语法（Fat Arrow Notation）？](#-dart-fat-arrow-notation) |
+| 20 | [在 Flutter 中 `SafeArea` 组件的目的是什么？](#-flutter-safearea-) |
+| 25 | [请区分 `mainAxisAlignment` 和 `crossAxisAlignment` 的概念。](#-mainaxisalignment-crossaxisalignment-) |
+| 27 | [`Container` 和 `SizedBox` 组件有什么区别？](#container-sizedbox-) |
+| 28 | [什么是空值感知运算符（Null-aware operators）？](#null-aware-operators) |
+| 33 | [什么是 `TextEditingController`？](#-texteditingcontroller) |
+| 37 | [在 Flutter 中 `AspectRatio` 组件是用来做什么的？](#-flutter-aspectratio-) |
+| 40 | [在 Dart 和 Flutter 中，`assert`（断言）是用来做什么的？](#-dart-flutter-assert) |
+| 47 | [在 Flutter 框架中，你会如何发起 HTTP 网络请求？](#-flutter-http-) |
+| 51 | [Flutter 框架主要是由哪些底层技术构建而成的？](#flutter-) |
+| 54 | [在 StatefulWidget 中 `initState()` 方法的作用是什么？](#-statefulwidget-initstate-) |
+| 55 | [在 StatefulWidget 中 `dispose()` 方法的作用是什么？](#-statefulwidget-dispose-) |
+| 57 | [在 Flutter 中 padding 和 margin 有什么区别？](#-flutter-padding-margin-) |
+| 58 | [在 Flutter 中 `Scaffold` 组件的作用是什么？](#-flutter-scaffold-) |
+| 59 | [在 Flutter 中 `Expanded` 组件的作用是什么？](#-flutter-expanded-) |
+| 62 | [在 Flutter 中 `SingleChildScrollView` 组件的作用是什么？](#-flutter-singlechildscrollview-) |
+| 63 | [在 Flutter 中 `Stack` 组件的作用是什么？](#-flutter-stack-) |
+| 64 | [在 Flutter 中什么是 `Theme`（主题）？](#-flutter-theme) |
+| 65 | [在 Flutter 中 `Visibility` 组件的作用是什么？](#-flutter-visibility-) |
+| 66 | [在 Flutter 中，你是如何在不同页面（Screens）之间进行路由跳转的？](#-flutter-screens) |
+| 67 | [在 Flutter 中什么是底部模态抽屉（Modal Bottom Sheet）？](#-flutter-modal-bottom-sheet) |
+| 69 | [在 Flutter 中，你是如何使用 `Positioned` 组件的？](#-flutter-positioned-) |
+| 70 | [在 Flutter 中，你是如何在不同页面之间传递数据的？](#-flutter-) |
+| 75 | [在 Flutter 中 `Navigator` 类的作用是什么？](#-flutter-navigator-) |
+| 77 | [在 Flutter 中 `FittedBox` 组件的作用是什么？](#-flutter-fittedbox-) |
+| 79 | [在 Flutter 中 Cupertino 和 Material Design 有什么区别？](#-flutter-cupertino-material-design-) |
+| 80 | [在 Flutter 中 Material Design Icons 包的作用是什么？](#-flutter-material-design-icons-) |
+| 99 | [在 Dart 中，Object、dynamic 和 var 有什么区别？](#-dart-objectdynamic-var-) |
 
 ### 中级 (Intermediate)
 
 | No. | Questions |
 | --- | :-- |
-| 10 | [在 Flutter 中什么是 `BuildContext`？为什么需要它？](#what-is-buildcontext-in-flutter-and-why-is-it-needed) |
-| 13 | [Flutter 中有哪些不同的构建模式（Build Modes）？](#what-are-different-build-modes-in-flutter) |
-| 14 | [在 Flutter 中 `WidgetsApp` 和 `MaterialApp` 有什么区别？](#what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter) |
-| 16 | [请简述 `StatefulWidget` 的完整生命周期方法。](#what-are-statefulwidget-lifecycle-methods-explain-briefly) |
-| 17 | [什么是 Key？为什么我们需要使用它们？](#what-are-keys-and-why-do-we-need-them) |
-| 18 | [`Expanded` 和 `Flexible` 组件有什么区别？](#what-is-the-difference-between-expanded-and-flexible-widget) |
-| 22 | [在 Dart 中什么是扩展方法（Extension Method）？](#what-is-the-extension-method-in-dart) |
-| 23 | [解释一下 `mounted` 属性。它有多重要以及何时使用它？](#explain-the-mounted-property-how-is-it-important-and-when-to-use-it) |
-| 24 | [什么是健全的空安全（Sound Null Safety）？](#what-is-sound-null-safety) |
-| 26 | [什么是 Mixin？如何使用它们？](#what-are-mixins-how-to-use-them) |
-| 29 | [什么是 `AppLifecycleState`（应用生命周期状态）？](#what-is-applifecyclestate) |
-| 30 | [在 Flutter 中 `NetworkImage` 和 `Image.network` 有什么区别？](#what-is-the-difference-between-networkimage-and-imagenetwork-in-flutter) |
-| 31 | [请解释一下 Dart 中的 async、await 和 Future。](#explain-async-await-and-future) |
-| 32 | [什么是 `resizeToAvoidBottomInset`？什么情况下应该使用它？](#what-is-resizetoavoidbottominset-when-should-we-use-it) |
-| 34 | [什么是 `Animation` 和 `AnimationController`？](#what-is-animation-and-animationcontroller) |
-| 39 | [在 Dart/Flutter 中，`Stream` 和 `Future` 的区别是什么？](#differentiate-between-stream-and-future-in-flutter) |
-| 41 | [你能解释一下在 Flutter 中创建自定义组件（Custom Widgets）的过程吗？](#can-you-explain-the-process-of-creating-custom-widgets-in-flutter) |
-| 42 | [在 Dart 中什么是 Typedef？](#what-is-typedef-in-dart) |
-| 43 | [什么是 `FutureBuilder`？如何用它构建动态 UI？](#what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui) |
-| 44 | [在 Flutter 中你是如何处理异常的？你使用过哪些策略？](#how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used) |
-| 46 | [在 Flutter 中什么是 DevTools（开发者工具）？](#what-are-devtools-in-flutter) |
-| 48 | [什么是工厂构造函数（Factory constructor）？](#what-is-factory-constructor) |
-| 50 | [请解释一下 Flutter（Dart）中的单例类（Singleton class）。](#explain-singleton-class-in-flutter) |
-| 52 | [什么是事件循环（Event Loop）？](#what-is-the-event-loop) |
-| 53 | [Provider 和 InheritedWidget 之间有什么区别？](#what-is-the-difference-between-provider-vs-inheritedwidget) |
-| 56 | [在 Flutter 中什么是 `GlobalKey`？](#what-is-a-globalkey-in-flutter) |
-| 60 | [在 Flutter 中你是如何处理用户输入的？](#how-do-you-handle-user-input-in-flutter) |
-| 61 | [在 Flutter 中 `LayoutBuilder` 组件的作用是什么？](#what-is-the-purpose-of-the-layoutbuilder-widget-in-flutter) |
-| 68 | [在 Flutter 中，你是如何使用 `ValueNotifier` 类的？](#how-do-you-use-the-valuenotifier-class-in-flutter) |
-| 71 | [在 Flutter 中什么是 `MediaQuery`？](#what-is-a-mediaquery-in-flutter) |
-| 72 | [在 StatefulWidget 中 `didUpdateWidget` 方法的作用是什么？](#what-is-the-purpose-of-the-didupdatewidget-method-in-a-statefulwidget) |
-| 74 | [在 Flutter 中 `AnimatedBuilder` 组件的作用是什么？](#what-is-the-purpose-of-the-animatedbuilder-widget-in-flutter) |
-| 76 | [在 Flutter 中 `AnimatedSwitcher` 组件的作用是什么？](#what-is-the-purpose-of-the-animatedswitcher-widget-in-flutter) |
-| 78 | [在 Flutter 中什么是状态管理（State Management）？](#what-is-state-management-in-flutter) |
-| 87 | [在 Flutter 中，你是如何实现可拖拽（Draggable）组件的？](#how-do-you-implement-a-draggable-widget-in-flutter) |
-| 88 | [在开发 Flutter 应用时，你会提供无障碍支持（Accessibility）吗？你是怎么做的？](#how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all) |
-| 89 | [如何创建一个带有吸顶（Persistent Header）效果的列表？](#how-to-create-a-list-with-persistent-headers) |
-| 91 | [请解释一下在 Flutter 中什么是 Ticker（滴答定时器）？](#explain-what-a-ticker-is-in-flutter) |
-| 92 | [在 Dart/Flutter 中，主要有哪几种类型的 Stream（数据流）？](#what-are-the-various-kinds-of-streams-present-in-flutter) |
-| 98 | [在 Flutter 中，JIT 和 AOT 编译有什么区别？](#what-are-the-differences-between-jit-and-aot) |
-| 100 | [在 Dart 中，Mixin 和 Interface（接口）有什么区别？](#how-do-mixins-differ-from-interfaces-in-dart) |
+| 10 | [在 Flutter 中什么是 `BuildContext`？为什么需要它？](#-flutter-buildcontext) |
+| 13 | [Flutter 中有哪些不同的构建模式（Build Modes）？](#flutter-build-modes) |
+| 14 | [在 Flutter 中 `WidgetsApp` 和 `MaterialApp` 有什么区别？](#-flutter-widgetsapp-materialapp-) |
+| 16 | [请简述 `StatefulWidget` 的完整生命周期方法。](#-statefulwidget-) |
+| 17 | [什么是 Key？为什么我们需要使用它们？](#-key) |
+| 18 | [`Expanded` 和 `Flexible` 组件有什么区别？](#expanded-flexible-) |
+| 22 | [在 Dart 中什么是扩展方法（Extension Method）？](#-dart-extension-method) |
+| 23 | [解释一下 `mounted` 属性。它有多重要以及何时使用它？](#-mounted-) |
+| 24 | [什么是健全的空安全（Sound Null Safety）？](#sound-null-safety) |
+| 26 | [什么是 Mixin？如何使用它们？](#-mixin) |
+| 29 | [什么是 `AppLifecycleState`（应用生命周期状态）？](#-applifecyclestate) |
+| 30 | [在 Flutter 中 `NetworkImage` 和 `Image.network` 有什么区别？](#-flutter-networkimage-imagenetwork-) |
+| 31 | [请解释一下 Dart 中的 async、await 和 Future。](#-dart-asyncawait-future) |
+| 32 | [什么是 `resizeToAvoidBottomInset`？什么情况下应该使用它？](#-resizetoavoidbottominset) |
+| 34 | [什么是 `Animation` 和 `AnimationController`？](#-animation-animationcontroller) |
+| 39 | [在 Dart/Flutter 中，`Stream` 和 `Future` 的区别是什么？](#-dartflutter-stream-future-) |
+| 41 | [你能解释一下在 Flutter 中创建自定义组件（Custom Widgets）的过程吗？](#-flutter-custom-widgets) |
+| 42 | [在 Dart 中什么是 Typedef？](#-dart-typedef) |
+| 43 | [什么是 `FutureBuilder`？如何用它构建动态 UI？](#-futurebuilder-ui) |
+| 44 | [在 Flutter 中你是如何处理异常的？你使用过哪些策略？](#-flutter-) |
+| 46 | [在 Flutter 中什么是 DevTools（开发者工具）？](#-flutter-devtools) |
+| 48 | [什么是工厂构造函数（Factory constructor）？](#factory-constructor) |
+| 50 | [请解释一下 Flutter（Dart）中的单例类（Singleton class）。](#-flutterdartsingleton-class) |
+| 52 | [什么是事件循环（Event Loop）？](#event-loop) |
+| 53 | [Provider 和 InheritedWidget 之间有什么区别？](#provider-inheritedwidget-) |
+| 56 | [在 Flutter 中什么是 `GlobalKey`？](#-flutter-globalkey) |
+| 60 | [在 Flutter 中你是如何处理用户输入的？](#-flutter-) |
+| 61 | [在 Flutter 中 `LayoutBuilder` 组件的作用是什么？](#-flutter-layoutbuilder-) |
+| 68 | [在 Flutter 中，你是如何使用 `ValueNotifier` 类的？](#-flutter-valuenotifier-) |
+| 71 | [在 Flutter 中什么是 `MediaQuery`？](#-flutter-mediaquery) |
+| 72 | [在 StatefulWidget 中 `didUpdateWidget` 方法的作用是什么？](#-statefulwidget-didupdatewidget-) |
+| 74 | [在 Flutter 中 `AnimatedBuilder` 组件的作用是什么？](#-flutter-animatedbuilder-) |
+| 76 | [在 Flutter 中 `AnimatedSwitcher` 组件的作用是什么？](#-flutter-animatedswitcher-) |
+| 78 | [在 Flutter 中什么是状态管理（State Management）？](#-flutter-state-management) |
+| 87 | [在 Flutter 中，你是如何实现可拖拽（Draggable）组件的？](#-flutter-draggable) |
+| 88 | [在开发 Flutter 应用时，你会提供无障碍支持（Accessibility）吗？你是怎么做的？](#-flutter-accessibility) |
+| 89 | [如何创建一个带有吸顶（Persistent Header）效果的列表？](#persistent-header) |
+| 91 | [请解释一下在 Flutter 中什么是 Ticker（滴答定时器）？](#-flutter-ticker) |
+| 92 | [在 Dart/Flutter 中，主要有哪几种类型的 Stream（数据流）？](#-dartflutter-stream) |
+| 98 | [在 Flutter 中，JIT 和 AOT 编译有什么区别？](#-flutter-jit-aot-) |
+| 100 | [在 Dart 中，Mixin 和 Interface（接口）有什么区别？](#-dart-mixin-interface) |
 
 ### 高级 (Advanced)
 
 | No. | Questions |
 | --- | :-- |
-| 21 | [什么是 Slivers？](#what-are-slivers) |
-| 35 | [在 Flutter 中什么是 `InheritedWidget`？](#what-is-inheritedwidget-in-flutter) |
-| 36 | [什么是 Flutter Tree Shaking（摇树优化）？](#what-is-flutter-tree-shaking) |
-| 38 | [什么是 `vsync`？请详细解释。](#what-is-vsync-explain) |
-| 45 | [在 Flutter 中什么是 Isolate（隔离区）？](#what-is-isolate-in-flutter) |
-| 49 | [你能解释一下测试 Flutter 应用程序的流程吗？](#can-you-explain-the-process-of-testing-a-flutter-app) |
-| 73 | [在 Flutter 中什么是 `CustomPainter`？](#what-is-a-custompainter-in-flutter) |
-| 81 | [请解释一下你会如何将 Flutter 应用程序部署到 Google Play 或 App Store？](#explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store) |
-| 82 | [使用 Flutter Inspector（检查器）有哪些优势与作用？](#what-are-the-advantages-of-a-flutter-inspector) |
-| 83 | [请列举 Android 端 `FlutterActivity` 的主要职责。](#list-the-responsibilities-of-flutteractivity) |
-| 84 | [您能描述一下如何在 Flutter 应用程序中实现国际化（i18n）吗？](#can-you-describe-how-to-implement-internationalization-in-a-flutter-app) |
-| 85 | [在 Flutter 中，你是如何实现自定义的页面跳转过渡动画（Transition）的？](#how-do-you-implement-a-custom-transition-between-screens-in-flutter) |
-| 86 | [在 Flutter 中你是如何实现自定义动画曲线（Curve）的？](#how-do-you-implement-a-custom-animation-curve-in-flutter) |
-| 90 | [在 Flutter 中，Isolate 之间可以通信吗？请描述什么是 Isolate？](#can-you-communicate-between-isolates-describe-an-isolate) |
-| 93 | [什么是 Flutter 的渲染流水线（Rendering Pipeline）？它的工作原理是怎样的？](#what-is-the-flutter-rendering-pipeline-and-how-does-it-work) |
-| 94 | [在 Flutter 架构中 `FlutterEngine`（Flutter引擎）扮演了什么角色？](#what-is-the-role-of-the-flutterengine-in-the-flutter-framework) |
-| 95 | [在 Flutter 中什么是平台通道（Platform Channels）？你会在什么场景下使用它们？](#what-are-platform-channels-in-flutter-and-when-would-you-use-them) |
-| 96 | [在 Flutter 中，你是如何处理多环境/多渠道打包（Flavors）的？](#how-do-you-work-with-multiple-flutter-flavors) |
-| 97 | [在 Flutter 中，代码拆分（Code-splitting）是什么？它有什么帮助？](#what-is-code-splitting-in-flutter-and-how-does-it-help) |
+| 21 | [什么是 Slivers？](#-slivers) |
+| 35 | [在 Flutter 中什么是 `InheritedWidget`？](#-flutter-inheritedwidget) |
+| 36 | [什么是 Flutter Tree Shaking（摇树优化）？](#-flutter-tree-shaking) |
+| 38 | [什么是 `vsync`？请详细解释。](#-vsync) |
+| 45 | [在 Flutter 中什么是 Isolate（隔离区）？](#-flutter-isolate) |
+| 49 | [你能解释一下测试 Flutter 应用程序的流程吗？](#-flutter-) |
+| 73 | [在 Flutter 中什么是 `CustomPainter`？](#-flutter-custompainter) |
+| 81 | [请解释一下你会如何将 Flutter 应用程序部署到 Google Play 或 App Store？](#-flutter-google-play-app-store) |
+| 82 | [使用 Flutter Inspector（检查器）有哪些优势与作用？](#-flutter-inspector) |
+| 83 | [请列举 Android 端 `FlutterActivity` 的主要职责。](#-android-flutteractivity-) |
+| 84 | [您能描述一下如何在 Flutter 应用程序中实现国际化（i18n）吗？](#-flutter-i18n) |
+| 85 | [在 Flutter 中，你是如何实现自定义的页面跳转过渡动画（Transition）的？](#-flutter-transition) |
+| 86 | [在 Flutter 中你是如何实现自定义动画曲线（Curve）的？](#-flutter-curve) |
+| 90 | [在 Flutter 中，Isolate 之间可以通信吗？请描述什么是 Isolate？](#-flutter-isolate-isolate) |
+| 93 | [什么是 Flutter 的渲染流水线（Rendering Pipeline）？它的工作原理是怎样的？](#-flutter-rendering-pipeline) |
+| 94 | [在 Flutter 架构中 `FlutterEngine`（Flutter引擎）扮演了什么角色？](#-flutter-flutterengineflutter) |
+| 95 | [在 Flutter 中什么是平台通道（Platform Channels）？你会在什么场景下使用它们？](#-flutter-platform-channels) |
+| 96 | [在 Flutter 中，你是如何处理多环境/多渠道打包（Flavors）的？](#-flutter-flavors) |
+| 97 | [在 Flutter 中，代码拆分（Code-splitting）是什么？它有什么帮助？](#-flutter-code-splitting) |
 
 <!-- QUESTIONS:TOC:END -->
 
@@ -3277,46 +3277,46 @@ class Dog implements Animal {
 
 <!-- QUESTIONS:EASY:START -->
 
-1. [什么是 Flutter？](#what-is-flutter)
-2. [什么是 Dart 语言？为什么 Flutter 选择使用它？](#what-is-dart-and-why-does-flutter-use-it)
-3. [什么是 `pubspec.yaml` 文件？它有什么作用？](#what-is-pubspecyaml-file-and-what-does-it-do)
-4. [在 Flutter 中，`main()` 和 `runApp()` 函数有什么区别？](#what-is-the-difference-between-main-and-runapp-functions-in-flutter)
-5. [请区分 Dart/Flutter 中的命名参数（Named parameters）和位置参数（Positional parameters）。](#differentiate-between-named-parameters-and-positional-parameters-in-flutter)
-6. [在 Flutter 中，什么是 Widget（组件）？](#what-are-widgets-in-flutter)
-7. [在 Flutter 中，热重载（Hot Reload）和热重启（Hot Restart）有什么区别？](#what-is-hot-reload-and-hot-restart-in-flutter)
-8. [什么是开源软件（Open-source software）？Flutter 是开源的吗？](#what-do-you-mean-by-open-source-software-is-flutter-open-source)
-9. [在 Flutter 中，`StatelessWidget` 和 `StatefulWidget` 的区别是什么？](#differentiate-between-statelesswidget-and-statefulwidget-in-flutter)
-10. [在 Flutter 中，Package（包）和 Plugin（插件）有什么区别？](#what-are-packages-and-plugins-in-flutter)
-11. [请列举一些使用 Flutter 开发的知名应用程序。](#name-some-popular-apps-made-with-flutter)
-12. [请区分 Dart 中的 final、const 和 static 关键字。](#differentiate-between-final-const-and-static-keyword)
-13. [在 Dart 中什么是胖箭头语法（Fat Arrow Notation）？](#what-is-fat-arrow-notation-in-dart)
-14. [在 Flutter 中 `SafeArea` 组件的目的是什么？](#what-is-the-purpose-of-safearea-widget-in-flutter)
-15. [请区分 `mainAxisAlignment` 和 `crossAxisAlignment` 的概念。](#differentiate-between-mainaxisalignment-and-crossaxisalignment)
-16. [`Container` 和 `SizedBox` 组件有什么区别？](#what-is-the-difference-between-container-and-sizedbox-widget)
-17. [什么是空值感知运算符（Null-aware operators）？](#what-do-you-mean-by-null-aware-operators)
-18. [什么是 `TextEditingController`？](#what-is-texteditingcontroller)
-19. [在 Flutter 中 `AspectRatio` 组件是用来做什么的？](#what-is-an-aspectratio-widget-used-for)
-20. [在 Dart 和 Flutter 中，`assert`（断言）是用来做什么的？](#what-is-assert-used-for-in-dart-and-flutter)
-21. [在 Flutter 框架中，你会如何发起 HTTP 网络请求？](#how-would-you-make-http-requests-in-the-flutter-framework)
-22. [Flutter 框架主要是由哪些底层技术构建而成的？](#what-technology-is-flutter-built-with)
-23. [在 StatefulWidget 中 `initState()` 方法的作用是什么？](#what-is-the-purpose-of-the-initstate-method-in-a-statefulwidget)
-24. [在 StatefulWidget 中 `dispose()` 方法的作用是什么？](#what-is-the-purpose-of-the-dispose-method-in-a-statefulwidget)
-25. [在 Flutter 中 padding 和 margin 有什么区别？](#what-is-the-difference-between-padding-and-margin-in-flutter)
-26. [在 Flutter 中 `Scaffold` 组件的作用是什么？](#what-is-the-purpose-of-the-scaffold-widget-in-flutter)
-27. [在 Flutter 中 `Expanded` 组件的作用是什么？](#what-is-the-purpose-of-the-expanded-widget-in-flutter)
-28. [在 Flutter 中 `SingleChildScrollView` 组件的作用是什么？](#what-is-the-purpose-of-the-singlechildscrollview-widget-in-flutter)
-29. [在 Flutter 中 `Stack` 组件的作用是什么？](#what-is-the-purpose-of-the-stack-widget-in-flutter)
-30. [在 Flutter 中什么是 `Theme`（主题）？](#what-is-a-theme-in-flutter)
-31. [在 Flutter 中 `Visibility` 组件的作用是什么？](#what-is-the-purpose-of-the-visibility-widget-in-flutter)
-32. [在 Flutter 中，你是如何在不同页面（Screens）之间进行路由跳转的？](#how-do-you-navigate-between-screens-in-flutter)
-33. [在 Flutter 中什么是底部模态抽屉（Modal Bottom Sheet）？](#what-is-a-modal-bottom-sheet-in-flutter)
-34. [在 Flutter 中，你是如何使用 `Positioned` 组件的？](#how-do-you-use-the-positioned-widget-in-flutter)
-35. [在 Flutter 中，你是如何在不同页面之间传递数据的？](#how-do-you-pass-data-between-screens-in-flutter)
-36. [在 Flutter 中 `Navigator` 类的作用是什么？](#what-is-the-purpose-of-the-navigator-class-in-flutter)
-37. [在 Flutter 中 `FittedBox` 组件的作用是什么？](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter)
-38. [在 Flutter 中 Cupertino 和 Material Design 有什么区别？](#what-is-the-difference-between-cupertino-and-material-design-in-flutter)
-39. [在 Flutter 中 Material Design Icons 包的作用是什么？](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter)
-40. [在 Dart 中，Object、dynamic 和 var 有什么区别？](#how-doobjectdynamic-andvardiffer-in-dart)
+1. [什么是 Flutter？](#-flutter)
+2. [什么是 Dart 语言？为什么 Flutter 选择使用它？](#-dart-flutter-)
+3. [什么是 `pubspec.yaml` 文件？它有什么作用？](#-pubspecyaml-)
+4. [在 Flutter 中，`main()` 和 `runApp()` 函数有什么区别？](#-flutter-main-runapp-)
+5. [请区分 Dart/Flutter 中的命名参数（Named parameters）和位置参数（Positional parameters）。](#-dartflutter-named-parameterspositional-parameters)
+6. [在 Flutter 中，什么是 Widget（组件）？](#-flutter-widget)
+7. [在 Flutter 中，热重载（Hot Reload）和热重启（Hot Restart）有什么区别？](#-flutter-hot-reloadhot-restart)
+8. [什么是开源软件（Open-source software）？Flutter 是开源的吗？](#open-source-softwareflutter-)
+9. [在 Flutter 中，`StatelessWidget` 和 `StatefulWidget` 的区别是什么？](#-flutter-statelesswidget-statefulwidget-)
+10. [在 Flutter 中，Package（包）和 Plugin（插件）有什么区别？](#-flutter-package-plugin)
+11. [请列举一些使用 Flutter 开发的知名应用程序。](#-flutter-)
+12. [请区分 Dart 中的 final、const 和 static 关键字。](#-dart-finalconst-static-)
+13. [在 Dart 中什么是胖箭头语法（Fat Arrow Notation）？](#-dart-fat-arrow-notation)
+14. [在 Flutter 中 `SafeArea` 组件的目的是什么？](#-flutter-safearea-)
+15. [请区分 `mainAxisAlignment` 和 `crossAxisAlignment` 的概念。](#-mainaxisalignment-crossaxisalignment-)
+16. [`Container` 和 `SizedBox` 组件有什么区别？](#container-sizedbox-)
+17. [什么是空值感知运算符（Null-aware operators）？](#null-aware-operators)
+18. [什么是 `TextEditingController`？](#-texteditingcontroller)
+19. [在 Flutter 中 `AspectRatio` 组件是用来做什么的？](#-flutter-aspectratio-)
+20. [在 Dart 和 Flutter 中，`assert`（断言）是用来做什么的？](#-dart-flutter-assert)
+21. [在 Flutter 框架中，你会如何发起 HTTP 网络请求？](#-flutter-http-)
+22. [Flutter 框架主要是由哪些底层技术构建而成的？](#flutter-)
+23. [在 StatefulWidget 中 `initState()` 方法的作用是什么？](#-statefulwidget-initstate-)
+24. [在 StatefulWidget 中 `dispose()` 方法的作用是什么？](#-statefulwidget-dispose-)
+25. [在 Flutter 中 padding 和 margin 有什么区别？](#-flutter-padding-margin-)
+26. [在 Flutter 中 `Scaffold` 组件的作用是什么？](#-flutter-scaffold-)
+27. [在 Flutter 中 `Expanded` 组件的作用是什么？](#-flutter-expanded-)
+28. [在 Flutter 中 `SingleChildScrollView` 组件的作用是什么？](#-flutter-singlechildscrollview-)
+29. [在 Flutter 中 `Stack` 组件的作用是什么？](#-flutter-stack-)
+30. [在 Flutter 中什么是 `Theme`（主题）？](#-flutter-theme)
+31. [在 Flutter 中 `Visibility` 组件的作用是什么？](#-flutter-visibility-)
+32. [在 Flutter 中，你是如何在不同页面（Screens）之间进行路由跳转的？](#-flutter-screens)
+33. [在 Flutter 中什么是底部模态抽屉（Modal Bottom Sheet）？](#-flutter-modal-bottom-sheet)
+34. [在 Flutter 中，你是如何使用 `Positioned` 组件的？](#-flutter-positioned-)
+35. [在 Flutter 中，你是如何在不同页面之间传递数据的？](#-flutter-)
+36. [在 Flutter 中 `Navigator` 类的作用是什么？](#-flutter-navigator-)
+37. [在 Flutter 中 `FittedBox` 组件的作用是什么？](#-flutter-fittedbox-)
+38. [在 Flutter 中 Cupertino 和 Material Design 有什么区别？](#-flutter-cupertino-material-design-)
+39. [在 Flutter 中 Material Design Icons 包的作用是什么？](#-flutter-material-design-icons-)
+40. [在 Dart 中，Object、dynamic 和 var 有什么区别？](#-dart-objectdynamic-var-)
 
 <!-- QUESTIONS:EASY:END -->
 
@@ -3324,47 +3324,47 @@ class Dog implements Animal {
 
 <!-- QUESTIONS:INTERMEDIATE:START -->
 
-1. [在 Flutter 中什么是 `BuildContext`？为什么需要它？](#what-is-buildcontext-in-flutter-and-why-is-it-needed)
-2. [Flutter 中有哪些不同的构建模式（Build Modes）？](#what-are-different-build-modes-in-flutter)
-3. [在 Flutter 中 `WidgetsApp` 和 `MaterialApp` 有什么区别？](#what-is-the-difference-between-widgetsapp-and-materialapp-in-flutter)
-4. [请简述 `StatefulWidget` 的完整生命周期方法。](#what-are-statefulwidget-lifecycle-methods-explain-briefly)
-5. [什么是 Key？为什么我们需要使用它们？](#what-are-keys-and-why-do-we-need-them)
-6. [`Expanded` 和 `Flexible` 组件有什么区别？](#what-is-the-difference-between-expanded-and-flexible-widget)
-7. [在 Dart 中什么是扩展方法（Extension Method）？](#what-is-the-extension-method-in-dart)
-8. [解释一下 `mounted` 属性。它有多重要以及何时使用它？](#explain-the-mounted-property-how-is-it-important-and-when-to-use-it)
-9. [什么是健全的空安全（Sound Null Safety）？](#what-is-sound-null-safety)
-10. [什么是 Mixin？如何使用它们？](#what-are-mixins-how-to-use-them)
-11. [什么是 `AppLifecycleState`（应用生命周期状态）？](#what-is-applifecyclestate)
-12. [在 Flutter 中 `NetworkImage` 和 `Image.network` 有什么区别？](#what-is-the-difference-between-networkimage-and-imagenetwork-in-flutter)
-13. [请解释一下 Dart 中的 async、await 和 Future。](#explain-async-await-and-future)
-14. [什么是 `resizeToAvoidBottomInset`？什么情况下应该使用它？](#what-is-resizetoavoidbottominset-when-should-we-use-it)
-15. [什么是 `Animation` 和 `AnimationController`？](#what-is-animation-and-animationcontroller)
-16. [在 Dart/Flutter 中，`Stream` 和 `Future` 的区别是什么？](#differentiate-between-stream-and-future-in-flutter)
-17. [你能解释一下在 Flutter 中创建自定义组件（Custom Widgets）的过程吗？](#can-you-explain-the-process-of-creating-custom-widgets-in-flutter)
-18. [在 Dart 中什么是 Typedef？](#what-is-typedef-in-dart)
-19. [什么是 `FutureBuilder`？如何用它构建动态 UI？](#what-is-futurebuilder-in-flutter-and-how-is-it-used-to-build-dynamic-ui)
-20. [在 Flutter 中你是如何处理异常的？你使用过哪些策略？](#how-do-you-handle-exceptions-in-flutter-and-what-strategies-have-you-used)
-21. [在 Flutter 中什么是 DevTools（开发者工具）？](#what-are-devtools-in-flutter)
-22. [什么是工厂构造函数（Factory constructor）？](#what-is-factory-constructor)
-23. [请解释一下 Flutter（Dart）中的单例类（Singleton class）。](#explain-singleton-class-in-flutter)
-24. [什么是事件循环（Event Loop）？](#what-is-the-event-loop)
-25. [Provider 和 InheritedWidget 之间有什么区别？](#what-is-the-difference-between-provider-vs-inheritedwidget)
-26. [在 Flutter 中什么是 `GlobalKey`？](#what-is-a-globalkey-in-flutter)
-27. [在 Flutter 中你是如何处理用户输入的？](#how-do-you-handle-user-input-in-flutter)
-28. [在 Flutter 中 `LayoutBuilder` 组件的作用是什么？](#what-is-the-purpose-of-the-layoutbuilder-widget-in-flutter)
-29. [在 Flutter 中，你是如何使用 `ValueNotifier` 类的？](#how-do-you-use-the-valuenotifier-class-in-flutter)
-30. [在 Flutter 中什么是 `MediaQuery`？](#what-is-a-mediaquery-in-flutter)
-31. [在 StatefulWidget 中 `didUpdateWidget` 方法的作用是什么？](#what-is-the-purpose-of-the-didupdatewidget-method-in-a-statefulwidget)
-32. [在 Flutter 中 `AnimatedBuilder` 组件的作用是什么？](#what-is-the-purpose-of-the-animatedbuilder-widget-in-flutter)
-33. [在 Flutter 中 `AnimatedSwitcher` 组件的作用是什么？](#what-is-the-purpose-of-the-animatedswitcher-widget-in-flutter)
-34. [在 Flutter 中什么是状态管理（State Management）？](#what-is-state-management-in-flutter)
-35. [在 Flutter 中，你是如何实现可拖拽（Draggable）组件的？](#how-do-you-implement-a-draggable-widget-in-flutter)
-36. [在开发 Flutter 应用时，你会提供无障碍支持（Accessibility）吗？你是怎么做的？](#how-do-you-provide-accessibility-when-developing-flutter-apps-do-you-at-all)
-37. [如何创建一个带有吸顶（Persistent Header）效果的列表？](#how-to-create-a-list-with-persistent-headers)
-38. [请解释一下在 Flutter 中什么是 Ticker（滴答定时器）？](#explain-what-a-ticker-is-in-flutter)
-39. [在 Dart/Flutter 中，主要有哪几种类型的 Stream（数据流）？](#what-are-the-various-kinds-of-streams-present-in-flutter)
-40. [在 Flutter 中，JIT 和 AOT 编译有什么区别？](#what-are-the-differences-between-jit-and-aot)
-41. [在 Dart 中，Mixin 和 Interface（接口）有什么区别？](#how-do-mixins-differ-from-interfaces-in-dart)
+1. [在 Flutter 中什么是 `BuildContext`？为什么需要它？](#-flutter-buildcontext)
+2. [Flutter 中有哪些不同的构建模式（Build Modes）？](#flutter-build-modes)
+3. [在 Flutter 中 `WidgetsApp` 和 `MaterialApp` 有什么区别？](#-flutter-widgetsapp-materialapp-)
+4. [请简述 `StatefulWidget` 的完整生命周期方法。](#-statefulwidget-)
+5. [什么是 Key？为什么我们需要使用它们？](#-key)
+6. [`Expanded` 和 `Flexible` 组件有什么区别？](#expanded-flexible-)
+7. [在 Dart 中什么是扩展方法（Extension Method）？](#-dart-extension-method)
+8. [解释一下 `mounted` 属性。它有多重要以及何时使用它？](#-mounted-)
+9. [什么是健全的空安全（Sound Null Safety）？](#sound-null-safety)
+10. [什么是 Mixin？如何使用它们？](#-mixin)
+11. [什么是 `AppLifecycleState`（应用生命周期状态）？](#-applifecyclestate)
+12. [在 Flutter 中 `NetworkImage` 和 `Image.network` 有什么区别？](#-flutter-networkimage-imagenetwork-)
+13. [请解释一下 Dart 中的 async、await 和 Future。](#-dart-asyncawait-future)
+14. [什么是 `resizeToAvoidBottomInset`？什么情况下应该使用它？](#-resizetoavoidbottominset)
+15. [什么是 `Animation` 和 `AnimationController`？](#-animation-animationcontroller)
+16. [在 Dart/Flutter 中，`Stream` 和 `Future` 的区别是什么？](#-dartflutter-stream-future-)
+17. [你能解释一下在 Flutter 中创建自定义组件（Custom Widgets）的过程吗？](#-flutter-custom-widgets)
+18. [在 Dart 中什么是 Typedef？](#-dart-typedef)
+19. [什么是 `FutureBuilder`？如何用它构建动态 UI？](#-futurebuilder-ui)
+20. [在 Flutter 中你是如何处理异常的？你使用过哪些策略？](#-flutter-)
+21. [在 Flutter 中什么是 DevTools（开发者工具）？](#-flutter-devtools)
+22. [什么是工厂构造函数（Factory constructor）？](#factory-constructor)
+23. [请解释一下 Flutter（Dart）中的单例类（Singleton class）。](#-flutterdartsingleton-class)
+24. [什么是事件循环（Event Loop）？](#event-loop)
+25. [Provider 和 InheritedWidget 之间有什么区别？](#provider-inheritedwidget-)
+26. [在 Flutter 中什么是 `GlobalKey`？](#-flutter-globalkey)
+27. [在 Flutter 中你是如何处理用户输入的？](#-flutter-)
+28. [在 Flutter 中 `LayoutBuilder` 组件的作用是什么？](#-flutter-layoutbuilder-)
+29. [在 Flutter 中，你是如何使用 `ValueNotifier` 类的？](#-flutter-valuenotifier-)
+30. [在 Flutter 中什么是 `MediaQuery`？](#-flutter-mediaquery)
+31. [在 StatefulWidget 中 `didUpdateWidget` 方法的作用是什么？](#-statefulwidget-didupdatewidget-)
+32. [在 Flutter 中 `AnimatedBuilder` 组件的作用是什么？](#-flutter-animatedbuilder-)
+33. [在 Flutter 中 `AnimatedSwitcher` 组件的作用是什么？](#-flutter-animatedswitcher-)
+34. [在 Flutter 中什么是状态管理（State Management）？](#-flutter-state-management)
+35. [在 Flutter 中，你是如何实现可拖拽（Draggable）组件的？](#-flutter-draggable)
+36. [在开发 Flutter 应用时，你会提供无障碍支持（Accessibility）吗？你是怎么做的？](#-flutter-accessibility)
+37. [如何创建一个带有吸顶（Persistent Header）效果的列表？](#persistent-header)
+38. [请解释一下在 Flutter 中什么是 Ticker（滴答定时器）？](#-flutter-ticker)
+39. [在 Dart/Flutter 中，主要有哪几种类型的 Stream（数据流）？](#-dartflutter-stream)
+40. [在 Flutter 中，JIT 和 AOT 编译有什么区别？](#-flutter-jit-aot-)
+41. [在 Dart 中，Mixin 和 Interface（接口）有什么区别？](#-dart-mixin-interface)
 
 <!-- QUESTIONS:INTERMEDIATE:END -->
 
@@ -3372,24 +3372,24 @@ class Dog implements Animal {
 
 <!-- QUESTIONS:ADVANCED:START -->
 
-1. [什么是 Slivers？](#what-are-slivers)
-2. [在 Flutter 中什么是 `InheritedWidget`？](#what-is-inheritedwidget-in-flutter)
-3. [什么是 Flutter Tree Shaking（摇树优化）？](#what-is-flutter-tree-shaking)
-4. [什么是 `vsync`？请详细解释。](#what-is-vsync-explain)
-5. [在 Flutter 中什么是 Isolate（隔离区）？](#what-is-isolate-in-flutter)
-6. [你能解释一下测试 Flutter 应用程序的流程吗？](#can-you-explain-the-process-of-testing-a-flutter-app)
-7. [在 Flutter 中什么是 `CustomPainter`？](#what-is-a-custompainter-in-flutter)
-8. [请解释一下你会如何将 Flutter 应用程序部署到 Google Play 或 App Store？](#explain-how-you-will-deploy-a-flutter-app-to-the-google-playapp-store)
-9. [使用 Flutter Inspector（检查器）有哪些优势与作用？](#what-are-the-advantages-of-a-flutter-inspector)
-10. [请列举 Android 端 `FlutterActivity` 的主要职责。](#list-the-responsibilities-of-flutteractivity)
-11. [您能描述一下如何在 Flutter 应用程序中实现国际化（i18n）吗？](#can-you-describe-how-to-implement-internationalization-in-a-flutter-app)
-12. [在 Flutter 中，你是如何实现自定义的页面跳转过渡动画（Transition）的？](#how-do-you-implement-a-custom-transition-between-screens-in-flutter)
-13. [在 Flutter 中你是如何实现自定义动画曲线（Curve）的？](#how-do-you-implement-a-custom-animation-curve-in-flutter)
-14. [在 Flutter 中，Isolate 之间可以通信吗？请描述什么是 Isolate？](#can-you-communicate-between-isolates-describe-an-isolate)
-15. [什么是 Flutter 的渲染流水线（Rendering Pipeline）？它的工作原理是怎样的？](#what-is-the-flutter-rendering-pipeline-and-how-does-it-work)
-16. [在 Flutter 架构中 `FlutterEngine`（Flutter引擎）扮演了什么角色？](#what-is-the-role-of-the-flutterengine-in-the-flutter-framework)
-17. [在 Flutter 中什么是平台通道（Platform Channels）？你会在什么场景下使用它们？](#what-are-platform-channels-in-flutter-and-when-would-you-use-them)
-18. [在 Flutter 中，你是如何处理多环境/多渠道打包（Flavors）的？](#how-do-you-work-with-multiple-flutter-flavors)
-19. [在 Flutter 中，代码拆分（Code-splitting）是什么？它有什么帮助？](#what-is-code-splitting-in-flutter-and-how-does-it-help)
+1. [什么是 Slivers？](#-slivers)
+2. [在 Flutter 中什么是 `InheritedWidget`？](#-flutter-inheritedwidget)
+3. [什么是 Flutter Tree Shaking（摇树优化）？](#-flutter-tree-shaking)
+4. [什么是 `vsync`？请详细解释。](#-vsync)
+5. [在 Flutter 中什么是 Isolate（隔离区）？](#-flutter-isolate)
+6. [你能解释一下测试 Flutter 应用程序的流程吗？](#-flutter-)
+7. [在 Flutter 中什么是 `CustomPainter`？](#-flutter-custompainter)
+8. [请解释一下你会如何将 Flutter 应用程序部署到 Google Play 或 App Store？](#-flutter-google-play-app-store)
+9. [使用 Flutter Inspector（检查器）有哪些优势与作用？](#-flutter-inspector)
+10. [请列举 Android 端 `FlutterActivity` 的主要职责。](#-android-flutteractivity-)
+11. [您能描述一下如何在 Flutter 应用程序中实现国际化（i18n）吗？](#-flutter-i18n)
+12. [在 Flutter 中，你是如何实现自定义的页面跳转过渡动画（Transition）的？](#-flutter-transition)
+13. [在 Flutter 中你是如何实现自定义动画曲线（Curve）的？](#-flutter-curve)
+14. [在 Flutter 中，Isolate 之间可以通信吗？请描述什么是 Isolate？](#-flutter-isolate-isolate)
+15. [什么是 Flutter 的渲染流水线（Rendering Pipeline）？它的工作原理是怎样的？](#-flutter-rendering-pipeline)
+16. [在 Flutter 架构中 `FlutterEngine`（Flutter引擎）扮演了什么角色？](#-flutter-flutterengineflutter)
+17. [在 Flutter 中什么是平台通道（Platform Channels）？你会在什么场景下使用它们？](#-flutter-platform-channels)
+18. [在 Flutter 中，你是如何处理多环境/多渠道打包（Flavors）的？](#-flutter-flavors)
+19. [在 Flutter 中，代码拆分（Code-splitting）是什么？它有什么帮助？](#-flutter-code-splitting)
 
 <!-- QUESTIONS:ADVANCED:END -->

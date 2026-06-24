@@ -26,7 +26,7 @@ This list contains common Flutter interview questions and their answers. From ba
 | 2 | [What is Dart and Why does Flutter use it?](#what-is-dart-and-why-does-flutter-use-it) |
 | 3 | [What is `pubspec.yaml` file and what does it do?](#what-is-pubspecyaml-file-and-what-does-it-do) |
 | 4 | [What is the difference between `main()` and `runApp()` functions in Flutter?](#what-is-the-difference-between-main-and-runapp-functions-in-flutter) |
-| 5 | [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter) |
+| 5 | [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-dartflutter) |
 | 6 | [What are widgets in Flutter?](#what-are-widgets-in-flutter) |
 | 7 | [What is `Hot Reload` and `Hot Restart` in Flutter?](#what-is-hot-reload-and-hot-restart-in-flutter) |
 | 8 | [What do you mean by open-source software? Is Flutter open-source?](#what-do-you-mean-by-open-source-software-is-flutter-open-source) |
@@ -61,7 +61,7 @@ This list contains common Flutter interview questions and their answers. From ba
 | 77 | [What is the purpose of the `FittedBox` widget in Flutter?](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter) |
 | 79 | [What is the difference between Cupertino and Material Design in Flutter?](#what-is-the-difference-between-cupertino-and-material-design-in-flutter) |
 | 80 | [What is the purpose of the Material Design Icons package in Flutter?](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter) |
-| 99 | [How do Object, dynamic, and var differ in Dart?](#how-doobjectdynamic-andvardiffer-in-dart) |
+| 99 | [How do Object, dynamic, and var differ in Dart?](#how-do-object-dynamic-and-var-differ-in-dart) |
 
 ### Intermediate
 
@@ -3166,7 +3166,7 @@ Flutter Interview Questions categorized by difficulty.
 2. [What is Dart and Why does Flutter use it?](#what-is-dart-and-why-does-flutter-use-it)
 3. [What is `pubspec.yaml` file and what does it do?](#what-is-pubspecyaml-file-and-what-does-it-do)
 4. [What is the difference between `main()` and `runApp()` functions in Flutter?](#what-is-the-difference-between-main-and-runapp-functions-in-flutter)
-5. [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-flutter)
+5. [Differentiate between named parameters and positional parameters in Dart/Flutter.](#differentiate-between-named-parameters-and-positional-parameters-in-dartflutter)
 6. [What are widgets in Flutter?](#what-are-widgets-in-flutter)
 7. [What is `Hot Reload` and `Hot Restart` in Flutter?](#what-is-hot-reload-and-hot-restart-in-flutter)
 8. [What do you mean by open-source software? Is Flutter open-source?](#what-do-you-mean-by-open-source-software-is-flutter-open-source)
@@ -3201,7 +3201,7 @@ Flutter Interview Questions categorized by difficulty.
 37. [What is the purpose of the `FittedBox` widget in Flutter?](#what-is-the-purpose-of-the-fittedbox-widget-in-flutter)
 38. [What is the difference between Cupertino and Material Design in Flutter?](#what-is-the-difference-between-cupertino-and-material-design-in-flutter)
 39. [What is the purpose of the Material Design Icons package in Flutter?](#what-is-the-purpose-of-the-material-design-icons-package-in-flutter)
-40. [How do Object, dynamic, and var differ in Dart?](#how-doobjectdynamic-andvardiffer-in-dart)
+40. [How do Object, dynamic, and var differ in Dart?](#how-do-object-dynamic-and-var-differ-in-dart)
 
 <!-- QUESTIONS:EASY:END -->
 

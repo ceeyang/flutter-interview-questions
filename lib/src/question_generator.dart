@@ -16,6 +16,26 @@ class QuestionGenerator {
   static const String kGithubOrg = 'justsandip';
   static const String kGithubRepo = 'flutter-interview-questions';
 
+  /// Converts a heading title to a GitHub-compatible markdown anchor.
+  ///
+  /// GitHub's anchor generation rules:
+  /// 1. Strip markdown code backticks (keep the text inside).
+  /// 2. Convert to lowercase.
+  /// 3. Remove any character that is not a letter, digit, space, or hyphen.
+  /// 4. Replace spaces with hyphens.
+  static String githubAnchor(String title) {
+    // Remove backticks used for inline code spans.
+    var anchor = title.replaceAll('`', '');
+    // Lowercase.
+    anchor = anchor.toLowerCase();
+    // Keep only word characters (letters/digits/underscore), spaces, and hyphens.
+    // Remove everything else (punctuation like ?, !, (, ), /, comma, period, etc.).
+    anchor = anchor.replaceAll(RegExp(r'[^\w\s-]'), '');
+    // Replace one or more whitespace characters with a single hyphen.
+    anchor = anchor.replaceAll(RegExp(r'\s+'), '-');
+    return anchor;
+  }
+
   /// Generates formatted content for each question, including edit links.
   String generateQuestionsContent(
     List<QuestionItem> questionItems, [
@@ -54,7 +74,7 @@ ${item.formatter.content}
         '| --- | :-- |',
       ];
       for (final item in items) {
-        lines.add('| ${item.metadata.rank} | [${item.formatter.title}](#${item.metadata.slug}) |');
+        lines.add('| ${item.metadata.rank} | [${item.formatter.title}](#${githubAnchor(item.formatter.title)}) |');
       }
       return lines.join('\n');
     }
@@ -76,7 +96,7 @@ ${item.formatter.content}
     List<String> generatedContent = [];
     for (final item in questionItems) {
       generatedContent.add(
-        '${counter++}. [${item.formatter.title}](#${item.metadata.slug})',
+        '${counter++}. [${item.formatter.title}](#${githubAnchor(item.formatter.title)})',
       );
     }
     return generatedContent.join('\n');
