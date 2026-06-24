@@ -18,19 +18,28 @@ class QuestionGenerator {
 
   /// Converts a heading title to a GitHub-compatible markdown anchor.
   ///
-  /// GitHub's anchor generation rules:
+  /// Mirrors the behavior of [github-slugger](https://github.com/Flet/github-slugger),
+  /// which is the reverse-engineered implementation of GitHub's internal anchor
+  /// generation algorithm.
+  ///
+  /// Rules (verified against github-slugger source):
   /// 1. Strip markdown code backticks (keep the text inside).
   /// 2. Convert to lowercase.
-  /// 3. Remove any character that is not a letter, digit, space, or hyphen.
-  /// 4. Replace spaces with hyphens.
+  /// 3. Keep Unicode letters (\p{L}), Unicode digits (\p{N}), spaces, and hyphens.
+  ///    Everything else (ASCII punctuation, CJK punctuation, brackets, etc.) is removed.
+  ///    IMPORTANT: \p{L} preserves CJK characters (汉字, 仮名, 한글, etc.), unlike
+  ///    the ASCII-only \w shorthand which would strip them entirely.
+  /// 4. Replace whitespace sequences with a single hyphen.
   static String githubAnchor(String title) {
-    // Remove backticks used for inline code spans.
+    // Remove backticks used for inline code spans (keep the text inside).
     var anchor = title.replaceAll('`', '');
     // Lowercase.
     anchor = anchor.toLowerCase();
-    // Keep only word characters (letters/digits/underscore), spaces, and hyphens.
-    // Remove everything else (punctuation like ?, !, (, ), /, comma, period, etc.).
-    anchor = anchor.replaceAll(RegExp(r'[^\w\s-]'), '');
+    // Remove any character that is NOT a Unicode letter (\p{L}), Unicode digit (\p{N}),
+    // ASCII hyphen (-), or whitespace. This correctly preserves CJK characters while
+    // stripping punctuation in all languages. The `unicode: true` flag is required for
+    // \p{} Unicode property escapes to work in Dart's RegExp.
+    anchor = anchor.replaceAll(RegExp(r'[^\p{L}\p{N}\s-]', unicode: true), '');
     // Replace one or more whitespace characters with a single hyphen.
     anchor = anchor.replaceAll(RegExp(r'\s+'), '-');
     return anchor;
